@@ -1,0 +1,154 @@
+[:f0337d95-4161-484b-9548-491caef85fc5]
+foreground-color='#eeffff'
+cjk-utf8-ambiguous-width='narrow'
+visible-name='Base 16 Material Darker'
+palette=['#212121', '#f07178', '#c3e88d', '#ffcb6b', '#82aaff', '#c792ea', '#89ddff', '#eeffff', '#4a4a4a', '#f78c6c', '#303030', '#353535', '#b2ccd6', '#eeffff', '#ff5370', '#ffffff']
+bold-is-bright=true
+default-size-rows=30
+cursor-background-color='#eeffff'
+use-system-font=false
+cursor-colors-set=true
+use-theme-colors=false
+cursor-foreground-color='#212121'
+font='Source Code Pro for Powerline Semi-Bold 11'
+use-theme-transparency=false
+use-theme-background=false
+bold-color-same-as-fg=true
+bold-color='#eeffff'
+background-color='#212121'
+audible-bell=false
+scrollbar-policy='always'
+
+[:3d1f5efa-dd40-403f-b2ff-d09b1bc41cd9]
+foreground-color='#d8d8d8'
+cjk-utf8-ambiguous-width='narrow'
+visible-name='Base 16 Default Dark'
+palette=['rgb(24,24,24)', 'rgb(171,70,66)', 'rgb(161,181,108)', 'rgb(247,202,136)', 'rgb(124,175,194)', 'rgb(186,139,175)', 'rgb(134,193,185)', 'rgb(216,216,216)', 'rgb(74,74,74)', 'rgb(220,150,86)', 'rgb(40,40,40)', 'rgb(56,56,56)', 'rgb(30,104,138)', 'rgb(232,232,232)', 'rgb(161,105,70)', 'rgb(248,248,248)']
+bold-is-bright=true
+default-size-rows=30
+cursor-background-color='#d8d8d8'
+use-system-font=false
+cursor-colors-set=true
+use-theme-colors=false
+cursor-foreground-color='#181818'
+font='Source Code Pro for Powerline Semi-Bold 11'
+use-theme-transparency=false
+use-theme-background=false
+bold-color-same-as-fg=false
+bold-color='#d8d8d8'
+background-color='#181818'
+audible-bell=false
+scrollbar-policy='always'
+
+[:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+use-theme-colors=false
+palette=['rgb(46,52,54)', 'rgb(204,0,0)', 'rgb(78,154,6)', 'rgb(196,160,0)', 'rgb(52,101,164)', 'rgb(117,80,123)', 'rgb(6,152,154)', 'rgb(211,215,207)', 'rgb(255,255,255)', 'rgb(239,41,41)', 'rgb(138,226,52)', 'rgb(252,233,79)', 'rgb(114,159,207)', 'rgb(173,127,168)', 'rgb(52,226,226)', 'rgb(238,238,236)']
+use-theme-transparency=false
+foreground-color='rgb(255,255,255)'
+use-system-font=false
+font='Monospace 14'
+
+[:d0b6e0a8-f460-408f-ad42-a9d4a3ab6393]
+foreground-color='rgb(131,148,150)'
+visible-name='Tomorrow'
+palette=['rgb(0,0,0)', 'rgb(145,34,38)', 'rgb(119,137,0)', 'rgb(174,123,0)', 'rgb(29,37,148)', 'rgb(104,42,155)', 'rgb(43,102,81)', 'rgb(146,149,147)', 'rgb(102,102,102)', 'rgb(204,102,102)', 'rgb(181,189,104)', 'rgb(240,198,116)', 'rgb(129,182,190)', 'rgb(178,148,187)', 'rgb(138,190,183)', 'rgb(236,235,236)']
+use-system-font=false
+use-theme-colors=false
+font='Monospace 14'
+use-theme-transparency=false
+bold-color-same-as-fg=false
+bold-color='rgb(138,186,183)'
+background-color='rgb(0,43,54)'
+
+[:a716b4ef-d281-4b78-9db8-a09830b38783]
+foreground-color='rgb(255,255,255)'
+visible-name='Tomorrow'
+palette=['rgb(0,0,0)', 'rgb(145,34,38)', 'rgb(119,137,0)', 'rgb(174,123,0)', 'rgb(123,124,236)', 'rgb(104,42,155)', 'rgb(43,102,81)', 'rgb(146,149,147)', 'rgb(102,102,102)', 'rgb(204,102,102)', 'rgb(181,189,104)', 'rgb(176,146,57)', 'rgb(129,182,190)', 'rgb(178,148,187)', 'rgb(138,190,183)', 'rgb(255,255,255)']
+bold-is-bright=true
+use-system-font=false
+cursor-colors-set=false
+use-theme-colors=false
+use-transparent-background=false
+font='Monospace 12'
+use-theme-transparency=false
+bold-color-same-as-fg=false
+bold-color='rgb(138,186,183)'
+background-color='rgb(0,0,0)'
+
+[:04876a39-f1ce-4a58-b472-e8d45e61eafa]
+foreground-color='#d0d0d0'
+cjk-utf8-ambiguous-width='narrow'
+visible-name='Base 16 Classic Dark'
+palette=['#151515', '#ac4142', '#90a959', '#f4bf75', '#6a9fb5', '#aa759f', '#75b5aa', '#d0d0d0', '#505050', '#d28445', '#202020', '#303030', '#b0b0b0', '#e0e0e0', '#8f5536', '#f5f5f5']
+bold-is-bright=true
+default-size-rows=30
+cursor-background-color='#d0d0d0'
+use-system-font=false
+cursor-colors-set=true
+use-theme-colors=false
+cursor-foreground-color='#151515'
+font='Source Code Pro for Powerline Semi-Bold 11'
+use-theme-transparency=false
+use-theme-background=false
+bold-color-same-as-fg=true
+bold-color='#d0d0d0'
+background-color='#151515'
+audible-bell=false
+scrollbar-policy='always'
+
+[:cdfefd4e-85c0-4f1f-9079-55a2e6a971f0]
+foreground-color='#abb2bf'
+cjk-utf8-ambiguous-width='narrow'
+visible-name='One Dark'
+palette=['#000000', '#E06C75', '#98c379', '#d19a66', '#61aeee', '#c678dd', '#56b6c2', '#abb2bf', '#5c6370', '#e06c75', '#98c379', '#d19a66', '#62afee', '#c678dd', '#56b6c2', '#ffffff']
+bold-is-bright=true
+use-system-font=false
+use-theme-colors=false
+font='Source Code Pro for Powerline Semi-Bold 13'
+use-theme-transparency=false
+use-theme-background=false
+bold-color-same-as-fg=true
+bold-color='#ABB2BF'
+background-color='#282c34'
+audible-bell=false
+scrollbar-policy='always'
+
+[:c7dedaf4-acfe-48c5-b9ef-8e2d4f2ed36f]
+foreground-color='rgb(171,178,191)'
+cjk-utf8-ambiguous-width='narrow'
+visible-name='One Dark'
+palette=['rgb(0,0,0)', 'rgb(224,108,117)', 'rgb(152,195,121)', 'rgb(209,154,102)', 'rgb(97,174,238)', 'rgb(198,120,221)', 'rgb(86,182,194)', 'rgb(171,178,191)', 'rgb(92,99,112)', 'rgb(224,108,117)', 'rgb(152,195,121)', 'rgb(209,154,102)', 'rgb(98,175,238)', 'rgb(198,120,221)', 'rgb(86,182,194)', 'rgb(255,255,255)']
+bold-is-bright=true
+default-size-rows=30
+use-system-font=false
+use-theme-colors=false
+font='Source Code Pro for Powerline Semi-Bold 11'
+use-theme-transparency=false
+use-theme-background=false
+bold-color-same-as-fg=true
+bold-color='#ABB2BF'
+background-color='rgb(40,44,52)'
+audible-bell=false
+scrollbar-policy='always'
+
+[:5060b274-51d1-45ad-8369-c83067fed4d0]
+foreground-color='rgb(197,200,198)'
+cjk-utf8-ambiguous-width='narrow'
+visible-name='Tomorrow'
+palette=['rgb(0,0,0)', 'rgb(145,34,38)', 'rgb(119,137,0)', 'rgb(174,123,0)', 'rgb(29,37,148)', 'rgb(104,42,155)', 'rgb(43,102,81)', 'rgb(146,149,147)', 'rgb(102,102,102)', 'rgb(204,102,102)', 'rgb(181,189,104)', 'rgb(240,198,116)', 'rgb(129,182,190)', 'rgb(178,148,187)', 'rgb(138,190,183)', 'rgb(236,235,236)']
+bold-is-bright=true
+default-size-rows=30
+use-system-font=false
+use-theme-colors=false
+font='Source Code Pro for Powerline Semi-Bold 11'
+use-theme-transparency=false
+use-theme-background=false
+bold-color-same-as-fg=false
+bold-color='rgb(138,186,183)'
+background-color='rgb(29,31,33)'
+audible-bell=false
+scrollbar-policy='always'
+
+[/]
+default='3d1f5efa-dd40-403f-b2ff-d09b1bc41cd9'
+list=['d0b6e0a8-f460-408f-ad42-a9d4a3ab6393', 'a716b4ef-d281-4b78-9db8-a09830b38783', 'c7dedaf4-acfe-48c5-b9ef-8e2d4f2ed36f', 'cdfefd4e-85c0-4f1f-9079-55a2e6a971f0', '5060b274-51d1-45ad-8369-c83067fed4d0', 'f0337d95-4161-484b-9548-491caef85fc5', '04876a39-f1ce-4a58-b472-e8d45e61eafa', '3d1f5efa-dd40-403f-b2ff-d09b1bc41cd9']
