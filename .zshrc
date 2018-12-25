@@ -100,7 +100,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-autoload -U promptinit; promptinit
+#autoload -U promptinit; promptinit
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
