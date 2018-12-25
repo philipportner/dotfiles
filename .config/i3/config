@@ -252,6 +252,7 @@ exec --no-startup-id feh --randomize --bg-fill ~/Pictures/wallpapers/favs/
 #exec_always --no-startup-id "compton -b --config ~/.config/compton/compton.conf"
 
 #brightness keys
+# https://github.com/haikarainen/light
 bindcode 233 exec --no-startup-id light -A 5
 bindcode 232 exec --no-startup-id light -U 5
 
