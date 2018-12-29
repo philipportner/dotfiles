@@ -35,6 +35,9 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'sheerun/vim-polyglot'
+Plug 'majutsushi/tagbar'
+Plug 'scrooloose/nerdcommenter'
+Plug 'Townk/vim-autoclose'
 
 call plug#end()
 " }}}
@@ -44,6 +47,7 @@ call plug#end()
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
+set autoread
 
 "" Fix backspace indent
 set backspace=indent,eol,start
@@ -52,11 +56,27 @@ set backspace=indent,eol,start
 " Required for operations modifying multiple buffers like rename.
 set hidden
 
+" tagbar
+nmap <F4> :TagbarToggle<CR>
+
 "" Tabs. May be overridden by autocmd rules
 set tabstop=4
-set softtabstop=0
+set smarttab
+set smartindent
+set autoindent
+set softtabstop=4
 set shiftwidth=4
 set expandtab
+
+" Auto indent pasted text
+nnoremap p p=`]<C-o>
+nnoremap P P=`]<C-o>
+
+" Display tabs and trailing spaces visually
+set list listchars=tab:\ \ ,trail:·
+
+filetype plugin on
+filetype indent on
 
 "" Map leader to ,
 let mapleader=','
@@ -74,8 +94,25 @@ set smartcase
 "" Directories for swp files
 set nobackup
 set noswapfile
-
 set fileformats=unix,dos,mac
+
+"" nerdcommenter
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
 
 if exists('$SHELL')
     set shell=$SHELL
@@ -132,7 +169,7 @@ augroup END
 
 "" Disable the blinking cursor.
 set gcr=a:blinkon0
-set scrolloff=3
+set scrolloff=8
 
 "" Status bar
 set laststatus=2
