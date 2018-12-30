@@ -28,7 +28,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 " Plug install {{{
 Plug 'scrooloose/nerdtree'
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -37,7 +37,8 @@ Plug 'Yggdroot/indentLine'
 Plug 'sheerun/vim-polyglot'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdcommenter'
-Plug 'Townk/vim-autoclose'
+" Plug 'Townk/vim-autoclose'
+Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 " }}}
@@ -159,13 +160,14 @@ let g:indentLine_char = '┆'
 let g:indentLine_faster = 1
 
 " relative numbers
-set number relativenumber
+" set number relativenumber
+set nonumber
 
-augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-augroup END
+" augroup numbertoggle
+"   autocmd!
+"   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+"   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+" augroup END
 
 "" Disable the blinking cursor.
 set gcr=a:blinkon0

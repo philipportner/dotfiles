@@ -140,10 +140,10 @@ assign [class="Skype"] $workspace9
 
 
 # gaps
-gaps inner 3
-gaps outer 1
+gaps inner 10
+gaps outer 0
 for_window [class="^.*"] border pixel 0
-smart_gaps on
+smart_gaps off
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $workspace1
