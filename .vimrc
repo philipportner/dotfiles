@@ -28,17 +28,17 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 " Plug install {{{
 Plug 'scrooloose/nerdtree'
-" Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'Yggdroot/indentLine'
 Plug 'sheerun/vim-polyglot'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdcommenter'
-" Plug 'Townk/vim-autoclose'
 Plug 'jiangmiao/auto-pairs'
+Plug 'desmap/ale-sensible'
+Plug 'w0rp/ale'
 
 call plug#end()
 " }}}
@@ -74,7 +74,10 @@ nnoremap p p=`]<C-o>
 nnoremap P P=`]<C-o>
 
 " Display tabs and trailing spaces visually
-set list listchars=tab:\ \ ,trail:·
+set list 
+"set listchars=tab:\ \ ,trail:·
+set listchars=tab:•\ ,trail:•,extends:»,precedes:«
+
 
 filetype plugin on
 filetype indent on
@@ -134,7 +137,13 @@ set nowrap
 set modelines=1
 set mousemodel=popup
 set background=dark
-colorscheme base16-default-dark
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+" colorscheme base16-default-dark
+" let g:gruvbox_contrast_dark = 'medium'
+" colorscheme gruvbox
 
 let g:lightline = {
       \ 'colorscheme': 'jellybeans',
@@ -153,15 +162,15 @@ let no_buffers_menu=1
 set t_Co=256
 let g:CSApprox_loaded = 1
 
-" IndentLine
-let g:indentLine_enabled = 1
-let g:indentLine_concealcursor = 0
-let g:indentLine_char = '┆'
-let g:indentLine_faster = 1
+" " IndentLine
+" let g:indentLine_enabled = 1
+" let g:indentLine_concealcursor = 0
+" let g:indentLine_char = '•'
+" let g:indentLine_faster = 1
 
 " relative numbers
-" set number relativenumber
-set nonumber
+set number relativenumber
+" set nonumber
 
 " augroup numbertoggle
 "   autocmd!
