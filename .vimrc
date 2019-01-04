@@ -27,18 +27,23 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 " }}}
 
 " Plug install {{{
-Plug 'scrooloose/nerdtree'
+
 Plug 'airblade/vim-gitgutter'
-Plug 'itchyny/lightline.vim'
 Plug 'chriskempson/base16-vim'
+Plug 'desmap/ale-sensible'
+Plug 'itchyny/lightline.vim'
+Plug 'justinmk/vim-sneak'
+Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'sheerun/vim-polyglot'
 Plug 'majutsushi/tagbar'
+Plug 'sheerun/vim-polyglot'
+Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
-Plug 'jiangmiao/auto-pairs'
-Plug 'desmap/ale-sensible'
+Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
+
+" Plug 'lervag/vimtex'
 
 call plug#end()
 " }}}
@@ -52,6 +57,9 @@ set autoread
 
 "" Fix backspace indent
 set backspace=indent,eol,start
+
+" Vim Sneak
+let g:sneak#label = 1
 
 " LSP
 " Required for operations modifying multiple buffers like rename.
@@ -218,6 +226,11 @@ vnoremap <Leader>rc y:%s/<C-r>"/
 nnoremap j gj
 nnoremap k gk
 
+" Tree
+nnoremap <silent> <F2> :NERDTreeFind<CR>
+nnoremap <silent> <F3> :NERDTreeToggle<CR>
+
+
 "" Switching windows
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
@@ -258,6 +271,7 @@ nnoremap <Leader>o :.Gbrowse<CR>
 " FZF
 " This is the default extra key bindings
 nnoremap <silent> <leader>e :FZF -m<CR>
+nnoremap <silent> <leader><space>e :ProjectFiles <CR>
 nnoremap <silent> <leader>r :Rg <CR>
 
 let g:fzf_action = {
@@ -295,6 +309,11 @@ let g:fzf_colors =
 " previous-history instead of down and up. If you don't like the change,
 " explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+" vimtex live preview
+" \ll to toggle the live compilation and \lv to view the generated document in your PDF viewer.
+"  See :help VimtexCompile.
+
 " }}}
 
 " Abbrevations {{{
@@ -319,8 +338,6 @@ let g:NERDTreeShowBookmarks=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 50
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
-nnoremap <silent> <F2> :NERDTreeFind<CR>
-nnoremap <silent> <F3> :NERDTreeToggle<CR>
 " }}}
 
 " Autocmd rules {{{
@@ -338,6 +355,27 @@ augroup END
 " }}}
 
 " Functions {{{
+
+" ripgrep
+" :Rg open preview with ?
+" :Rg! opens rg with preview in buffer
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+" Likewise, Files command with preview window
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+
+command! ProjectFiles execute 'Files' s:find_git_root()
+
 " vim:foldmethod=marker:foldlevel=0
 " }}}
 

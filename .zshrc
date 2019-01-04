@@ -99,8 +99,10 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias nv="nvim"
 
 #autoload -U promptinit; promptinit
+
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
