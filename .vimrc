@@ -31,7 +31,6 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 Plug 'airblade/vim-gitgutter'
 Plug 'chriskempson/base16-vim'
 Plug 'desmap/ale-sensible'
-Plug 'itchyny/lightline.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -134,74 +133,37 @@ endif
 " }}}
 
 " Visual Settigns {{{
+" 	
 syntax on
 set ruler
 set number
 set cc=80
 set list
 set cursorline
-set noshowmode
+set showmode
 set nowrap
-set modelines=1
-set mousemodel=popup
+set t_Co=256
 set background=dark
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
 " colorscheme base16-default-dark
+" colorscheme ir_black
+highlight ColorColumn ctermbg=8
 " let g:gruvbox_contrast_dark = 'medium'
 " colorscheme gruvbox
-
-let g:lightline = {
-      \ 'colorscheme': 'jellybeans',
-      \ 'component': {
-      \   'lineinfo': "%c | %{line('.') . '/' . line('$')}",
-      \ },
-      \ }
-let s:palette = g:lightline#colorscheme#{g:lightline.colorscheme}#palette
-let s:palette.normal.middle = [ [ 'NONE', 'NONE', 'NONE', 'NONE' ] ]
-let s:palette.inactive.middle = s:palette.normal.middle
-let s:palette.tabline.middle = s:palette.normal.middle
-
-let g:onedark_termcolors=16
-let no_buffers_menu=1
-
-set t_Co=256
-let g:CSApprox_loaded = 1
-
-" " IndentLine
-" let g:indentLine_enabled = 1
-" let g:indentLine_concealcursor = 0
-" let g:indentLine_char = '•'
-" let g:indentLine_faster = 1
 
 " relative numbers
 set number relativenumber
 " set nonumber
-
-" augroup numbertoggle
-"   autocmd!
-"   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-"   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-" augroup END
 
 "" Disable the blinking cursor.
 set gcr=a:blinkon0
 set scrolloff=8
 
 "" Status bar
-set laststatus=2
-
-"" Use modeline overrides
-set modeline
-set modelines=10
-
-"set title
-"set titleold="Terminal"
-"set titlestring=%F
-
-set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
+set laststatus=1
 
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
@@ -341,6 +303,13 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 " }}}
 
 " Autocmd rules {{{
+"
+augroup numbertoggle
+    autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
 "" The PC is fast enough, do syntax highlight syncing from start unless 200 lines
 augroup vimrc-sync-fromstart
   autocmd!
@@ -378,4 +347,3 @@ command! ProjectFiles execute 'Files' s:find_git_root()
 
 " vim:foldmethod=marker:foldlevel=0
 " }}}
-
