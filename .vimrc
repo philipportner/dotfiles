@@ -304,11 +304,11 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 
 " Autocmd rules {{{
 "
-augroup numbertoggle
-    autocmd!
-    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-augroup END
+" augroup numbertoggle
+"     autocmd!
+"     autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+"     autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+" augroup END
 
 "" The PC is fast enough, do syntax highlight syncing from start unless 200 lines
 augroup vimrc-sync-fromstart

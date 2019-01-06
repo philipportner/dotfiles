@@ -140,7 +140,7 @@ assign [class="Skype"] $workspace9
 
 
 # gaps
-gaps inner 10
+gaps inner 2
 gaps outer 0
 for_window [class="^.*"] border pixel 0
 smart_gaps off
