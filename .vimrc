@@ -1,3 +1,9 @@
+" TODO {{{
+    " check out YCM and / or COC
+    " vimtex
+    " vim markdown / org mode 
+" }}}
+
 " VIM-PLUG core {{{
 if has('vim_starting')
   set nocompatible               " Be iMproved
@@ -30,7 +36,6 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 Plug 'airblade/vim-gitgutter'
 Plug 'chriskempson/base16-vim'
-Plug 'desmap/ale-sensible'
 Plug 'justinmk/vim-sneak'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -40,6 +45,9 @@ Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'mkitt/tabline.vim'
+Plug 'desmap/ale-sensible'
 Plug 'w0rp/ale'
 
 " Plug 'lervag/vimtex'
@@ -164,20 +172,23 @@ set scrolloff=8
 
 "" Status bar
 set laststatus=1
+if &laststatus > 1
+    set statusline+=%{fugitive#statusline()}
+endif
 
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
-if exists("*fugitive#statusline")
-  set statusline+=%{fugitive#statusline()}
-endif
 
 " }}}
 
 " Mappings {{{
 inoremap jk <esc>
+
+" exit TERMINAL MODE in terminal
+tnoremap <Esc> <C-\><C-n>
 
 " Allows you to easily replace the current word and all its occurrences.
 nnoremap <Leader>rc :%s/\<<C-r><C-w>\>/
@@ -205,9 +216,7 @@ noremap <Leader>v :<C-u>vsplit<CR>
 
 "" Buffer nav
 nnoremap <silent> <leader>b :Buffers<CR>
-noremap <leader>z :bp<CR>
 noremap <leader>q :bp<CR>
-noremap <leader>x :bn<CR>
 noremap <leader>w :bn<CR>
 noremap <leader>c :bd<CR>
 
@@ -218,8 +227,8 @@ nnoremap <leader>sd :DeleteSession<CR>
 nnoremap <leader>sc :CloseSession<CR>
 
 "" Tabs
-nnoremap <Tab> :bnext!<CR>
-nnoremap <S-Tab> :bprev!<CR><Paste>
+nnoremap <Tab> :tabnext<CR>
+nnoremap <S-Tab> :tabprev<CR>
 
 "" Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
@@ -232,7 +241,7 @@ nnoremap <Leader>o :.Gbrowse<CR>
 
 " FZF
 " This is the default extra key bindings
-nnoremap <silent> <leader>e :FZF -m<CR>
+nnoremap <silent> <leader>t :FZF -m<CR>
 nnoremap <silent> <leader><space>e :ProjectFiles <CR>
 nnoremap <silent> <leader>r :Rg <CR>
 
