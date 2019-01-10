@@ -34,6 +34,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 " Plug install {{{
 
+Plug 'altercation/vim-colors-solarized'
 Plug 'airblade/vim-gitgutter'
 Plug 'chriskempson/base16-vim'
 Plug 'justinmk/vim-sneak'
@@ -142,7 +143,7 @@ endif
 
 " Visual Settigns {{{
 " 	
-syntax on
+syntax enable
 set ruler
 set number
 set cc=80
@@ -150,17 +151,20 @@ set list
 set cursorline
 set showmode
 set nowrap
-set t_Co=256
+" set t_Co=256
+" let g:solarized_termcolors=256
+" let g:solarized_termcolors=   256
+let g:solarized_termtrans =   1
+" let g:solarized_degrade   =   1
+" let g:solarized_contrast  =   "high"
+" let g:solarized_visibility=   "high"
 set background=dark
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
-" colorscheme base16-default-dark
-" colorscheme ir_black
-highlight ColorColumn ctermbg=8
-" let g:gruvbox_contrast_dark = 'medium'
-" colorscheme gruvbox
+" if filereadable(expand("~/.vimrc_background"))
+"   let base16colorspace=256
+"   source ~/.vimrc_background
+" endif
+" highlight ColorColumn ctermbg=8
+colorscheme solarized
 
 " relative numbers
 set number relativenumber
