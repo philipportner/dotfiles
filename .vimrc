@@ -1,7 +1,7 @@
 " TODO {{{
     " check out YCM and / or COC
     " vimtex
-    " vim markdown / org mode 
+    " vim markdown / org mode
 " }}}
 
 " VIM-PLUG core {{{
@@ -34,9 +34,9 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 " Plug install {{{
 
+" Plug 'lervag/vimtex'
 Plug 'altercation/vim-colors-solarized'
 Plug 'airblade/vim-gitgutter'
-Plug 'chriskempson/base16-vim'
 Plug 'justinmk/vim-sneak'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -48,10 +48,11 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'mkitt/tabline.vim'
-Plug 'desmap/ale-sensible'
-Plug 'w0rp/ale'
+" Plug 'desmap/ale-sensible'
+" Plug 'w0rp/ale'
+" Plug 'chriskempson/base16-vim'
 
-" Plug 'lervag/vimtex'
+
 
 call plug#end()
 " }}}
@@ -146,9 +147,9 @@ endif
 syntax enable
 set ruler
 set number
-set cc=80
+" set cc=80
+let &colorcolumn="80,".join(range(120,999),",")
 set list
-set cursorline
 set showmode
 set nowrap
 " set t_Co=256
@@ -168,6 +169,9 @@ colorscheme solarized
 
 " relative numbers
 set number relativenumber
+set cursorline
+highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE
+highlight cursorlinenr ctermfg=red
 " set nonumber
 
 "" Disable the blinking cursor.
