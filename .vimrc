@@ -183,12 +183,19 @@ highlight VertSplit ctermbg=NONE guibg=NONE
 set gcr=a:blinkon0
 set scrolloff=8
 
-"" Status bar
-set laststatus=1
-" if &laststatus > 1
-"     set statusline+=%{fugitive#statusline()}
-" endif
-
+set fillchars=fold:\ 
+" Status bar {{{
+set laststatus=2
+set statusline=
+set statusline +=%#Identifier#\ %n\ %*                      " buffer number
+set statusline +=%#PreProc#%{&ff}%*                         " file format
+set statusline +=%#String#\ %<%t%*                          " full path
+set statusline +=%#SpecialKey#%m%*                          " modified flag
+set statusline +=%#Identifier#%=%5l%*                       " current line
+set statusline +=%#SpecialKey#/%L%*                         " total lines
+set statusline +=%#Identifier#%4v\ %*                       " virtual column number
+set statusline +=%#SpecialKey#0x%02B\ %*                    " character under cursor
+" }}}
 " set showtabline=2
 
 " Search mappings: These will make it so that going to the next one in a
