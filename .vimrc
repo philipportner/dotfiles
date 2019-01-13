@@ -48,6 +48,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'mkitt/tabline.vim'
+Plug 'romainl/flattened'
 " Plug 'desmap/ale-sensible'
 " Plug 'w0rp/ale'
 " Plug 'chriskempson/base16-vim'
@@ -148,7 +149,7 @@ syntax enable
 set ruler
 set number
 " set cc=80
-let &colorcolumn="80,".join(range(120,999),",")
+let &colorcolumn="80,".join(range(120,120),",")
 set list
 set showmode
 set nowrap
@@ -165,6 +166,8 @@ set background=dark
 "   source ~/.vimrc_background
 " endif
 " highlight ColorColumn ctermbg=8
+" colorscheme flattened_dark
+" apprentice looks nice too
 colorscheme solarized
 
 " relative numbers
@@ -172,7 +175,9 @@ set number relativenumber
 set cursorline
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE
 highlight cursorlinenr ctermfg=red
-" set nonumber
+
+" hide bg from colorscheme in vsplit
+highlight VertSplit ctermbg=NONE guibg=NONE
 
 "" Disable the blinking cursor.
 set gcr=a:blinkon0
@@ -180,9 +185,11 @@ set scrolloff=8
 
 "" Status bar
 set laststatus=1
-if &laststatus > 1
-    set statusline+=%{fugitive#statusline()}
-endif
+" if &laststatus > 1
+"     set statusline+=%{fugitive#statusline()}
+" endif
+
+" set showtabline=2
 
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
