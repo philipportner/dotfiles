@@ -35,6 +35,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 " Plug install {{{
 
 " Plug 'lervag/vimtex'
+Plug 'morhetz/gruvbox'
 Plug 'altercation/vim-colors-solarized'
 Plug 'airblade/vim-gitgutter'
 Plug 'justinmk/vim-sneak'
@@ -49,9 +50,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'mkitt/tabline.vim'
 Plug 'romainl/flattened'
-" Plug 'desmap/ale-sensible'
-" Plug 'w0rp/ale'
-" Plug 'chriskempson/base16-vim'
 
 
 
@@ -94,7 +92,7 @@ nnoremap P P=`]<C-o>
 " Display tabs and trailing spaces visually
 set list 
 "set listchars=tab:\ \ ,trail:·
-set listchars=tab:•\ ,trail:•,extends:»,precedes:«
+set listchars=tab:•\ ,trail:•
 
 
 filetype plugin on
@@ -136,6 +134,17 @@ let g:NERDTrimTrailingWhitespace = 1
 " Enable NERDCommenterToggle to check all selected lines is commented or not 
 let g:NERDToggleCheckAllLines = 1
 
+
+"" python pep8 indents
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+
 if exists('$SHELL')
     set shell=$SHELL
 else
@@ -168,13 +177,15 @@ set background=dark
 " highlight ColorColumn ctermbg=8
 " colorscheme flattened_dark
 " apprentice looks nice too
-colorscheme solarized
+" colorscheme solarized
+colorscheme gruvbox
 
 " relative numbers
 set number relativenumber
 set cursorline
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE
 highlight cursorlinenr ctermfg=red
+highlight clear SignColumn
 
 " hide bg from colorscheme in vsplit
 highlight VertSplit ctermbg=NONE guibg=NONE
@@ -187,7 +198,7 @@ set fillchars=fold:\
 " Status bar {{{
 set laststatus=2
 set statusline=
-set statusline +=%#Identifier#\ %n\ %*                      " buffer number
+set statusline +=%#Identifier#\ %n\                         " buffer number
 set statusline +=%#PreProc#%{&ff}%*                         " file format
 set statusline +=%#String#\ %<%t%*                          " full path
 set statusline +=%#SpecialKey#%m%*                          " modified flag
@@ -213,8 +224,8 @@ inoremap jk <esc>
 tnoremap <Esc> <C-\><C-n>
 
 " Allows you to easily replace the current word and all its occurrences.
-nnoremap <Leader>rc :%s/\<<C-r><C-w>\>/
-vnoremap <Leader>rc y:%s/<C-r>"/
+nnoremap <Leader>cr :%s/\<<C-r><C-w>\>/
+vnoremap <Leader>cr y:%s/<C-r>"/
 
 "" custom move
 "vertically by visual line
@@ -359,12 +370,12 @@ augroup END
 " ripgrep
 " :Rg open preview with ?
 " :Rg! opens rg with preview in buffer
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
+" command! -bang -nargs=* Rg
+"   \ call fzf#vim#grep(
+"   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+"   \   <bang>0 ? fzf#vim#with_preview('up:60%')
+"   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+"   \   <bang>0)
 
 " Likewise, Files command with preview window
 command! -bang -nargs=? -complete=dir Files

@@ -19,7 +19,8 @@ focus_follows_mouse no
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:System San Francisco 12
+# font pango:System San Francisco 12
+font pango:System Pragmata Pro 12
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -52,6 +53,7 @@ bindsym $mod+Print exec gnome-screenshot -a
 
 # move workspace to right window
 bindsym $mod+m move workspace to output left
+bindsym $mod+n move workspace to output right
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -119,7 +121,7 @@ bindsym $mod+a focus parent
 
 # custom workspaces
 set $workspace1 "1  "
-set $workspace2 "2:  "
+set $workspace2 "2: "
 set $workspace3 "3  "
 set $workspace4 "4:  "
 set $workspace5 "5  "
@@ -129,18 +131,8 @@ set $workspace8 "8  "
 set $workspace9 "9  "
 set $workspace10 "10  "
 
-assign [class="Code"] $workspace3
-assign [class="Chromium-browser"] $workspace2
-assign [class="Nautilus"] $workspace4
-assign [class="Slack"] $workspace9
-assign [title="^ranger.*"] $workspace4
-assign [class="firefox-developer"] $workspace2
-assign [class="Skype"] $workspace9
-
-
-
 # gaps
-gaps inner 2
+gaps inner 0
 gaps outer 0
 for_window [class="^.*"] border pixel 0
 smart_gaps off
