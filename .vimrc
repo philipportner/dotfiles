@@ -1,9 +1,3 @@
-" TODO {{{
-    " check out YCM and / or COC
-    " vimtex
-    " vim markdown / org mode
-" }}}
-
 " VIM-PLUG core {{{
 if has('vim_starting')
   set nocompatible               " Be iMproved
@@ -39,19 +33,15 @@ Plug 'morhetz/gruvbox'
 Plug 'altercation/vim-colors-solarized'
 Plug 'airblade/vim-gitgutter'
 Plug 'justinmk/vim-sneak'
-Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'sheerun/vim-polyglot'
-Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'mkitt/tabline.vim'
-Plug 'romainl/flattened'
-
-
+Plug 'vim-scripts/OmniCppComplete'
 
 call plug#end()
 " }}}
@@ -94,7 +84,6 @@ set list
 "set listchars=tab:\ \ ,trail:·
 set listchars=tab:•\ ,trail:•
 
-
 filetype plugin on
 filetype indent on
 
@@ -134,7 +123,6 @@ let g:NERDTrimTrailingWhitespace = 1
 " Enable NERDCommenterToggle to check all selected lines is commented or not 
 let g:NERDToggleCheckAllLines = 1
 
-
 "" python pep8 indents
 au BufNewFile,BufRead *.py
     \ set tabstop=4 |
@@ -162,21 +150,13 @@ let &colorcolumn="80,".join(range(120,120),",")
 set list
 set showmode
 set nowrap
-" set t_Co=256
-" let g:solarized_termcolors=256
-" let g:solarized_termcolors=   256
 let g:solarized_termtrans =   1
-" let g:solarized_degrade   =   1
-" let g:solarized_contrast  =   "high"
-" let g:solarized_visibility=   "high"
 set background=dark
 " if filereadable(expand("~/.vimrc_background"))
 "   let base16colorspace=256
 "   source ~/.vimrc_background
 " endif
 " highlight ColorColumn ctermbg=8
-" colorscheme flattened_dark
-" apprentice looks nice too
 " colorscheme solarized
 colorscheme gruvbox
 
@@ -192,7 +172,7 @@ highlight VertSplit ctermbg=NONE guibg=NONE
 
 "" Disable the blinking cursor.
 set gcr=a:blinkon0
-set scrolloff=8
+set scrolloff=5
 
 set fillchars=fold:\ 
 " Status bar {{{
@@ -207,7 +187,6 @@ set statusline +=%#SpecialKey#/%L%*                         " total lines
 set statusline +=%#Identifier#%4v\ %*                       " virtual column number
 set statusline +=%#SpecialKey#0x%02B\ %*                    " character under cursor
 " }}}
-" set showtabline=2
 
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
@@ -235,7 +214,6 @@ nnoremap k gk
 " Tree
 nnoremap <silent> <F2> :NERDTreeFind<CR>
 nnoremap <silent> <F3> :NERDTreeToggle<CR>
-
 
 "" Switching windows
 noremap <C-j> <C-w>j
@@ -320,38 +298,7 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 " }}}
 
-" Abbrevations {{{
-"" no one is really happy until you have this shortcuts
-cnoreabbrev W! w!
-cnoreabbrev Q! q!
-cnoreabbrev Qall! qall!
-cnoreabbrev Wq wq
-cnoreabbrev Wa wa
-cnoreabbrev wQ wq
-cnoreabbrev WQ wq
-cnoreabbrev W w
-cnoreabbrev Q q
-cnoreabbrev Qall qall
-
-"" NERDTree configuration
-let g:NERDTreeChDirMode=2
-let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
-let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
-let g:NERDTreeShowBookmarks=1
-"let g:nerdtree_tabs_focus_on_files=1
-let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
-let g:NERDTreeWinSize = 50
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
-" }}}
-
 " Autocmd rules {{{
-"
-" augroup numbertoggle
-"     autocmd!
-"     autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-"     autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-" augroup END
-
 "" The PC is fast enough, do syntax highlight syncing from start unless 200 lines
 augroup vimrc-sync-fromstart
   autocmd!
