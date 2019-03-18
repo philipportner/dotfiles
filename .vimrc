@@ -41,7 +41,13 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'mkitt/tabline.vim'
+Plug 'Shougo/deoplete.nvim'
+Plug 'davidhalter/jedi-vim'
+Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'vim-scripts/OmniCppComplete'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'chriskempson/base16-vim'
 
 call plug#end()
 " }}}
@@ -58,6 +64,38 @@ set backspace=indent,eol,start
 
 " Vim Sneak
 let g:sneak#label = 1
+"
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+"let g:deoplete#sources#jedi#show_docstring = 1
+let g:deoplete#sources#show_docstring = 1
+let g:deoplete#max_list = 10
+let g:deoplete#disable_auto_complete = 1
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+
+" Neosnippet {{{
+"
+"" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+" }}}
 
 " LSP
 " Required for operations modifying multiple buffers like rename.
@@ -141,7 +179,7 @@ endif
 " }}}
 
 " Visual Settigns {{{
-" 	
+"
 syntax enable
 set ruler
 set number
