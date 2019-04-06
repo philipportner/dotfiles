@@ -78,6 +78,7 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 "
 "" Plugin key-mappings.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+let g:tex_conceal = ""
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
@@ -178,7 +179,7 @@ else
 endif
 " }}}
 
-" Visual Settigns {{{
+" Visual Settings {{{
 "
 syntax enable
 set ruler

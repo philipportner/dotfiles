@@ -105,6 +105,7 @@ alias gits="git status"
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
