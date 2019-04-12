@@ -28,7 +28,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 " Plug install {{{
 
-" Plug 'lervag/vimtex'
+Plug 'lervag/vimtex'
 Plug 'morhetz/gruvbox'
 Plug 'altercation/vim-colors-solarized'
 Plug 'airblade/vim-gitgutter'
@@ -42,12 +42,15 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'mkitt/tabline.vim'
 Plug 'Shougo/deoplete.nvim'
-Plug 'davidhalter/jedi-vim'
 Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'davidhalter/jedi-vim'
 Plug 'vim-scripts/OmniCppComplete'
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
 Plug 'chriskempson/base16-vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'w0rp/ale'
+Plug 'derekwyatt/vim-scala'
+Plug 'janko-m/vim-test'
 
 call plug#end()
 " }}}
@@ -62,41 +65,40 @@ set autoread
 "" Fix backspace indent
 set backspace=indent,eol,start
 
+let g:ale_lint_on_text_changed = 'never'
+
+au BufRead,BufNewFile *.sbt set filetype=scala
+
+" vim-tests 
+" these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
+
 " Vim Sneak
 let g:sneak#label = 1
 "
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
-"let g:deoplete#sources#jedi#show_docstring = 1
+let g:deoplete#sources#jedi#show_docstring = 1
 let g:deoplete#sources#show_docstring = 1
 let g:deoplete#max_list = 10
+let g:deoplete#sources#jedi#max_list = 10
 let g:deoplete#disable_auto_complete = 1
+let g:deoplete#min_pattern_length = 2
+inoremap <expr> <C-n>  deoplete#mappings#manual_complete()
+let g:jedi#rename_command = ""
+
+let g:python_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/usr/bin/python3'
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
-
-" Neosnippet {{{
-"
-"" Plugin key-mappings.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-let g:tex_conceal = ""
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-"imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
-" }}}
+" ultisnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " LSP
 " Required for operations modifying multiple buffers like rename.
