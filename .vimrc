@@ -41,17 +41,14 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'mkitt/tabline.vim'
-Plug 'Shougo/deoplete.nvim'
-Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'davidhalter/jedi-vim'
 Plug 'vim-scripts/OmniCppComplete'
 Plug 'chriskempson/base16-vim'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
 Plug 'w0rp/ale'
 Plug 'derekwyatt/vim-scala'
 Plug 'janko-m/vim-test'
-
 call plug#end()
 " }}}
 
@@ -66,6 +63,22 @@ set autoread
 set backspace=indent,eol,start
 
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_completion_enabled = 1
+
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 au BufRead,BufNewFile *.sbt set filetype=scala
 
@@ -79,17 +92,9 @@ nmap <silent> t<C-g> :TestVisit<CR>
 
 " Vim Sneak
 let g:sneak#label = 1
+
 "
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#jedi#show_docstring = 1
-let g:deoplete#sources#show_docstring = 1
-let g:deoplete#max_list = 10
-let g:deoplete#sources#jedi#max_list = 10
-let g:deoplete#disable_auto_complete = 1
-let g:deoplete#min_pattern_length = 2
-inoremap <expr> <C-n>  deoplete#mappings#manual_complete()
-let g:jedi#rename_command = ""
+let g:jedi#popup_on_dot = 0
 
 let g:python_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
@@ -108,12 +113,12 @@ set hidden
 nmap <F4> :TagbarToggle<CR>
 
 "" Tabs. May be overridden by autocmd rules
-set tabstop=4
+set tabstop=2
 set smarttab
 set smartindent
 set autoindent
-set softtabstop=4
-set shiftwidth=4
+set softtabstop=2
+set shiftwidth=2
 set expandtab
 
 " Auto indent pasted text
