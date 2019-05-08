@@ -49,6 +49,7 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'w0rp/ale'
 Plug 'derekwyatt/vim-scala'
 Plug 'janko-m/vim-test'
+Plug 'jiangmiao/auto-pairs'
 call plug#end()
 " }}}
 
@@ -251,6 +252,12 @@ tnoremap <Esc> <C-\><C-n>
 " Allows you to easily replace the current word and all its occurrences.
 nnoremap <Leader>cr :%s/\<<C-r><C-w>\>/
 vnoremap <Leader>cr y:%s/<C-r>"/
+
+" keymap for resizing split windows
+map <left> :5winc ><CR>
+map <right> :5winc <<CR>
+map <down> :5winc +<CR>
+map <up> :5winc -<CR>
 
 "" custom move
 "vertically by visual line
