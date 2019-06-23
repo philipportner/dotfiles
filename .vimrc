@@ -28,9 +28,9 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 " Plug install {{{
 
+Plug 'itchyny/lightline.vim'
 Plug 'lervag/vimtex'
 Plug 'morhetz/gruvbox'
-Plug 'altercation/vim-colors-solarized'
 Plug 'airblade/vim-gitgutter'
 Plug 'justinmk/vim-sneak'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -47,7 +47,6 @@ Plug 'chriskempson/base16-vim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'w0rp/ale'
-Plug 'derekwyatt/vim-scala'
 Plug 'janko-m/vim-test'
 Plug 'jiangmiao/auto-pairs'
 call plug#end()
@@ -65,6 +64,15 @@ set backspace=indent,eol,start
 
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_completion_enabled = 1
+
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
+
+set tags=tags;/
 
 " Plugin key-mappings.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
@@ -100,11 +108,6 @@ let g:jedi#popup_on_dot = 0
 let g:python_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-
-" ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " LSP
 " Required for operations modifying multiple buffers like rename.
@@ -192,20 +195,16 @@ endif
 syntax enable
 set ruler
 set number
-" set cc=80
 let &colorcolumn="80,".join(range(120,120),",")
 set list
 set showmode
 set nowrap
-let g:solarized_termtrans =   1
 set background=dark
-" if filereadable(expand("~/.vimrc_background"))
-"   let base16colorspace=256
-"   source ~/.vimrc_background
-" endif
-" highlight ColorColumn ctermbg=8
-" colorscheme solarized
 colorscheme gruvbox
+
+let g:lightline = {
+  \ 'colorscheme' : 'seoul256',
+  \ }
 
 " relative numbers
 set number relativenumber
@@ -239,8 +238,6 @@ set statusline +=%#SpecialKey#0x%02B\ %*                    " character under cu
 " search will center on the line it's found in.
 nnoremap n nzzzv
 nnoremap N Nzzzv
-
-
 " }}}
 
 " Mappings {{{
@@ -264,10 +261,6 @@ map <up> :5winc -<CR>
 nnoremap j gj
 nnoremap k gk
 
-" Tree
-nnoremap <silent> <F2> :NERDTreeFind<CR>
-nnoremap <silent> <F3> :NERDTreeToggle<CR>
-
 "" Switching windows
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
@@ -284,18 +277,9 @@ noremap <leader>q :bp<CR>
 noremap <leader>w :bn<CR>
 noremap <leader>c :bd<CR>
 
-" session management
-nnoremap <leader>so :OpenSession<Space>
-nnoremap <leader>ss :SaveSession<Space>
-nnoremap <leader>sd :DeleteSession<CR>
-nnoremap <leader>sc :CloseSession<CR>
-
 "" Tabs
 nnoremap <Tab> :tabnext<CR>
 nnoremap <S-Tab> :tabprev<CR>
-
-"" Set working directory
-nnoremap <leader>. :lcd %:p:h<CR>
 
 "" Clean search (highlight)
 nnoremap <silent> <leader><space> :noh<cr>
@@ -344,11 +328,6 @@ let g:fzf_colors =
 " previous-history instead of down and up. If you don't like the change,
 " explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
-
-" vimtex live preview
-" \ll to toggle the live compilation and \lv to view the generated document in your PDF viewer.
-"  See :help VimtexCompile.
-
 " }}}
 
 " Autocmd rules {{{
@@ -385,7 +364,7 @@ function! s:find_git_root()
   return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
 endfunction
 
-command! ProjectFiles execute 'Files' s:find_git_root()
+command! PF execute 'Files' s:find_git_root()
 
 " vim:foldmethod=marker:foldlevel=0
 " }}}

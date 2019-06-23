@@ -1,6 +1,6 @@
-! Xft.dpi: 96
+Xft.dpi: 96
 ! add --force-device-scale-factor=1.25 in /etc/chromium-browser/default
-Xft.dpi: 120
+! Xft.dpi: 120
 ! Xft.dpi: 144
 Xft.antialias: true
 Xft.hinting: false
