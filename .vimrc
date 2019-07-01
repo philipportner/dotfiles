@@ -28,6 +28,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 " Plug install {{{
 
+Plug 'RRethy/vim-illuminate'
 Plug 'itchyny/lightline.vim'
 Plug 'lervag/vimtex'
 Plug 'morhetz/gruvbox'
@@ -101,6 +102,7 @@ nmap <silent> t<C-g> :TestVisit<CR>
 
 " Vim Sneak
 let g:sneak#label = 1
+let g:sneak#streak = 1
 
 "
 let g:jedi#popup_on_dot = 0
