@@ -28,6 +28,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 " Plug install {{{
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'RRethy/vim-illuminate'
 Plug 'itchyny/lightline.vim'
 Plug 'lervag/vimtex'
@@ -42,8 +43,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'mkitt/tabline.vim'
-Plug 'davidhalter/jedi-vim'
-Plug 'vim-scripts/OmniCppComplete'
 Plug 'chriskempson/base16-vim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
@@ -81,14 +80,6 @@ imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 
-" SuperTab like snippets behavior.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-"imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 au BufRead,BufNewFile *.sbt set filetype=scala
 
@@ -104,16 +95,9 @@ nmap <silent> t<C-g> :TestVisit<CR>
 let g:sneak#label = 1
 let g:sneak#streak = 1
 
-"
-let g:jedi#popup_on_dot = 0
-
 let g:python_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
-" LSP
-" Required for operations modifying multiple buffers like rename.
-set hidden
 
 " tagbar
 nmap <F4> :TagbarToggle<CR>
@@ -154,6 +138,7 @@ set smartcase
 
 "" Directories for swp files
 set nobackup
+set nowritebackup
 set noswapfile
 set fileformats=unix,dos,mac
 
@@ -240,6 +225,61 @@ set statusline +=%#SpecialKey#0x%02B\ %*                    " character under cu
 " search will center on the line it's found in.
 nnoremap n nzzzv
 nnoremap N Nzzzv
+" }}}
+
+" CoC {{{
+" Required for operations modifying multiple buffers like rename.
+set hidden
+set updatetime=300
+set shortmess+=c
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+"
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+"
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " }}}
 
 " Mappings {{{
@@ -333,7 +373,13 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 " }}}
 
 " Autocmd rules {{{
-"" The PC is fast enough, do syntax highlight syncing from start unless 200 lines
+
+
+" json syntax highlighting
+ autocmd FileType json syntax match Comment +\/\/.\+$+
+ 
+ 
+ """ The PC is fast enough, do syntax highlight syncing from start unless 200 lines
 augroup vimrc-sync-fromstart
   autocmd!
   autocmd BufEnter * :syntax sync maxlines=200
