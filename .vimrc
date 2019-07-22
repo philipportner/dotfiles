@@ -28,12 +28,13 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 " Plug install {{{
 
+Plug 'terryma/vim-expand-region'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'RRethy/vim-illuminate'
 Plug 'itchyny/lightline.vim'
 Plug 'lervag/vimtex'
 Plug 'morhetz/gruvbox'
-Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
 Plug 'justinmk/vim-sneak'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -58,6 +59,7 @@ set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
 set autoread
+
 
 "" Fix backspace indent
 set backspace=indent,eol,start
@@ -188,6 +190,8 @@ set showmode
 set nowrap
 set background=dark
 colorscheme gruvbox
+let g:gruvbox_contrast_dark='hard'
+set signcolumn=auto:2
 
 let g:lightline = {
   \ 'colorscheme' : 'seoul256',
@@ -199,15 +203,27 @@ set cursorline
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE
 highlight cursorlinenr ctermfg=red
 highlight clear SignColumn
+"
+" Gdiff highlight
+highlight DiffAdd           cterm=bold ctermbg=none ctermfg=108
+highlight DiffDelete        cterm=bold ctermbg=none ctermfg=167
+highlight DiffChange        cterm=bold ctermbg=none ctermfg=172
+
+" highlight signs in Sy
+
+highlight SignifySignAdd    cterm=bold ctermbg=235  ctermfg=108
+highlight SignifySignDelete cterm=bold ctermbg=235  ctermfg=167
+highlight SignifySignChange cterm=bold ctermbg=235  ctermfg=172
 
 " hide bg from colorscheme in vsplit
 highlight VertSplit ctermbg=NONE guibg=NONE
 
 "" Disable the blinking cursor.
-set gcr=a:blinkon0
+set gcr=a:blinkon0   
 set scrolloff=5
 
 set fillchars=fold:\ 
+set fillchars=vert:\|
 " Status bar {{{
 set laststatus=2
 set statusline=
@@ -240,6 +256,10 @@ inoremap <silent><expr> <TAB>
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 "
@@ -283,14 +303,22 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " }}}
 
 " Mappings {{{
-inoremap jk <esc>
+inoremap jj <esc>
+nnoremap <Leader>W :w<CR>
 
 " exit TERMINAL MODE in terminal
 tnoremap <Esc> <C-\><C-n>
 
+map q: :q
+" map :W :w
+
 " Allows you to easily replace the current word and all its occurrences.
 nnoremap <Leader>cr :%s/\<<C-r><C-w>\>/
 vnoremap <Leader>cr y:%s/<C-r>"/
+
+" expand region
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 " keymap for resizing split windows
 map <left> :5winc ><CR>
@@ -413,6 +441,17 @@ function! s:find_git_root()
 endfunction
 
 command! PF execute 'Files' s:find_git_root()
+
+" vp doesn't replace paste buffer
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+function! s:Repl()
+  let s:restore_reg = @"
+  return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()
 
 " vim:foldmethod=marker:foldlevel=0
 " }}}
