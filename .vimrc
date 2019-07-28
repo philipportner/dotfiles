@@ -28,6 +28,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 " Plug install {{{
 
+" Plug 'chriskempson/base16-vim'
 Plug 'terryma/vim-expand-region'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'RRethy/vim-illuminate'
@@ -85,7 +86,7 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 au BufRead,BufNewFile *.sbt set filetype=scala
 
-" vim-tests 
+" vim-tests
 " these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
 nmap <silent> t<C-n> :TestNearest<CR>
 nmap <silent> t<C-f> :TestFile<CR>
@@ -118,7 +119,7 @@ nnoremap p p=`]<C-o>
 nnoremap P P=`]<C-o>
 
 " Display tabs and trailing spaces visually
-set list 
+set list
 "set listchars=tab:\ \ ,trail:·
 set listchars=tab:•\ ,trail:•
 
@@ -159,7 +160,7 @@ let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
 let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
-" Enable NERDCommenterToggle to check all selected lines is commented or not 
+" Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
 
 "" python pep8 indents
@@ -189,9 +190,10 @@ set list
 set showmode
 set nowrap
 set background=dark
-colorscheme gruvbox
+colorscheme base16-default-dark
+" colorscheme gruvbox
 let g:gruvbox_contrast_dark='hard'
-set signcolumn=auto:2
+" set signcolumn=auto:2
 
 let g:lightline = {
   \ 'colorscheme' : 'seoul256',
@@ -211,18 +213,18 @@ highlight DiffChange        cterm=bold ctermbg=none ctermfg=172
 
 " highlight signs in Sy
 
-highlight SignifySignAdd    cterm=bold ctermbg=235  ctermfg=108
-highlight SignifySignDelete cterm=bold ctermbg=235  ctermfg=167
-highlight SignifySignChange cterm=bold ctermbg=235  ctermfg=172
+highlight SignifySignAdd    cterm=bold ctermbg=black ctermfg=108
+highlight SignifySignDelete cterm=bold ctermbg=black ctermfg=167
+highlight SignifySignChange cterm=bold ctermbg=black ctermfg=172
 
 " hide bg from colorscheme in vsplit
 highlight VertSplit ctermbg=NONE guibg=NONE
 
 "" Disable the blinking cursor.
-set gcr=a:blinkon0   
+set gcr=a:blinkon0
 set scrolloff=5
 
-set fillchars=fold:\ 
+set fillchars=fold:\
 set fillchars=vert:\|
 " Status bar {{{
 set laststatus=2
@@ -405,8 +407,8 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 " json syntax highlighting
  autocmd FileType json syntax match Comment +\/\/.\+$+
- 
- 
+
+
  """ The PC is fast enough, do syntax highlight syncing from start unless 200 lines
 augroup vimrc-sync-fromstart
   autocmd!
