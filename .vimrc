@@ -28,11 +28,9 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 " Plug install {{{
 
-" Plug 'chriskempson/base16-vim'
 Plug 'terryma/vim-expand-region'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'RRethy/vim-illuminate'
-Plug 'itchyny/lightline.vim'
 Plug 'lervag/vimtex'
 Plug 'morhetz/gruvbox'
 Plug 'mhinz/vim-signify'
@@ -44,6 +42,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sleuth'
 Plug 'mkitt/tabline.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'Shougo/neosnippet.vim'
@@ -61,6 +60,8 @@ set fileencoding=utf-8
 set fileencodings=utf-8
 set autoread
 
+" Enable mouse support
+set mouse=a
 
 "" Fix backspace indent
 set backspace=indent,eol,start
@@ -70,10 +71,11 @@ let g:ale_completion_enabled = 1
 
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
-let g:vimtex_quickfix_mode=0
+" let g:vimtex_quickfix_mode=0
+let g:vimtex_view_method = 'zathura'
 set conceallevel=1
 let g:tex_conceal='abdmg'
-
+" let g:polyglot_disabled = ['latex']
 
 set tags=tags;/
 
@@ -82,7 +84,6 @@ set tags=tags;/
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
-
 
 au BufRead,BufNewFile *.sbt set filetype=scala
 
@@ -120,8 +121,8 @@ nnoremap P P=`]<C-o>
 
 " Display tabs and trailing spaces visually
 set list
-"set listchars=tab:\ \ ,trail:·
-set listchars=tab:•\ ,trail:•
+set listchars=tab:\ \ ,trail:·
+" set listchars=tab:•\ ,trail:•
 
 filetype plugin on
 filetype indent on
@@ -190,9 +191,7 @@ set list
 set showmode
 set nowrap
 set background=dark
-colorscheme base16-default-dark
-" colorscheme gruvbox
-let g:gruvbox_contrast_dark='hard'
+colorscheme gruvbox
 " set signcolumn=auto:2
 
 let g:lightline = {
@@ -205,7 +204,7 @@ set cursorline
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE
 highlight cursorlinenr ctermfg=red
 highlight clear SignColumn
-"
+
 " Gdiff highlight
 highlight DiffAdd           cterm=bold ctermbg=none ctermfg=108
 highlight DiffDelete        cterm=bold ctermbg=none ctermfg=167
@@ -226,6 +225,7 @@ set scrolloff=5
 
 set fillchars=fold:\
 set fillchars=vert:\|
+" set fillchars=vert:┃
 " Status bar {{{
 set laststatus=2
 set statusline=
@@ -312,7 +312,7 @@ nnoremap <Leader>W :w<CR>
 tnoremap <Esc> <C-\><C-n>
 
 map q: :q
-" map :W :w
+map :W :w
 
 " Allows you to easily replace the current word and all its occurrences.
 nnoremap <Leader>cr :%s/\<<C-r><C-w>\>/
