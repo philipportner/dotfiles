@@ -47,7 +47,7 @@ Plug 'mkitt/tabline.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 Plug 'janko-m/vim-test'
 Plug 'jiangmiao/auto-pairs'
 call plug#end()
@@ -275,8 +275,8 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+" Use gk to show documentation in preview window
+nnoremap <silent> gk :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
