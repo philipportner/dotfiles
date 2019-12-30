@@ -44,7 +44,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'mkitt/tabline.vim'
-Plug 'chriskempson/base16-vim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 " Plug 'w0rp/ale'
@@ -72,7 +71,6 @@ let g:ale_completion_enabled = 1
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 " let g:vimtex_quickfix_mode=0
-let g:vimtex_view_method = 'zathura'
 set conceallevel=1
 let g:tex_conceal='abdmg'
 " let g:polyglot_disabled = ['latex']
@@ -251,6 +249,8 @@ set hidden
 set updatetime=300
 set shortmess+=c
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" fix cursor becomming a | after viewing CoCList
+" set guicursor=n:blinkon1
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -275,6 +275,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+nmap ge :CocCommand explorer<CR>
 " Use gk to show documentation in preview window
 nnoremap <silent> gk :call <SID>show_documentation()<CR>
 
