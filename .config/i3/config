@@ -238,11 +238,6 @@ exec --no-startup-id xmodmap ~/.Xmodmap
 exec_always --no-startup-id nm-applet
 exec --no-startup-id setxkbmap -option ctrl:nocaps
 exec --no-startup-id feh --randomize --bg-fill ~/Pictures/wallpapers/favs/
-exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
-exec --no-startup-id redshift-gtk
-#exec redshift
-#exec --no-startup-id nautilus
-#exec --no-startup-id chromium-browser
 #exec_always --no-startup-id "compton -b --config ~/.config/compton/compton.conf"
 
 #brightness keys
