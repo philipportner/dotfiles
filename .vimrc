@@ -28,6 +28,9 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 " Plug install {{{
 
+Plug 'vimwiki/vimwiki'
+Plug 'arzg/vim-colors-xcode'
+Plug 'mikelue/vim-maven-plugin'
 Plug 'terryma/vim-expand-region'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'RRethy/vim-illuminate'
@@ -227,14 +230,14 @@ set fillchars=vert:\|
 " Status bar {{{
 set laststatus=2
 set statusline=
-set statusline +=%#Identifier#\ %n\                         " buffer number
-set statusline +=%#PreProc#%{&ff}%*                         " file format
-set statusline +=%#String#\ %<%t%*                          " full path
-set statusline +=%#SpecialKey#%m%*                          " modified flag
-set statusline +=%#Identifier#%=%5l%*                       " current line
-set statusline +=%#SpecialKey#/%L%*                         " total lines
-set statusline +=%#Identifier#%4v\ %*                       " virtual column number
-set statusline +=%#SpecialKey#0x%02B\ %*                    " character under cursor
+set statusline +=\ %#Identifier\ #\ %n\                         " buffer number
+set statusline +=\ %#PreProc\ #%{&ff}%*                         " file format
+set statusline +=\ %#String\ #%<%t%*                            " full path
+set statusline +=\ %#SpecialKey\ #%m%*                          " modified flag
+set statusline +=\ %#Identifier\ #%=%5l%*                       " current line
+set statusline +=\ %#SpecialKey\ #/%L%*                         " total lines
+set statusline +=\ %#Identifier\ #%4v\ %*                       " virtual column number
+set statusline +=\ %#SpecialKey\ #0x\ %02B\ %*                  " character under cursor
 " }}}
 
 " Search mappings: These will make it so that going to the next one in a
@@ -250,7 +253,7 @@ set updatetime=300
 set shortmess+=c
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " fix cursor becomming a | after viewing CoCList
-" set guicursor=n:blinkon1
+set guicursor=n:blinkon1
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
