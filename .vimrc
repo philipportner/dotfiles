@@ -28,9 +28,9 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 " Plug install {{{
 
+Plug 'ericcurtin/CurtineIncSw.vim'
+Plug 'troydm/zoomwintab.vim'
 Plug 'vimwiki/vimwiki'
-Plug 'arzg/vim-colors-xcode'
-Plug 'mikelue/vim-maven-plugin'
 Plug 'terryma/vim-expand-region'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'RRethy/vim-illuminate'
@@ -49,9 +49,9 @@ Plug 'tpope/vim-sleuth'
 Plug 'mkitt/tabline.vim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
-" Plug 'w0rp/ale'
 Plug 'janko-m/vim-test'
 Plug 'jiangmiao/auto-pairs'
+Plug 'preservim/nerdtree'
 call plug#end()
 " }}}
 
@@ -104,8 +104,11 @@ let g:python_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
 
 
-" tagbar
+nmap <F3> :NERDTreeToggle<CR>
 nmap <F4> :TagbarToggle<CR>
+map <F5> :call CurtineIncSw()<CR>
+nmap <F2> :!./run.sh<CR>
+nmap <F1> :make<CR>
 
 "" Tabs. May be overridden by autocmd rules
 set tabstop=2
@@ -192,19 +195,17 @@ set list
 set showmode
 set nowrap
 set background=dark
+" colorscheme peachpuff
 colorscheme gruvbox
 " set signcolumn=auto:2
-
-let g:lightline = {
-  \ 'colorscheme' : 'seoul256',
-  \ }
 
 " relative numbers
 set number relativenumber
 set cursorline
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE
-highlight cursorlinenr ctermfg=red
+highlight cursorlinenr ctermfg=yellow
 highlight clear SignColumn
+highlight Comment ctermfg=green
 
 " Gdiff highlight
 highlight DiffAdd           cterm=bold ctermbg=none ctermfg=108
@@ -228,16 +229,16 @@ set fillchars=fold:\
 set fillchars=vert:\|
 " set fillchars=vert:┃
 " Status bar {{{
-set laststatus=2
-set statusline=
-set statusline +=\ %#Identifier\ #\ %n\                         " buffer number
-set statusline +=\ %#PreProc\ #%{&ff}%*                         " file format
-set statusline +=\ %#String\ #%<%t%*                            " full path
-set statusline +=\ %#SpecialKey\ #%m%*                          " modified flag
-set statusline +=\ %#Identifier\ #%=%5l%*                       " current line
-set statusline +=\ %#SpecialKey\ #/%L%*                         " total lines
-set statusline +=\ %#Identifier\ #%4v\ %*                       " virtual column number
-set statusline +=\ %#SpecialKey\ #0x\ %02B\ %*                  " character under cursor
+" set laststatus=2
+" set statusline=
+" set statusline +=\ %#Identifier\ #\ %n\                         " buffer number
+" set statusline +=\ %#PreProc\ #%{&ff}%*                         " file format
+" set statusline +=\ %#String\ #%<%t%*                            " full path
+" set statusline +=\ %#SpecialKey\ #%m%*                          " modified flag
+" set statusline +=\ %#Identifier\ #%=%5l%*                       " current line
+" set statusline +=\ %#SpecialKey\ #/%L%*                         " total lines
+" set statusline +=\ %#Identifier\ #%4v\ %*                       " virtual column number
+" set statusline +=\ %#SpecialKey\ #0x\ %02B\ %*                  " character under cursor
 " }}}
 
 " Search mappings: These will make it so that going to the next one in a
@@ -314,6 +315,9 @@ nnoremap <Leader>W :w<CR>
 
 " exit TERMINAL MODE in terminal
 tnoremap <Esc> <C-\><C-n>
+
+" zoomwin toggle
+nnoremap <silent> <C-w>w :ZoomWinTabToggle<CR>
 
 map q: :q
 map :W :w

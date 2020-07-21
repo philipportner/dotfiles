@@ -119,3 +119,5 @@ bindkey '^[[B' history-substring-search-down
 #     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
 #         eval "$("$BASE16_SHELL/profile_helper.sh")"
 export TERM=xterm-256color
+alias ls='ls --color'
+source /opt/ros/melodic/setup.zsh
