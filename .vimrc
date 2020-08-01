@@ -53,6 +53,7 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'janko-m/vim-test'
 Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/gv.vim'
 call plug#end()
 " }}}
 
@@ -239,6 +240,7 @@ set statusline +=\ %#Identifier\ #%=%5l%*                       " current line
 set statusline +=\ %#SpecialKey\ #/%L%*                         " total lines
 set statusline +=\ %#Identifier\ #%4v\ %*                       " virtual column number
 set statusline +=\ %#SpecialKey\ #0x\ %02B\ %*                  " character under cursor
+hi StatusLine ctermfg=white
 " }}}
 
 " Search mappings: These will make it so that going to the next one in a
