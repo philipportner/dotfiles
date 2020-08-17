@@ -28,6 +28,9 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 " Plug install {{{
 
+Plug 'wincent/ferret'
+Plug 'taketwo/vim-ros'
+Plug 'vim-airline/vim-airline'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'ericcurtin/CurtineIncSw.vim'
@@ -37,7 +40,7 @@ Plug 'terryma/vim-expand-region'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'RRethy/vim-illuminate'
 Plug 'lervag/vimtex'
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 Plug 'mhinz/vim-signify'
 Plug 'justinmk/vim-sneak'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -63,6 +66,7 @@ set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
 set autoread
+set inccommand=nosplit
 
 " Enable mouse support
 set mouse=a
@@ -199,65 +203,88 @@ endif
 
 " Visual Settings {{{
 "
+" if has('termguicolors')
+"   set termguicolors
+" endif
+" Enable true color 启用终端24位色
+"
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
+let g:terminal_ansi_colors = ["#282828", "#CC241D", "#98971A", "#D79921", "#458588", "#B16286", "#689D6A", "#A89984", "#928374", "#FB4934", "#B8BB26", "#198844", "#83A598", "#D3869B", "#8EC07C", "#EBDBB2"]
+
+if has('nvim')
+  for i in range(16)
+    let g:terminal_color_{i} = g:terminal_ansi_colors[i]
+  endfor
+  unlet! g:terminal_ansi_colors
+endif
+
+
+
 syntax enable
 set ruler
 set number
 let &colorcolumn="80,".join(range(120,120),",")
 set list
 set showmode
-set nowrap
+
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_invert_selection = 0
 set background=dark
-" colorscheme peachpuff
 colorscheme gruvbox
-" set signcolumn=auto:2
+"set signcolumn=auto:2
 
 " relative numbers
 set number relativenumber
 set cursorline
-highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE
+highlight linenr term=bold cterm=none ctermfg=darkgrey ctermbg=none
 highlight cursorlinenr ctermfg=yellow
-highlight clear SignColumn
-highlight Comment ctermfg=green
+highlight clear signcolumn
+" highlight comment ctermfg=green
 
-" Gdiff highlight
-highlight DiffAdd           cterm=bold ctermbg=none ctermfg=108
-highlight DiffDelete        cterm=bold ctermbg=none ctermfg=167
-highlight DiffChange        cterm=bold ctermbg=none ctermfg=172
+" gdiff highlight
+highlight diffadd           cterm=bold ctermbg=none ctermfg=108
+highlight diffdelete        cterm=bold ctermbg=none ctermfg=167
+highlight diffchange        cterm=bold ctermbg=none ctermfg=172
 
-" highlight signs in Sy
+" highlight signs in sy
 
-highlight SignifySignAdd    cterm=bold ctermbg=black ctermfg=108
-highlight SignifySignDelete cterm=bold ctermbg=black ctermfg=167
-highlight SignifySignChange cterm=bold ctermbg=black ctermfg=172
+highlight signifysignadd    cterm=bold ctermbg=none ctermfg=108 guifg=#8ec07c
+highlight signifysigndelete cterm=bold ctermbg=none ctermfg=167 guifg=#fb4934
+highlight signifysignchange cterm=bold ctermbg=none ctermfg=172 guifg=#83a598
 
 " hide bg from colorscheme in vsplit
-highlight VertSplit ctermbg=NONE guibg=NONE
+highlight vertsplit ctermbg=none guibg=none
 
-"" Disable the blinking cursor.
+"" disable the blinking cursor.
 set gcr=a:blinkon0
 set scrolloff=5
 
 set fillchars=fold:\
 set fillchars=vert:\|
 " set fillchars=vert:┃
-" Status bar {{{
+" status bar {{{
 set laststatus=2
 set statusline=
-set statusline +=\ %#Identifier\ #\ %n\                         " buffer number
-set statusline +=\ %#PreProc\ #%{&ff}%*                         " file format
-set statusline +=\ %#String\ #%<%t%*                            " full path
-set statusline +=\ %#SpecialKey\ #%m%*                          " modified flag
-set statusline +=\ %#Identifier\ #%=%5l%*                       " current line
-set statusline +=\ %#SpecialKey\ #/%L%*                         " total lines
-set statusline +=\ %#Identifier\ #%4v\ %*                       " virtual column number
-set statusline +=\ %#SpecialKey\ #0x\ %02B\ %*                  " character under cursor
-hi StatusLine ctermfg=white
+set statusline +=\ %#identifier\ #\ %n\                         " buffer number
+set statusline +=\ %#preproc\ #%{&ff}%*                         " file format
+set statusline +=\ %#string\ #%<%t%*                            " full path
+set statusline +=\ %#specialkey\ #%m%*                          " modified flag
+set statusline +=\ %#identifier\ #%=%5l%*                       " current line
+set statusline +=\ %#specialkey\ #/%l%*                         " total lines
+set statusline +=\ %#identifier\ #%4v\ %*                       " virtual column number
+set statusline +=\ %#specialkey\ #0x\ %02b\ %*                  " character under cursor
+" hi statusline ctermfg=white
 " }}}
 
-" Search mappings: These will make it so that going to the next one in a
+" search mappings: these will make it so that going to the next one in a
 " search will center on the line it's found in.
 nnoremap n nzzzv
-nnoremap N Nzzzv
+nnoremap n nzzzv
 " }}}
 
 " CoC {{{
@@ -329,8 +356,18 @@ nnoremap <Leader>W :w<CR>
 " exit TERMINAL MODE in terminal
 tnoremap <Esc> <C-\><C-n>
 
+" Sweet Sweet FuGITive
+nmap <leader>gh :diffget //3<CR>
+nmap <leader>gu :diffget //2<CR>
+nmap <leader>gs :G<CR>
+
 " zoomwin toggle
 nnoremap <silent> <C-w>w :ZoomWinTabToggle<CR>
+
+" Sweet Sweet FuGITive
+nmap <leader>gh :diffget //3<CR>
+nmap <leader>gu :diffget //2<CR>
+nmap <leader>gs :G<CR>
 
 map q: :q
 map :W :w
@@ -366,7 +403,7 @@ noremap <Leader>v :<C-u>vsplit<CR>
 
 "" Buffer nav
 nnoremap <silent> <leader>b :Buffers<CR>
-noremap <leader>q :bp<CR>
+" noremap <leader>q :bp<CR>
 noremap <leader>w :bn<CR>
 noremap <leader>c :bd<CR>
 
@@ -429,6 +466,7 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 " json syntax highlighting
  autocmd FileType json syntax match Comment +\/\/.\+$+
 
+ autocmd BufWritePre * :call TrimWhitespace()
 
  """ The PC is fast enough, do syntax highlight syncing from start unless 200 lines
 augroup vimrc-sync-fromstart
@@ -475,6 +513,12 @@ function! s:Repl()
   return "p@=RestoreRegister()\<cr>"
 endfunction
 vmap <silent> <expr> p <sid>Repl()
+
+fun! TrimWhitespace()
+  let l:save = winsaveview()
+  keeppatterns %s/\s\+$//e
+  call winrestview(l:save)
+endfun
 
 " vim:foldmethod=marker:foldlevel=0
 " }}}

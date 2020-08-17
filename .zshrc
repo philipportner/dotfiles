@@ -4,6 +4,7 @@
 # Path to your oh-my-zsh installation.
   export ZSH=/home/phil/.oh-my-zsh
   export PATH=$PATH:~/.local/bin
+  export PATH=~/.emacs.d/bin:$PATH
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -118,6 +119,5 @@ bindkey '^[[B' history-substring-search-down
 # [ -n "$PS1" ] && \
 #     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
 #         eval "$("$BASE16_SHELL/profile_helper.sh")"
-export TERM=xterm-256color
 alias ls='ls --color'
 source /opt/ros/melodic/setup.zsh
