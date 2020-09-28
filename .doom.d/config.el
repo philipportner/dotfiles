@@ -56,3 +56,6 @@
 (after! evil-snipe
   (evil-snipe-mode -1))
 (map! :n "s" #'avy-goto-char-2)
+
+
+(require 'apex-mode)
