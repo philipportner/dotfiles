@@ -59,3 +59,8 @@
 
 
 (require 'apex-mode)
+
+(map! :leader
+      :desc "Split vertically and focus new window" "w v" #'(lambda() (interactive)(evil-window-vsplit) (other-window 1)))
+(map! :leader
+      :desc "Split horizontally and focus new window" "w s" #'(lambda() (interactive)(evil-window-split) (other-window 1)))
