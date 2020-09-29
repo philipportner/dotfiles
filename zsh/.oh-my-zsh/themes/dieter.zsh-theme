@@ -12,7 +12,7 @@ typeset -A host_repr
 host_repr=('dieter-ws-a7n8x-arch' "%{$fg_bold[green]%}ws" 'dieter-p4sci-arch' "%{$fg_bold[blue]%}p4")
 
 # local time, color coded by last return code
-time_enabled="%(?.%{$fg[green]%}.%{$fg[red]%})%T%{$reset_color%}"
+time_enabled="%(?.%{$fg[green]%}.%{$fg[red]%})%*%{$reset_color%}"
 time_disabled="%{$fg[green]%}%*%{$reset_color%}"
 time=$time_enabled
 
