@@ -148,7 +148,7 @@ filetype plugin on
 filetype indent on
 
 "" Map leader to ,
-let mapleader=','
+let mapleader=' '
 
 "" Splits
 set splitbelow
@@ -356,10 +356,6 @@ nnoremap <Leader>W :w<CR>
 " exit TERMINAL MODE in terminal
 tnoremap <Esc> <C-\><C-n>
 
-" Sweet Sweet FuGITive
-nmap <leader>gh :diffget //3<CR>
-nmap <leader>gu :diffget //2<CR>
-nmap <leader>gs :G<CR>
 
 " zoomwin toggle
 nnoremap <silent> <C-w>w :ZoomWinTabToggle<CR>
@@ -368,6 +364,7 @@ nnoremap <silent> <C-w>w :ZoomWinTabToggle<CR>
 nmap <leader>gh :diffget //3<CR>
 nmap <leader>gu :diffget //2<CR>
 nmap <leader>gs :G<CR>
+nmap <leader>gc :GCommit<CR>
 
 map q: :q
 map :W :w
