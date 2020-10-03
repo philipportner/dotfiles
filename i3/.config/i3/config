@@ -132,8 +132,8 @@ set $workspace9 "9"   # 
 set $workspace10 "10" # 
 
 # gaps
-gaps inner 0
-gaps outer 0
+gaps inner 10
+gaps outer 10
 for_window [class="^.*"] border pixel 0
 smart_gaps off
 
