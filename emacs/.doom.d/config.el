@@ -70,3 +70,8 @@
               (side            . bottom)
               (reusable-frames . visible)
               (window-height   . 0.25)))
+
+(setq doom-modeline-height 1)
+(set-face-attribute 'mode-line nil :height 100)
+(set-face-attribute 'mode-line-inactive nil :height 100)
+(load! "+prot")
