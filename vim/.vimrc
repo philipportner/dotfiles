@@ -28,6 +28,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 " Plug install {{{
 
+Plug 'jreybert/vimagit'
 Plug 'wincent/ferret'
 Plug 'vim-airline/vim-airline'
 Plug 'rbgrouleff/bclose.vim'
@@ -38,9 +39,10 @@ Plug 'vimwiki/vimwiki'
 Plug 'terryma/vim-expand-region'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'RRethy/vim-illuminate'
+Plug 'airblade/vim-gitgutter'
 Plug 'lervag/vimtex'
 Plug 'gruvbox-community/gruvbox'
-Plug 'mhinz/vim-signify'
+" Plug 'mhinz/vim-signify'
 Plug 'justinmk/vim-sneak'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -240,14 +242,13 @@ set cursorline
 highlight linenr term=bold cterm=none ctermfg=darkgrey ctermbg=none
 highlight cursorlinenr ctermfg=yellow
 highlight clear signcolumn
-" highlight comment ctermfg=green
-
 " gdiff highlight
-highlight diffadd           cterm=bold ctermbg=none ctermfg=108
-highlight diffdelete        cterm=bold ctermbg=none ctermfg=167
-highlight diffchange        cterm=bold ctermbg=none ctermfg=172
-
-" highlight signs in sy
+" highlight diffadd           cterm=bold ctermbg=none ctermfg=108
+" highlight diffdelete        cterm=bold ctermbg=none ctermfg=167
+" highlight diffchange        cterm=bold ctermbg=none ctermfg=172
+highlight GitGutterAdd    guifg=#8ec07c ctermfg=2
+highlight GitGutterChange guifg=#fb4934 ctermfg=3
+highlight GitGutterDelete guifg=#83a598 ctermfg=1
 
 highlight signifysignadd    cterm=bold ctermbg=none ctermfg=108 guifg=#8ec07c
 highlight signifysigndelete cterm=bold ctermbg=none ctermfg=167 guifg=#fb4934
@@ -258,7 +259,6 @@ highlight vertsplit ctermbg=none guibg=none
 
 "" disable the blinking cursor.
 set gcr=a:blinkon0
-set scrolloff=5
 
 set fillchars=fold:\
 set fillchars=vert:\|
@@ -286,7 +286,7 @@ nnoremap n nzzzv
 " CoC {{{
 " Required for operations modifying multiple buffers like rename.
 set hidden
-set updatetime=300
+set updatetime=100
 set shortmess+=c
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " fix cursor becomming a | after viewing CoCList
@@ -362,7 +362,11 @@ nmap <leader>gh :diffget //3<CR>
 nmap <leader>gu :diffget //2<CR>
 nmap <leader>gs :G<CR>
 nmap <leader>gc :GCommit<CR>
-nmap <leader>gd :Gdiff<CR>
+nmap <leader>gv :Gvdiff<CR>
+nmap <leader>gn <Plug>(GitGutterNextHunk)
+nmap <leader>gp <Plug>(GitGutterPrevHunk)
+nmap <leader>ga <Plug>(GitGutterStageHunk)
+nmap <leader>gd <Plug>(GitGutterUndoHunk)
 
 map q: :q
 map :W :w
