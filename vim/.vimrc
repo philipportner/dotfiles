@@ -28,6 +28,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 " Plug install {{{
 
+Plug 'rhysd/git-messenger.vim'
 Plug 'jreybert/vimagit'
 Plug 'wincent/ferret'
 Plug 'vim-airline/vim-airline'
@@ -367,6 +368,7 @@ nmap <leader>gn <Plug>(GitGutterNextHunk)
 nmap <leader>gp <Plug>(GitGutterPrevHunk)
 nmap <leader>ga <Plug>(GitGutterStageHunk)
 nmap <leader>gd <Plug>(GitGutterUndoHunk)
+let g:git_messenger_always_into_popup=v:true
 
 map q: :q
 map :W :w
