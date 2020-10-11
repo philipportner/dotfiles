@@ -29,7 +29,6 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 " Plug install {{{
 
 Plug 'wincent/ferret'
-Plug 'taketwo/vim-ros'
 Plug 'vim-airline/vim-airline'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'francoiscabrol/ranger.vim'
@@ -135,9 +134,6 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 
-" Auto indent pasted text
-nnoremap p p=`]<C-o>
-nnoremap P P=`]<C-o>
 
 " Display tabs and trailing spaces visually
 set list
@@ -351,6 +347,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " Mappings {{{
 inoremap jj <esc>
+inoremap jk <esc>
 nnoremap <Leader>W :w<CR>
 
 " exit TERMINAL MODE in terminal
@@ -365,6 +362,7 @@ nmap <leader>gh :diffget //3<CR>
 nmap <leader>gu :diffget //2<CR>
 nmap <leader>gs :G<CR>
 nmap <leader>gc :GCommit<CR>
+nmap <leader>gd :Gdiff<CR>
 
 map q: :q
 map :W :w
