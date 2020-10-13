@@ -225,6 +225,7 @@ endif
 
 
 syntax enable
+set nowrap
 set ruler
 set number
 let &colorcolumn="80,".join(range(120,120),",")
@@ -248,8 +249,8 @@ highlight clear signcolumn
 " highlight diffdelete        cterm=bold ctermbg=none ctermfg=167
 " highlight diffchange        cterm=bold ctermbg=none ctermfg=172
 highlight GitGutterAdd    guifg=#8ec07c ctermfg=2
-highlight GitGutterChange guifg=#fb4934 ctermfg=3
-highlight GitGutterDelete guifg=#83a598 ctermfg=1
+highlight GitGutterChange guifg=#83a598 ctermfg=3
+highlight GitGutterDelete guifg=#fb4934 ctermfg=1
 
 highlight signifysignadd    cterm=bold ctermbg=none ctermfg=108 guifg=#8ec07c
 highlight signifysigndelete cterm=bold ctermbg=none ctermfg=167 guifg=#fb4934
@@ -350,6 +351,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 inoremap jj <esc>
 inoremap jk <esc>
 nnoremap <Leader>W :w<CR>
+vnoremap <leader>p "_dP
 
 " exit TERMINAL MODE in terminal
 tnoremap <Esc> <C-\><C-n>
