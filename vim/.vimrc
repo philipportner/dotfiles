@@ -27,7 +27,6 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 " }}}
 
 " Plug install {{{
-
 Plug 'rhysd/git-messenger.vim'
 Plug 'jreybert/vimagit'
 Plug 'wincent/ferret'
@@ -59,6 +58,8 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'janko-m/vim-test'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/gv.vim'
+Plug 'jackguo380/vim-lsp-cxx-highlight'
+
 call plug#end()
 " }}}
 
@@ -306,6 +307,9 @@ function! s:check_back_space() abort
 endfunction
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
+
+xmap <leader>n  <Plug>(coc-format-selected)
+nmap <leader>n  <Plug>(coc-format-selected)
 "
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.

@@ -78,6 +78,8 @@ plugins=(
   vi-mode
   history-substring-search
   zsh-autosuggestions
+  docker
+  docker-compose
 )
 
 source $ZSH/oh-my-zsh.sh

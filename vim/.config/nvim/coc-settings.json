@@ -1,29 +1,13 @@
 {
-  "languageserver": {
-    "ccls": {
-      "command": "ccls",
-      "filetypes": [
-        "c",
-        "cpp",
-        "objc",
-        "objcpp"
-      ],
-      "rootPatterns": [
-        ".ccls",
-        "compile_commands.json",
-        "build/compile_commands.json",
-        ".vim/",
-        ".git/",
-        ".hg/"
-      ],
-      "initializationOptions": {
-        "cache": {
-          "directory": "/tmp/ccls"
-        }
-      }
-    }
-  },
+  "clangd.semanticHighlighting": true,
   "suggest.maxCompleteItemCount": 10,
   "coc.preferences.diagnostic.displayByAle": true,
-  "coc.preferences.triggerSignatureHelp":true
+  "coc.preferences.triggerSignatureHelp": true,
+  "clangd.path": "/home/phil/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd",
+  "list.normalMappings": {
+    "<C-c>": "do:exit"
+  },
+  "list.insertMappings": {
+    "<C-c>": "do:exit"
+  }
 }
