@@ -27,10 +27,12 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 " }}}
 
 " Plug install {{{
+
+Plug 'puremourning/vimspector'
 Plug 'rhysd/git-messenger.vim'
 Plug 'jreybert/vimagit'
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'wincent/ferret'
-Plug 'vim-airline/vim-airline'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'ericcurtin/CurtineIncSw.vim'
@@ -41,25 +43,24 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'RRethy/vim-illuminate'
 Plug 'airblade/vim-gitgutter'
 Plug 'lervag/vimtex'
-Plug 'gruvbox-community/gruvbox'
-" Plug 'mhinz/vim-signify'
+Plug 'morhetz/gruvbox'
 Plug 'justinmk/vim-sneak'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'majutsushi/tagbar'
+Plug 'preservim/tagbar'
+let g:polyglot_disabled = ['autoindent']
 Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-sleuth'
 Plug 'mkitt/tabline.vim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'janko-m/vim-test'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/gv.vim'
-Plug 'jackguo380/vim-lsp-cxx-highlight'
-
+Plug 'itchyny/lightline.vim'
+"
 call plug#end()
 " }}}
 
@@ -70,10 +71,12 @@ set fileencoding=utf-8
 set fileencodings=utf-8
 set autoread
 set inccommand=nosplit
-
 " Enable mouse support
 set mouse=a
 
+let g:vimspector_enable_mappings = 'HUMAN'
+
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 set clipboard+=unnamedplus
 " " Copy to clipboard
 vnoremap  <leader>y  "+y
@@ -123,20 +126,18 @@ let g:sneak#streak = 1
 let g:python_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
 
-
-nmap <F4> :TagbarToggle<CR>
-map <F5> :call CurtineIncSw()<CR>
-nmap <F2> :!./run.sh<CR>
-nmap <F1> :make<CR>
+map <F1> :call CurtineIncSw()<CR>
+nmap <F2> :TagbarToggle<CR>
 
 "" Tabs. May be overridden by autocmd rules
-set tabstop=2
-set smarttab
-set smartindent
-set autoindent
-set softtabstop=2
-set shiftwidth=2
+" set smarttab
+" set smartindent
+
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set expandtab
+set autoindent
 
 
 " Display tabs and trailing spaces visually
@@ -176,7 +177,7 @@ let g:NERDDefaultAlign = 'left'
 " Set a language to use its alternate delimiters by default
 let g:NERDAltDelims_java = 1
 " Add your own custom formats or override the defaults
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+let g:NERDCustomDelimiters = { 'c': { 'left': '//'}, 'java': { 'left': '//' } }
 " Allow commenting and inverting empty lines (useful when commenting a region)
 let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespace when uncommenting
@@ -223,7 +224,9 @@ if has('nvim')
   unlet! g:terminal_ansi_colors
 endif
 
-
+let g:lightline = {
+      \ 'colorscheme': 'jellybeans',
+      \ }
 
 syntax enable
 set nowrap
@@ -320,6 +323,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> rn <Plug>(coc-rename)
 
 nmap ge :CocCommand explorer<CR>
 " Use gk to show documentation in preview window
@@ -360,6 +364,14 @@ vnoremap <leader>p "_dP
 " exit TERMINAL MODE in terminal
 tnoremap <Esc> <C-\><C-n>
 
+
+nmap <leader>dd :call vimspector#Launch()<CR>
+nmap <leader>dx :VimspectorReset<CR>
+nmap <leader>de :VimspectorEval
+nmap <leader>dw :VimspectorWatch
+nmap <leader>do :VimspectorShowOutput
+nmap <leader>d5 <Plug>VimspectorContinue
+autocmd FileType java nmap <leader>dd :CocCommand java.debug.vimspector.start<CR>
 
 " zoomwin toggle
 nnoremap <silent> <C-w>w :ZoomWinTabToggle<CR>
@@ -501,8 +513,8 @@ augroup END
 "   \   <bang>0)
 
 " Likewise, Files command with preview window
-command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+" command! -bang -nargs=? -complete=dir Files
+"   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 function! s:find_git_root()
   return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]

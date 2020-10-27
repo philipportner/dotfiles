@@ -98,6 +98,7 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 export EDITOR=/usr/bin/nvim
+export JAVA_HOME='/usr/lib/jvm/java-8-openjdk-amd64/'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
