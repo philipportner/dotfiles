@@ -56,7 +56,8 @@ bindsym $mod+m move workspace to output left
 bindsym $mod+n move workspace to output right
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+# bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -134,8 +135,9 @@ set $workspace10 "10" # 
 # gaps
 gaps inner 10
 gaps outer 10
-for_window [class="^.*"] border pixel 0
-smart_gaps off
+for_window [class="^.*"] border pixel 2
+smart_gaps on
+smart_borders no_gaps
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $workspace1
