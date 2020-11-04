@@ -225,7 +225,7 @@ if has('nvim')
 endif
 
 let g:lightline = {
-      \ 'colorscheme': 'jellybeans',
+      \ 'colorscheme': 'PaperColor',
       \ }
 
 syntax enable
@@ -238,8 +238,8 @@ set showmode
 
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_invert_selection = 0
-set background=dark
-colorscheme gruvbox
+set background=light
+colorscheme PaperColor
 "set signcolumn=auto:2
 
 " relative numbers
