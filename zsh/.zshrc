@@ -130,7 +130,7 @@ bindkey '^[[B' history-substring-search-down
 #     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
 #         eval "$("$BASE16_SHELL/profile_helper.sh")"
 alias ls='ls --color'
-source /opt/ros/melodic/setup.zsh
+#source /opt/ros/melodic/setup.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
