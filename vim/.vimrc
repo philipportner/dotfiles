@@ -28,6 +28,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 " Plug install {{{
 
+Plug 'dense-analysis/ale'
 Plug 'puremourning/vimspector'
 Plug 'rhysd/git-messenger.vim'
 Plug 'jreybert/vimagit'
@@ -73,6 +74,27 @@ set autoread
 set inccommand=nosplit
 " Enable mouse support
 set mouse=a
+
+
+
+"" ALE"
+let g:ale_linters = {
+\   'cpp': ['clangtidy'],
+\   'c': ['clangtidy'],
+\}
+let g:ale_fixers={
+\   'cpp': ['clang-format'],
+\}
+"\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+
+let g:ale_cpp_clangtidy_checks = []
+let g:ale_cpp_clangtidy_executable = 'clang-tidy'
+let g:ale_c_parse_compile_commands=1
+let g:ale_cpp_clangtidy_extra_options = ''
+let g:ale_cpp_clangtidy_options = ''
+let g:ale_set_balloons=1
+let g:ale_linters_explicit=1
+let g:airline#extensions#ale#enabled=1
 
 let g:vimspector_enable_mappings = 'HUMAN'
 
@@ -225,7 +247,7 @@ if has('nvim')
 endif
 
 let g:lightline = {
-      \ 'colorscheme': 'PaperColor',
+      \ 'colorscheme': 'jellybeans',
       \ }
 
 syntax enable
@@ -238,8 +260,8 @@ set showmode
 
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_invert_selection = 0
-set background=light
-colorscheme PaperColor
+set background=dark
+colorscheme gruvbox
 "set signcolumn=auto:2
 
 " relative numbers
@@ -439,8 +461,8 @@ nnoremap <Leader>o :.Gbrowse<CR>
 " FZF
 " This is the default extra key bindings
 nnoremap <silent> <leader>t :FZF -m<CR>
-nnoremap <silent> <leader><space>e :ProjectFiles <CR>
-nnoremap <silent> <leader>r :Rg <CR>
+nnoremap <silent> <leader>r :Rg<CR>
+nnoremap <silent> <Leader>* :Rg <C-R><C-W><CR>
 
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
@@ -449,12 +471,15 @@ let g:fzf_action = {
 
 " Default fzf layout
 " - down / up / left / right
-let g:fzf_layout = { 'down': '~40%' }
+let g:fzf_layout = { 'down': '~25%' }
+
+" let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.5, 'highlight': 'Comment' } }
 
 " In Neovim, you can set up fzf window using a Vim command
-let g:fzf_layout = { 'window': 'enew' }
-let g:fzf_layout = { 'window': '-tabnew' }
-let g:fzf_layout = { 'window': '10split enew' }
+" let g:fzf_layout = { 'window': 'enew' }
+" let g:fzf_layout = { 'window': '-tabnew' }
+" let g:fzf_layout = { 'window': '10split enew' }
+let g:fzf_preview_window = []
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
@@ -485,7 +510,7 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 " json syntax highlighting
  autocmd FileType json syntax match Comment +\/\/.\+$+
 
- autocmd BufWritePre * :call TrimWhitespace()
+ "autocmd BufWritePre * :call TrimWhitespace()
 
  """ The PC is fast enough, do syntax highlight syncing from start unless 200 lines
 augroup vimrc-sync-fromstart
@@ -502,19 +527,6 @@ augroup END
 
 " Functions {{{
 
-" ripgrep
-" :Rg open preview with ?
-" :Rg! opens rg with preview in buffer
-" command! -bang -nargs=* Rg
-"   \ call fzf#vim#grep(
-"   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-"   \   <bang>0 ? fzf#vim#with_preview('up:60%')
-"   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-"   \   <bang>0)
-
-" Likewise, Files command with preview window
-" command! -bang -nargs=? -complete=dir Files
-"   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 function! s:find_git_root()
   return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]

@@ -92,7 +92,8 @@ font:
     #   - (macOS) Menlo
     #   - (Linux) monospace
     #   - (Windows) Consolas
-    family: SF Mono
+    family: Menlo
+    # ()
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -103,7 +104,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: SF Mono
+    family: Menlo
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -114,13 +115,13 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: SF Mono
+    family: Menlo
 
     # The `style` can be specified to pick a specific face.
     style: Italic
 
   # Point size
-  size: 14.0
+  size: 12.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -154,82 +155,84 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 #
-# Colors (PaperColor - Light)
-colors:
-  # Default colors
-  primary:
-    background: '0xeeeeee'
-    foreground: '0x878787'
-
-  cursor:
-    text: '0xeeeeee'
-    cursor: '0x878787'
-
-  # Normal colors
-  normal:
-    black:   '0xeeeeee'
-    red:     '0xaf0000'
-    green:   '0x008700'
-    yellow:  '0x5f8700'
-    blue:    '0x0087af'
-    magenta: '0x878787'
-    cyan:    '0x005f87'
-    white:   '0x444444'
-
-  # Bright colors
-  bright:
-    black:   '0xbcbcbc'
-    red:     '0xd70000'
-    green:   '0xd70087'
-    yellow:  '0x8700af'
-    blue:    '0xd75f00'
-    magenta: '0xd75f00'
-    cyan:    '0x005faf'
-    white:   '0x005f87'
-
-# Colors (Gruvbox dark)
+# Colors (macos terminal)
 # colors:
 #   # Default colors
 #   primary:
-#     # hard contrast: background = '0x1d2021'
-#     background: '0x282828'
-#     # soft contrast: background = '0x32302f'
-#     foreground: '0xebdbb2'
+#     background: '0x1B1919'
+#     foreground: '0x878787'
+#
+#   text: '0xffffff'
+#
+#   cursor:
+#     cursor: '0x878787'
 #
 #   # Normal colors
 #   normal:
-#     black:   '0x282828'
-#     red:     '0xcc241d'
-#     green:   '0x98971a'
-#     yellow:  '0xd79921'
-#     blue:    '0x458588'
-#     magenta: '0xb16286'
-#     cyan:    '0x689d6a'
-#     white:   '0xa89984'
+#     black:   '0x000000'
+#     red:     '0x990000'
+#     green:   '0x00a600'
+#     yellow:  '0x999900'
+#     blue:    '0x0000b2'
+#     magenta: '0xb200b2'
+#     cyan:    '0x00a6b2'
+#     white:   '0xbfbfbf'
 #
 #   # Bright colors
 #   bright:
-#     black:   '0x928374'
-#     red:     '0xfb4934'
-#     green:   '0xb8bb26'
-#     yellow:  '0xfabd2f'
-#     blue:    '0x83a598'
-#     magenta: '0xd3869b'
-#     cyan:    '0x8ec07c'
-#     white:   '0xebdbb2'
+#     black:   '0x666666'
+#     red:     '0xe50000'
+#     green:   '0x00d900'
+#     yellow:  '0xe5e500'
+#     blue:    '0x0000ff'
+#     magenta: '0xe500e5'
+#     cyan:    '0x00e5e5'
+#     white:   '0xe5e5e5'
+
+# Colors (Gruvbox dark)
+colors:
+  #Default colors
+  primary:
+    # default contrast: background = '0x282828'
+    # hard contrast: background = '0x1d2021'
+    background: '0x1d2021'
+    # soft contrast: background = '0x32302f'
+    foreground: '0xebdbb2'
+
+  # Normal colors
+  normal:
+    black:   '0x282828'
+    red:     '0xcc241d'
+    green:   '0x98971a'
+    yellow:  '0xd79921'
+    blue:    '0x458588'
+    magenta: '0xb16286'
+    cyan:    '0x689d6a'
+    white:   '0xa89984'
+
+  # Bright colors
+  bright:
+    black:   '0x928374'
+    red:     '0xfb4934'
+    green:   '0xb8bb26'
+    yellow:  '0xfabd2f'
+    blue:    '0x83a598'
+    magenta: '0xd3869b'
+    cyan:    '0x8ec07c'
+    white:   '0xebdbb2'
   # Dim colors
   #
   # If the dim colors are not set, they will be calculated automatically based
   # on the `normal` colors.
-  #dim:
-  #  black:   '0x000000'
-  #  red:     '0x8c3336'
-  #  green:   '0x7a8530'
-  #  yellow:  '0x97822e'
-  #  blue:    '0x506d8f'
-  #  magenta: '0x80638e'
-  #  cyan:    '0x497e7a'
-  #  white:   '0x9a9a9a'
+  dim:
+   black:   '0x000000'
+   red:     '0x8c3336'
+   green:   '0x7a8530'
+   yellow:  '0x97822e'
+   blue:    '0x506d8f'
+   magenta: '0x80638e'
+   cyan:    '0x497e7a'
+   white:   '0x9a9a9a'
 
   # Indexed Colors
   #

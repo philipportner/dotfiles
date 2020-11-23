@@ -1,17 +1,23 @@
 {
-  "suggest.maxCompleteItemCount": 10,
+    "suggest.maxCompleteItemCount": 10,
 
-  "clangd.semanticHighlighting": true,
-  "clangd.path": "/home/phil/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd",
+    "clangd.semanticHighlighting": true,
+    "clangd.path": "/home/phil/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd",
 
-  "java.home": "/usr/lib/jvm/jdk-11/",
-  "java.trace.server": "verbose",
-  "java.signatureHelp.enabled": true,
+    "java.home": "/usr/lib/jvm/jdk-11/",
+    "java.trace.server": "verbose",
+    "java.signatureHelp.enabled": true,
 
-  "list.normalMappings": {
-    "<C-c>": "do:exit"
-  },
-  "list.insertMappings": {
-    "<C-c>": "do:exit"
-  }
+    "list.normalMappings": {
+        "<C-c>": "do:exit"
+    },
+    "list.insertMappings": {
+        "<C-c>": "do:exit"
+    },
+    "git.addGBlameToVirtualText": true,
+    "git.addedSign.hlGroup": "GitGutterAdd",
+    "git.changedSign.hlGroup": "GitGutterChange",
+    "git.removedSign.hlGroup": "GitGutterDelete",
+    "git.topRemovedSign.hlGroup": "GitGutterDelete",
+    "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete"
 }
