@@ -55,8 +55,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'mkitt/tabline.vim'
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
 Plug 'janko-m/vim-test'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/gv.vim'
@@ -247,29 +245,52 @@ if has('nvim')
 endif
 
 let g:lightline = {
-      \ 'colorscheme': 'jellybeans',
+      \ 'colorscheme': 'PaperColor',
       \ }
 
 syntax enable
 set nowrap
 set ruler
 set number
-let &colorcolumn="80,".join(range(120,120),",")
+let &colorcolumn="80,120"
 set list
 set showmode
 
-let g:gruvbox_contrast_dark = 'hard'
-let g:gruvbox_invert_selection = 0
-set background=dark
-colorscheme gruvbox
+" let g:gruvbox_contrast_dark = 'hard'
+" let g:gruvbox_invert_selection = 0
+set background=light
+colorscheme PaperColor
 "set signcolumn=auto:2
 
+if has('nvim') || has('gui_running')
+  autocmd! FileType fzf
+  autocmd  FileType fzf set laststatus=0 | autocmd WinLeave <buffer> set laststatus=2
+endif
+
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 " relative numbers
 set number relativenumber
 set cursorline
-highlight linenr term=bold cterm=none ctermfg=darkgrey ctermbg=none
-highlight cursorlinenr ctermfg=yellow
-highlight clear signcolumn
+" highlight linenr term=bold cterm=none ctermfg=darkgrey ctermbg=none
+highlight cursorlinenr ctermfg=yellow guibg=none guifg=grey "#005f87
+highlight cursorline guibg=none
+highlight signcolumn guibg=none
+highlight linenr guibg=none guifg=#005f87
+highlight VertSplit guifg=#dedede
+
 " gdiff highlight
 " highlight diffadd           cterm=bold ctermbg=none ctermfg=108
 " highlight diffdelete        cterm=bold ctermbg=none ctermfg=167
@@ -283,7 +304,7 @@ highlight signifysigndelete cterm=bold ctermbg=none ctermfg=167 guifg=#fb4934
 highlight signifysignchange cterm=bold ctermbg=none ctermfg=172 guifg=#83a598
 
 " hide bg from colorscheme in vsplit
-highlight vertsplit ctermbg=none guibg=none
+" highlight vertsplit ctermbg=none guibg=none
 
 "" disable the blinking cursor.
 set gcr=a:blinkon0
@@ -293,16 +314,17 @@ set fillchars=vert:\|
 " set fillchars=vert:┃
 " status bar {{{
 set laststatus=2
-set statusline=
-set statusline +=\ %#identifier\ #\ %n\                         " buffer number
-set statusline +=\ %#preproc\ #%{&ff}%*                         " file format
-set statusline +=\ %#string\ #%<%t%*                            " full path
-set statusline +=\ %#specialkey\ #%m%*                          " modified flag
-set statusline +=\ %#identifier\ #%=%5l%*                       " current line
-set statusline +=\ %#specialkey\ #/%l%*                         " total lines
-set statusline +=\ %#identifier\ #%4v\ %*                       " virtual column number
-set statusline +=\ %#specialkey\ #0x\ %02b\ %*                  " character under cursor
-" hi statusline ctermfg=white
+" set statusline=
+" set statusline +=\ %#identifier\ #\ %n\                         " buffer number
+" set statusline +=\ %#preproc\ #%{&ff}%*                         " file format
+" set statusline +=\ %#string\ #%<%t%*                            " full path
+" set statusline +=\ %#specialkey\ #%m%*                          " modified flag
+" set statusline +=\ %#identifier\ #%=%5l%*                       " current line
+" set statusline +=\ %#specialkey\ #/%l%*                         " total lines
+" set statusline +=\ %#identifier\ #%4v\ %*                       " virtual column number
+" set statusline +=\ %#specialkey\ #0x\ %02b\ %*                  " character under cursor
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+hi statusline guifg=white
 " }}}
 
 " search mappings: these will make it so that going to the next one in a
@@ -316,7 +338,6 @@ nnoremap n nzzzv
 set hidden
 set updatetime=100
 set shortmess+=c
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " fix cursor becomming a | after viewing CoCList
 set guicursor=n:blinkon1
 
