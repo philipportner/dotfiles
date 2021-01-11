@@ -1,4 +1,6 @@
 {
+    "diagnostic.virtualText": true,
+    "diagnostic.virtualTextCurrentLineOnly": false,
     "suggest.maxCompleteItemCount": 10,
 
     "clangd.semanticHighlighting": true,

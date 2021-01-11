@@ -3,14 +3,14 @@
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
-#env:
+env:
   # TERM variable
   #
   # This value is used to set the `$TERM` environment variable for
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  #TERM: xterm-256color
+  TERM: xterm-256color
 
 window:
   # Window dimensions (changes require restart)
@@ -92,11 +92,11 @@ font:
     #   - (macOS) Menlo
     #   - (Linux) monospace
     #   - (Windows) Consolas
-    family: Fira Mono
-    # ()
+    family: SFMono Nerd Font
+    # (r io.Reader)
 
     # The `style` can be specified to pick a specific face.
-    style: Medium
+    style: Semibold
 
   # Bold font face
   bold:
@@ -104,7 +104,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Fira Mono
+    family: SFMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -115,13 +115,13 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Fira Mono
+    family: SFMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Italic
 
   # Point size
-  size: 10.0
+  size: 12.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -154,88 +154,191 @@ font:
 
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
+# Colors (Solarized Dark)
+# colors:
+#   # Default colors
+#   primary:
+#     background: '#002b36' # base03
+#     foreground: '#839496' # base0
+#
+#   # Cursor colors
+#   cursor:
+#     text:   '#002b36' # base03
+#     cursor: '#839496' # base0
+#
+#   # Normal colors
+#   normal:
+#     black:   '#073642' # base02
+#     red:     '#dc322f' # red
+#     green:   '#859900' # green
+#     yellow:  '#b58900' # yellow
+#     blue:    '#268bd2' # blue
+#     magenta: '#d33682' # magenta
+#     cyan:    '#2aa198' # cyan
+#     white:   '#eee8d5' # base2
+#
+#   # Bright colors
+#   bright:
+#     black:   '#002b36' # base03
+#     red:     '#cb4b16' # orange
+#     green:   '#586e75' # base01
+#     yellow:  '#657b83' # base00
+#     blue:    '#839496' # base0
+#     magenta: '#6c71c4' # violet
+#     cyan:    '#93a1a1' # base1
+#     white:   '#fdf6e3' # base3
 
+# Colors (Solarized Light)
+# colors:
+#   # Default colors
+#   primary:
+#     # background: '#dedede' # base3
+#     background: '#fdf6e3' # base3
+#     foreground: '#073642' # base00
+#
+#   # Cursor colors
+#   cursor:
+#     text:   '#fdf6e3' # base3
+#     cursor: '#657b83' # base00
+#
+#   # Normal colors
+#   normal:
+#     black:   '#073642' # base02
+#     red:     '#dc322f' # red
+#     green:   '#859900' # green
+#     yellow:  '#b58900' # yellow
+#     blue:    '#268bd2' # blue
+#     magenta: '#d33682' # magenta
+#     cyan:    '#2aa198' # cyan
+#     white:   '#eee8d5' # base2
+#
+#   # Bright colors
+#   bright:
+#     black:   '#002b36' # base03
+#     red:     '#cb4b16' # orange
+#     green:   '#586e75' # base01
+#     yellow:  '#657b83' # base00
+#     blue:    '#839496' # base0
+#     magenta: '#6c71c4' # violet
+#     cyan:    '#93a1a1' # base1
+#     white:   '#fdf6e3' # base3
 
 # PaperColor Light 256 - alacritty color config
 # https://github.com/NLKNguyen/papercolor-theme
 # https://www.reddit.com/r/vim/comments/36xzbs/vim_paper_color_theme_inspired_by_googles/crqbfpa/
-colors:
-  # Default colors
-  primary:
-    background: '0xdedede'
-    foreground: '0x4d4d4c'
-
-  # Colors the cursor will use if `custom_cursor_colors` is true
-  cursor:
-    text: '0xf3f3f3'
-    cursor: '0x4d4d4c'
-
-  # Normal colors
-  normal:
-    black:   '0xededed'
-    red:     '0xd7005f'
-    green:   '0x718c00'
-    yellow:  '0xd75f00'
-    blue:    '0x4271ae'
-    magenta: '0x8959a8'
-    cyan:    '0x3e999f'
-    white:   '0x4d4d4c'
-
-  # Bright colors
-  bright:
-    black:   '0x949494'
-    red:     '0xd7005f'
-    green:   '0x718c00'
-    yellow:  '0xd75f00'
-    blue:    '0x4271ae'
-    magenta: '0x8959a8'
-    cyan:    '0x3e999f'
-    white:   '0xf5f5f5'
-
-# Colors (Gruvbox dark)
 # colors:
-# #   #Default colors
+#   # Default colors
 #   primary:
-#     # default contrast: background = '0x282828'
-#     # hard contrast: background = '0x1d2021'
-#     background: '0x282828'
-#     # soft contrast: background = '0x32302f'
-#     foreground: '0xebdbb2'
+#     background: '0xdedede'
+#     foreground: '0x4d4d4c'
+#
+#   # Colors the cursor will use if `custom_cursor_colors` is true
+#   cursor:
+#     text: '0xf3f3f3'
+#     cursor: '0x4d4d4c'
 #
 #   # Normal colors
 #   normal:
-#     black:   '0x282828'
-#     red:     '0xcc241d'
-#     green:   '0x98971a'
-#     yellow:  '0xd79921'
-#     blue:    '0x458588'
-#     magenta: '0xb16286'
-#     cyan:    '0x689d6a'
-#     white:   '0xa89984'
+#     black:   '0xededed'
+#     red:     '0xd7005f'
+#     green:   '0x718c00'
+#     yellow:  '0xd75f00'
+#     blue:    '0x4271ae'
+#     magenta: '0x8959a8'
+#     cyan:    '0x3e999f'
+#     white:   '0x4d4d4c'
 #
 #   # Bright colors
 #   bright:
-#     black:   '0x928374'
-#     red:     '0xfb4934'
-#     green:   '0xb8bb26'
-#     yellow:  '0xfabd2f'
-#     blue:    '0x83a598'
-#     magenta: '0xd3869b'
-#     cyan:    '0x8ec07c'
-#     white:   '0xebdbb2'
-#   # Dim colors
-#   #
-#   # If the dim colors are not set, they will be calculated automatically based
-#   # on the `normal` colors.
-#   dim:
-#    black:   '0x000000'
-#    red:     '0x8c3336'
-#    green:   '0x7a8530'
-#    yellow:  '0x97822e'
-#    blue:    '0x506d8f'
-#    magenta: '0x80638e'
-#    cyan:    '0x497e7a'
-#    white:   '0x9a9a9a'
+#     black:   '0x949494'
+#     red:     '0xd7005f'
+#     green:   '0x718c00'
+#     yellow:  '0xd75f00'
+#     blue:    '0x4271ae'
+#     magenta: '0x8959a8'
+#     cyan:    '0x3e999f'
+#     white:   '0xf5f5f5'
+# Colors (Terminal.app)
+# colors:
+#   # Default colors
+#   primary:
+#     background: '#171717'
+#     foreground: '#b6b6b6'
+#
+#   cursor:
+#     text: '0xffffff'
+#     cursor: '0x4d4d4c'
+#
+#   # Normal colors
+#   normal:
+#     black:   '#000000'
+#     red:     '#990000'
+#     green:   '#00a200'
+#     yellow:  '#999900'
+#     # blue:    '#0000b2'
+#     blue:    '#458588'
+#     magenta: '#b16286'
+#     cyan:    '#458588'
+#     # cyan:    '#00a6b2'
+#     white:   '#bfbfbf'
+#
+#   # Bright colors
+#   bright:
+#     black:   '#666666'
+#     red:     '#e50000'
+#     green:   '#00b900'
+#     yellow:  '#e5e500'
+#     # blue:    '#0000ff'
+#     blue:    '#458588'
+#     magenta: '#d33682'
+#     # magenta: '#e500e5'
+#     cyan:    '#00e5e5'
+#     white:   '#e5e5e5'
+
+# Colors (Gruvbox dark)
+colors:
+  #Default colors
+  primary:
+    default contrast: background = '0x282828'
+    # hard contrast: background = '0x1d2021'
+    background: '0x1d2021'
+    # soft contrast: background = '0x32302f'
+    foreground: '0xebdbb2'
+
+  # Normal colors
+  normal:
+    black:   '0x282828'
+    red:     '0xcc241d'
+    green:   '0x98971a'
+    yellow:  '0xd79921'
+    blue:    '0x458588'
+    magenta: '0xb16286'
+    cyan:    '0x689d6a'
+    white:   '0xa89984'
+
+  # Bright colors
+  bright:
+    black:   '0x928374'
+    red:     '0xfb4934'
+    green:   '0xb8bb26'
+    yellow:  '0xfabd2f'
+    blue:    '0x83a598'
+    magenta: '0xd3869b'
+    cyan:    '0x8ec07c'
+    white:   '0xebdbb2'
+  # Dim colors
+  #
+  # If the dim colors are not set, they will be calculated automatically based
+  # on the `normal` colors.
+  dim:
+   black:   '0x000000'
+   red:     '0x8c3336'
+   green:   '0x7a8530'
+   yellow:  '0x97822e'
+   blue:    '0x506d8f'
+   magenta: '0x80638e'
+   cyan:    '0x497e7a'
+   white:   '0x9a9a9a'
 
   # Indexed Colors
   #
@@ -245,7 +348,7 @@ colors:
   # Example:
   #   `- { index: 16, color: '0xff00ff' }`
   #
-  indexed_colors: []
+  # indexed_colors: []
 
 # Visual Bell
 #

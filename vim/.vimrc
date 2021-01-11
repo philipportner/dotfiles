@@ -28,19 +28,20 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 " Plug install {{{
 
+Plug 'bfrg/vim-cpp-modern'
+Plug 'preservim/nerdtree'
+Plug 'lifepillar/vim-solarized8'
 Plug 'dense-analysis/ale'
 Plug 'puremourning/vimspector'
 Plug 'rhysd/git-messenger.vim'
 Plug 'jreybert/vimagit'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'wincent/ferret'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'ericcurtin/CurtineIncSw.vim'
 Plug 'troydm/zoomwintab.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'terryma/vim-expand-region'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'RRethy/vim-illuminate'
 Plug 'airblade/vim-gitgutter'
 Plug 'lervag/vimtex'
@@ -50,15 +51,15 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/tagbar'
 let g:polyglot_disabled = ['autoindent']
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'mkitt/tabline.vim'
 Plug 'janko-m/vim-test'
-Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/gv.vim'
 Plug 'itchyny/lightline.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "
 call plug#end()
 " }}}
@@ -72,7 +73,6 @@ set autoread
 set inccommand=nosplit
 " Enable mouse support
 set mouse=a
-
 
 
 "" ALE"
@@ -148,6 +148,8 @@ let g:python3_host_prog = '/usr/bin/python3'
 
 map <F1> :call CurtineIncSw()<CR>
 nmap <F2> :TagbarToggle<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 
 "" Tabs. May be overridden by autocmd rules
 " set smarttab
@@ -168,7 +170,7 @@ set listchars=tab:\ \ ,trail:·
 filetype plugin on
 filetype indent on
 
-"" Map leader to ,
+"" Map leader to space
 let mapleader=' '
 
 "" Splits
@@ -235,18 +237,25 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
-let g:terminal_ansi_colors = ["#282828", "#CC241D", "#98971A", "#D79921", "#458588", "#B16286", "#689D6A", "#A89984", "#928374", "#FB4934", "#B8BB26", "#198844", "#83A598", "#D3869B", "#8EC07C", "#EBDBB2"]
-
-if has('nvim')
-  for i in range(16)
-    let g:terminal_color_{i} = g:terminal_ansi_colors[i]
-  endfor
-  unlet! g:terminal_ansi_colors
-endif
+" let g:terminal_ansi_colors = ["#282828", "#CC241D", "#98971A", "#D79921", "#458588", "#B16286", "#689D6A", "#A89984", "#928374", "#FB4934", "#B8BB26", "#198844", "#83A598", "#D3869B", "#8EC07C", "#EBDBB2"]
+"
+" if has('nvim')
+"   for i in range(16)
+"     let g:terminal_color_{i} = g:terminal_ansi_colors[i]
+"   endfor
+"   unlet! g:terminal_ansi_colors
+" endif
 
 let g:lightline = {
-      \ 'colorscheme': 'PaperColor',
-      \ }
+            \ 'colorscheme': 'default',
+            \ 'active': {
+            \   'left': [ [ 'mode', 'paste' ],
+            \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+            \ },
+            \ 'component_function': {
+            \   'cocstatus': 'coc#status'
+            \ },
+            \ }
 
 syntax enable
 set nowrap
@@ -256,40 +265,31 @@ let &colorcolumn="80,120"
 set list
 set showmode
 
-" let g:gruvbox_contrast_dark = 'hard'
-" let g:gruvbox_invert_selection = 0
-set background=light
-colorscheme PaperColor
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_invert_selection = 0
+set background=dark
+colorscheme solarized8_high
+hi Normal guibg=#1d2021
+" hi Comment ctermfg=darkgrey
+" hi Normal guibg=#dedede
+" hi colorcolumn guibg=#dadada ctermbg=darkgrey
 "set signcolumn=auto:2
 
-if has('nvim') || has('gui_running')
-  autocmd! FileType fzf
-  autocmd  FileType fzf set laststatus=0 | autocmd WinLeave <buffer> set laststatus=2
-endif
+" if has('nvim') || has('gui_running')
+"   autocmd! FileType fzf
+"   autocmd  FileType fzf set laststatus=0 | autocmd WinLeave <buffer> set laststatus=2
+" endif
 
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
 " relative numbers
 set number relativenumber
 set cursorline
 " highlight linenr term=bold cterm=none ctermfg=darkgrey ctermbg=none
-highlight cursorlinenr ctermfg=yellow guibg=none guifg=grey "#005f87
-highlight cursorline guibg=none
-highlight signcolumn guibg=none
-highlight linenr guibg=none guifg=#005f87
-highlight VertSplit guifg=#dedede
+highlight cursorlinenr guibg=none ctermbg=none
+highlight cursorline guibg=none ctermbg=none cterm=none
+highlight signcolumn guibg=none ctermbg=none
+highlight linenr guibg=none ctermbg=none
+highlight VertSplit guibg=none ctermbg=none
+highlight link illuminatedWord Visual
 
 " gdiff highlight
 " highlight diffadd           cterm=bold ctermbg=none ctermfg=108
@@ -299,15 +299,9 @@ highlight GitGutterAdd    guifg=#8ec07c ctermfg=2
 highlight GitGutterChange guifg=#83a598 ctermfg=3
 highlight GitGutterDelete guifg=#fb4934 ctermfg=1
 
-highlight signifysignadd    cterm=bold ctermbg=none ctermfg=108 guifg=#8ec07c
-highlight signifysigndelete cterm=bold ctermbg=none ctermfg=167 guifg=#fb4934
-highlight signifysignchange cterm=bold ctermbg=none ctermfg=172 guifg=#83a598
-
-" hide bg from colorscheme in vsplit
-" highlight vertsplit ctermbg=none guibg=none
-
 "" disable the blinking cursor.
-set gcr=a:blinkon0
+" set gcr=a:blinkon0
+set gcr=n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20
 
 set fillchars=fold:\
 set fillchars=vert:\|
@@ -404,10 +398,15 @@ inoremap jk <esc>
 nnoremap <Leader>W :w<CR>
 vnoremap <leader>p "_dP
 
+inoremap { {}<Left>
+inoremap {<CR> {<CR>}<Esc>O
+inoremap {{ {
+inoremap {} {}
+
 " exit TERMINAL MODE in terminal
 tnoremap <Esc> <C-\><C-n>
 
-
+" VIMSPECTOR
 nmap <leader>dd :call vimspector#Launch()<CR>
 nmap <leader>dx :VimspectorReset<CR>
 nmap <leader>de :VimspectorEval
@@ -419,7 +418,7 @@ autocmd FileType java nmap <leader>dd :CocCommand java.debug.vimspector.start<CR
 " zoomwin toggle
 nnoremap <silent> <C-w>w :ZoomWinTabToggle<CR>
 
-" Sweet Sweet FuGITive
+" FuGITive
 nmap <leader>gh :diffget //3<CR>
 nmap <leader>gu :diffget //2<CR>
 nmap <leader>gs :G<CR>
@@ -448,7 +447,6 @@ map <right> :5winc <<CR>
 map <down> :5winc +<CR>
 map <up> :5winc -<CR>
 
-"" custom move
 "vertically by visual line
 nnoremap j gj
 nnoremap k gk
@@ -492,7 +490,7 @@ let g:fzf_action = {
 
 " Default fzf layout
 " - down / up / left / right
-let g:fzf_layout = { 'down': '~25%' }
+let g:fzf_layout = { 'down': '~40%' }
 
 " let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.5, 'highlight': 'Comment' } }
 
@@ -500,7 +498,8 @@ let g:fzf_layout = { 'down': '~25%' }
 " let g:fzf_layout = { 'window': 'enew' }
 " let g:fzf_layout = { 'window': '-tabnew' }
 " let g:fzf_layout = { 'window': '10split enew' }
-let g:fzf_preview_window = []
+" let g:fzf_preview_window = []
+let g:fzf_preview_window = 'up:50%'
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
