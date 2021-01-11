@@ -9,9 +9,9 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/phil/.oh-my-zsh
-  export PATH=$PATH:~/.local/bin
-  export PATH=~/.emacs.d/bin:$PATH
+export ZSH=/home/phil/.oh-my-zsh
+export PATH=$PATH:~/.local/bin
+export PATH=$PATH:/usr/local/go/bin
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -42,6 +42,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
+COLORTERM="truecolor"
 
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
@@ -133,3 +134,13 @@ alias ls='ls --color'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#757575'
+export SYSTEMDS_ROOT=/home/phil/Documents/systemds
+export PATH=$SYSTEMDS_ROOT/bin:$PATH
+
+export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color=dark"
+export BAT_THEME="Solarized (light)"
