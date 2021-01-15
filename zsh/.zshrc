@@ -142,5 +142,5 @@ export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color=dark"
-export BAT_THEME="Solarized (light)"
+# export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color=dark"
+# export FZF_DEFAULT_OPTS="--ansi --preview-window 'top:35%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
