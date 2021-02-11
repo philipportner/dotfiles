@@ -1,7 +1,6 @@
 inoremap jj <esc>
 inoremap jk <esc>
 nnoremap <Leader>W :w<CR>
-vnoremap <leader>p "_dP
 
 nnoremap n nzzzv
 nnoremap n nzzzv
@@ -79,13 +78,14 @@ noremap <Leader>v :<C-u>vsplit<CR>
 
 nnoremap <silent> <leader>b :Buffers<CR>
 
-"" Tabs
-nnoremap <Tab> :tabnext<CR>
-nnoremap <S-Tab> :tabprev<CR>
 
 "" Clean search (highlight)
 nnoremap <silent> <leader><space> :noh<cr>
 
 nnoremap <silent> <leader>t :FZF -m<CR>
+nnoremap <silent> <leader>p :GFiles<CR>
 nnoremap <silent> <leader>r :Rg<CR>
 nnoremap <silent> <Leader>* :Rg <C-R><C-W><CR>
+
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv

@@ -42,6 +42,10 @@ let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_invert_selection = 0
 set background=dark
 colorscheme gruvbox
+hi Normal guibg=#10151a guifg=#ffffff
+hi colorcolumn guibg=#282828
+hi MatchParen guifg=red
+hi EndOfBuffer guifg=bg
 
 " relative numbers
 set number relativenumber
@@ -84,3 +88,5 @@ set laststatus=2
 hi statusline guifg=white
 " }}}
 
+let g:cpp_attributes_highlight = 1
+let g:cpp_member_highlight = 1

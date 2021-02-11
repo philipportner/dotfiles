@@ -113,15 +113,6 @@ else
 endif
 
 
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
-
-" Default fzf layout
-" - down / up / left / right
-let g:fzf_layout = { 'down': '~40%' }
-
 let g:git_messenger_always_into_popup=v:true
 " let g:fzf_preview_window = 'up:50%'
 

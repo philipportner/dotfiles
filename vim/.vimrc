@@ -23,6 +23,8 @@ endif
 " Required:
 call plug#begin(expand('~/.config/nvim/plugged'))
 
+Plug 'sevko/vim-nand2tetris-syntax'
+Plug 'honza/vim-snippets'
 Plug 'bfrg/vim-cpp-modern'
 Plug 'preservim/nerdtree'
 Plug 'lifepillar/vim-solarized8'
@@ -37,7 +39,7 @@ Plug 'ericcurtin/CurtineIncSw.vim'
 Plug 'troydm/zoomwintab.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'terryma/vim-expand-region'
-Plug 'RRethy/vim-illuminate'
+" Plug 'RRethy/vim-illuminate'
 Plug 'airblade/vim-gitgutter'
 Plug 'lervag/vimtex'
 Plug 'morhetz/gruvbox'
@@ -46,7 +48,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/tagbar'
 let g:polyglot_disabled = ['autoindent']
-" Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
