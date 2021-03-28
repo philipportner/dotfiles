@@ -1,4 +1,23 @@
 {
+    "languageserver": {
+        "ccls": {
+            "command": "ccls",
+            "filetypes": ["c", "cpp", "objc", "objcpp"],
+            "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+            "initializationOptions": {
+                "cache": {
+                    "directory": "/tmp/ccls"
+                },
+                "clang": {
+                    "extraArgs": [
+                        "-I",
+                        "/home/phil/Documents/tugraz/RTOS/smartos/RTOS_Public_SS21/middleware/include"
+                    ]
+                },
+                "highlight": { "lsRanges" : true }
+            }
+        }
+    },
     "diagnostic.virtualText": true,
     "diagnostic.virtualTextCurrentLineOnly": false,
     "suggest.maxCompleteItemCount": 10,
@@ -21,5 +40,4 @@
     "git.changedSign.hlGroup": "GitGutterChange",
     "git.removedSign.hlGroup": "GitGutterDelete",
     "git.topRemovedSign.hlGroup": "GitGutterDelete",
-    "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete"
 }

@@ -23,9 +23,9 @@ endif
 " Required:
 call plug#begin(expand('~/.config/nvim/plugged'))
 
-Plug 'sevko/vim-nand2tetris-syntax'
+
+Plug 'stsewd/fzf-checkout.vim'
 Plug 'honza/vim-snippets'
-Plug 'bfrg/vim-cpp-modern'
 Plug 'preservim/nerdtree'
 Plug 'lifepillar/vim-solarized8'
 Plug 'dense-analysis/ale'
@@ -52,10 +52,11 @@ Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
+" Plug 'TimUntersberger/neogit'
 Plug 'mkitt/tabline.vim'
 Plug 'junegunn/gv.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"
-call plug#end()
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 
+call plug#end()
