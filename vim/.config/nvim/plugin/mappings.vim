@@ -1,3 +1,4 @@
+map <Leader>gb :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 inoremap jj <esc>
 inoremap jk <esc>
 nnoremap <Leader>W :w<CR>
@@ -25,8 +26,6 @@ tnoremap <Esc> <C-\><C-n>
 
 map <F1> :call CurtineIncSw()<CR>
 nmap <F2> :TagbarToggle<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
 
 " VIMSPECTOR
 nmap <leader>dd :call vimspector#Launch()<CR>
@@ -54,8 +53,8 @@ map q: :q
 map :W :w
 
 " Allows you to easily replace the current word and all its occurrences.
-nnoremap <Leader>cr :%s/\<<C-r><C-w>\>/
-vnoremap <Leader>cr y:%s/<C-r>"/
+nnoremap <leader>cr :%s/\<<C-r><C-w>\>/
+vnoremap <leader>cr y:%s/<C-r>"/
 
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
