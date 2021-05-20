@@ -4,9 +4,10 @@ set fileencoding=utf-8
 set fileencodings=utf-8
 set autoread
 set inccommand=nosplit
+set foldmethod=syntax
+set nofoldenable
 " Enable mouse support
 set mouse=a
-
 
 "" ALE"
 let g:ale_linters = {
@@ -115,7 +116,17 @@ endif
 
 let g:git_messenger_always_into_popup=v:true
 " let g:fzf_preview_window = 'up:50%'
+function! s:build_quickfix_list(lines)
+  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+  copen
+  cc
+endfunction
 
+let g:fzf_action = {
+  \ 'ctrl-q': function('s:build_quickfix_list'),
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],

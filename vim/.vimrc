@@ -7,12 +7,14 @@ Plug 'junegunn/gv.vim'
 " Plug 'TimUntersberger/neogit'
 
 " VISUAL
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'troydm/zoomwintab.vim'
 Plug 'airblade/vim-gitgutter'
-" let g:polyglot_disabled = ['autoindent']
 Plug 'sheerun/vim-polyglot'
-Plug 'lifepillar/vim-solarized8'
+Plug 'camspiers/lens.vim'
+Plug 'andreypopp/vim-colors-plain'
+" Plug 'robertmeta/nofrils'
+" Plug 'lifepillar/vim-solarized8'
+" Plug 'plan9-for-vimspace/acme-colors'
 
 " EDITING
 Plug 'ericcurtin/CurtineIncSw.vim'
@@ -25,5 +27,7 @@ Plug 'preservim/tagbar'
 Plug 'scrooloose/nerdcommenter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vhdirk/vim-cmake'
+" Plug 'vale1410/vim-minizinc'
+Plug 'jiangmiao/auto-pairs'
 
 call plug#end()

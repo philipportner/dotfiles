@@ -6,11 +6,6 @@ nnoremap <Leader>W :w<CR>
 nnoremap n nzzzv
 nnoremap n nzzzv
 
-inoremap { {}<Left>
-inoremap {<CR> {<CR>}<Esc>O
-inoremap {{ {
-inoremap {} {}
-
 " " Copy to clipboard
 vnoremap  <leader>y  "+y
 nnoremap  <leader>Y  "+yg_
@@ -81,8 +76,8 @@ nnoremap <silent> <leader>b :Buffers<CR>
 "" Clean search (highlight)
 nnoremap <silent> <leader><space> :noh<cr>
 
-nnoremap <silent> <leader>t :FZF -m<CR>
-nnoremap <silent> <leader>p :GFiles<CR>
+nnoremap <silent> <leader>p :FZF -m<CR>
+nnoremap <silent> <leader>t :GFiles<CR>
 nnoremap <silent> <leader>r :Rg<CR>
 nnoremap <silent> <Leader>* :Rg <C-R><C-W><CR>
 
