@@ -88,10 +88,10 @@ font:
     #   - (macOS) Menlo
     #   - (Linux) monospace
     #   - (Windows) Consolas
-    family: Iosevka SS08
+    family: Jetbrains Mono
     # (r io.Reader)
     # The `style` can be specified to pick a specific face.
-    style: Default
+    style: Medium
 
   # Bold font face
   bold:
@@ -99,7 +99,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Iosevka SS08
+    family: Jetbrains Mono
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -110,11 +110,11 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Iosevka SS08
+    family: Jetbrains Mono
 
     # }{()} <> ? ! () [] {}
     # The `style` can be specified to pick a specific face.
-    style: Semibold
+    style: Italic
 
   # Point size
   size: 16.0
@@ -151,10 +151,37 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
+# # Colors (Molokai Dark)
+# colors:
+#   # Default colors
+#   primary:
+#     background: '#1B1D1E'
+#     foreground: '#F8F8F2'
+#   # Normal colors
+#   normal:
+#     black:   '#333333'
+#     red:     '#C4265E'
+#     green:   '#86B42B'
+#     yellow:  '#B3B42B'
+#     blue:    '#6A7EC8'
+#     magenta: '#8C6BC8'
+#     cyan:    '#56ADBC'
+#     white:   '#E3E3DD'
+#   # Bright colors
+#   bright:
+#     black:   '#666666'
+#     red:     '#F92672'
+#     green:   '#A6E22E'
+#     yellow:  '#E2E22E'
+#     blue:    '#819AFF'
+#     magenta: '#AE81FF'
+#     cyan:    '#66D9EF'
+#     white:   '#F8F8F2'
+
 
 # colors:
-#   #Default colors
-#
+# #   #Default colors
+# #
 #   cursor:
 #     custom_cursor_colors: true
 #     text:   '#002b36' # base03
@@ -164,7 +191,7 @@ draw_bold_text_with_bright_colors: true
 #     default contrast: background = '0x282828'
 #     # hard contrast: background = '0x1d2021'
 #     # background: '0x10151a'
-#     background: '0x282828'
+#     background: '0x2b2b2b'
 #     # soft contrast: background = '0x32302f'
 #     foreground: '0xffffff'
 #
@@ -207,15 +234,17 @@ draw_bold_text_with_bright_colors: true
 colors:
   # Default Colors
   primary:
-    background: '0xf1f1f1'
-    foreground: '0x424242'
+    # background: '0xf1f1f1'
+    # foreground: '0x424242'
+    background: '0xeeeeee'
+    foreground: '0x000000'
   # Normal colors
   normal:
     black:   '0x212121'
     red:     '0xc30771'
-    green:   '0x10a778'
+    green:   '0x005f00'
     yellow:  '0xa89c14'
-    blue:    '0x008ec4'
+    blue:    '0x000087'
     magenta: '0x523c79'
     cyan:    '0x20a5ba'
     white:   '0xe0e0e0'
@@ -225,7 +254,7 @@ colors:
     red:     '0xfb007a'
     green:   '0x5fd7af'
     yellow:  '0xf3e430'
-    blue:    '0x20bbfc'
+    blue:    '0x2055fc'
     magenta: '0x6855de'
     cyan:    '0x4fb8cc'
     white:   '0xf1f1f1'

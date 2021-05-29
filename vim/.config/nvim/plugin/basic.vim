@@ -8,7 +8,7 @@ set foldmethod=syntax
 set nofoldenable
 " Enable mouse support
 set mouse=a
-
+lua local neogit = require('neogit'); neogit.setup {}
 "" ALE"
 let g:ale_linters = {
 \   'cpp': ['clangtidy'],

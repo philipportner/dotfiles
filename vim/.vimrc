@@ -4,17 +4,16 @@ Plug 'stsewd/fzf-checkout.vim'
 Plug 'rhysd/git-messenger.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
-" Plug 'TimUntersberger/neogit'
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'TimUntersberger/neogit'
+Plug 'kdheepak/lazygit.nvim'
 
 " VISUAL
 Plug 'troydm/zoomwintab.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
-Plug 'camspiers/lens.vim'
-Plug 'andreypopp/vim-colors-plain'
-" Plug 'robertmeta/nofrils'
-" Plug 'lifepillar/vim-solarized8'
-" Plug 'plan9-for-vimspace/acme-colors'
+Plug 'yasukotelin/shirotelin'
 
 " EDITING
 Plug 'ericcurtin/CurtineIncSw.vim'
