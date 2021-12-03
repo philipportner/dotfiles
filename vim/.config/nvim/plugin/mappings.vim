@@ -6,6 +6,8 @@ nnoremap <Leader>W :w<CR>
 nnoremap n nzzzv
 nnoremap n nzzzv
 
+nnoremap <C-n> :NvimTreeToggle<CR>
+
 " " Copy to clipboard
 vnoremap  <leader>y  "+y
 nnoremap  <leader>Y  "+yg_

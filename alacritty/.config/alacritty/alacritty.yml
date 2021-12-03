@@ -87,8 +87,9 @@ font:
     # Default:
     #   - (macOS) Menlo
     #   - (Linux) monospace
-    #   - (Windows) Consolas
+    #   - (Windows) Jetbrains Mono
     family: Jetbrains Mono
+
     # (r io.Reader)
     # The `style` can be specified to pick a specific face.
     style: Medium
@@ -113,17 +114,24 @@ font:
     family: Jetbrains Mono
 
     # }{()} <> ? ! () [] {}
+    # () {}
+    # {
+    #
+    # }
+    # (
+    #
+    # )
     # The `style` can be specified to pick a specific face.
     style: Italic
 
   # Point size
-  size: 16.0
+  size: 20.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
   offset:
-    x: 0
-    y: 0
+    x: -0
+    y: -2
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
@@ -151,113 +159,139 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
-# # Colors (Molokai Dark)
-# colors:
-#   # Default colors
-#   primary:
-#     background: '#1B1D1E'
-#     foreground: '#F8F8F2'
-#   # Normal colors
-#   normal:
-#     black:   '#333333'
-#     red:     '#C4265E'
-#     green:   '#86B42B'
-#     yellow:  '#B3B42B'
-#     blue:    '#6A7EC8'
-#     magenta: '#8C6BC8'
-#     cyan:    '#56ADBC'
-#     white:   '#E3E3DD'
-#   # Bright colors
-#   bright:
-#     black:   '#666666'
-#     red:     '#F92672'
-#     green:   '#A6E22E'
-#     yellow:  '#E2E22E'
-#     blue:    '#819AFF'
-#     magenta: '#AE81FF'
-#     cyan:    '#66D9EF'
-#     white:   '#F8F8F2'
-
-
-# colors:
-# #   #Default colors
-# #
-#   cursor:
-#     custom_cursor_colors: true
-#     text:   '#002b36' # base03
-#     cursor: '#839496' # base0
-#
-#   primary:
-#     default contrast: background = '0x282828'
-#     # hard contrast: background = '0x1d2021'
-#     # background: '0x10151a'
-#     background: '0x2b2b2b'
-#     # soft contrast: background = '0x32302f'
-#     foreground: '0xffffff'
-#
-#   # Normal colors
-#   normal:
-#     black:   '0x282828'
-#     red:     '0xcc241d'
-#     green:   '0x98971a'
-#     yellow:  '0xd79921'
-#     blue:    '0x458588'
-#     magenta: '0xb16286'
-#     cyan:    '0x689d6a'
-#     white:   '0xa89984'
-#
-#   # Bright colors
-#   bright:
-#     black:   '0x928374'
-#     red:     '0xfb4934'
-#     green:   '0xb8bb26'
-#     yellow:  '0xfabd2f'
-#     blue:    '0x83a598'
-#     magenta: '0xd3869b'
-#     cyan:    '0x8ec07c'
-#     white:   '0xebdbb2'
-#   # Dim colors
-#   #
-#   # If the dim colors are not set, they will be calculated automatically based
-#   # on the `normal` colors.
-#   dim:
-#    black:   '0x000000'
-#    red:     '0x8c3336'
-#    green:   '0x7a8530'
-#    yellow:  '0x97822e'
-#    blue:    '0x506d8f'
-#    magenta: '0x80638e'
-#    cyan:    '0x497e7a'
-#    white:   '0x9a9a9a'
-
-# Colors (Pencil Light)
-colors:
-  # Default Colors
+# Colors (Modus)
+schemes:
+gruvbox: &gruvbox
   primary:
-    # background: '0xf1f1f1'
-    # foreground: '0x424242'
-    background: '0xeeeeee'
-    foreground: '0x000000'
+    default contrast: background = '0x282828'
+    # hard contrast: background = '0x1d2021'
+    # background: '0x10151a'
+    background: '0x282828'
+    # soft contrast: background = '0x32302f'
+    foreground: '0xffffff'
+
   # Normal colors
   normal:
-    black:   '0x212121'
-    red:     '0xc30771'
-    green:   '0x005f00'
-    yellow:  '0xa89c14'
-    blue:    '0x000087'
-    magenta: '0x523c79'
-    cyan:    '0x20a5ba'
-    white:   '0xe0e0e0'
+    black:   '0x282828'
+    red:     '0xcc241d'
+    green:   '0x98971a'
+    yellow:  '0xd79921'
+    blue:    '0x458588'
+    magenta: '0xb16286'
+    cyan:    '0x689d6a'
+    white:   '0xa89984'
+
   # Bright colors
   bright:
-    black:   '0x212121'
-    red:     '0xfb007a'
-    green:   '0x5fd7af'
-    yellow:  '0xf3e430'
-    blue:    '0x2055fc'
-    magenta: '0x6855de'
-    cyan:    '0x4fb8cc'
-    white:   '0xf1f1f1'
+    black:   '0x928374'
+    red:     '0xfb4934'
+    green:   '0xb8bb26'
+    yellow:  '0xfabd2f'
+    blue:    '0x83a598'
+    magenta: '0xd3869b'
+    cyan:    '0x8ec07c'
+    white:   '0xebdbb2'
+  # Dim colors
+  #
+  # If the dim colors are not set, they will be calculated automatically based
+  # on the `normal` colors.
+  dim:
+   black:   '0x000000'
+   red:     '0x8c3336'
+   green:   '0x7a8530'
+   yellow:  '0x97822e'
+   blue:    '0x506d8f'
+   magenta: '0x80638e'
+   cyan:    '0x497e7a'
+   white:   '0x9a9a9a'
+  
+modus-vivendi: &dark
+  # Default colors
+  primary:
+    background: '#000000'
+    foreground: '#ffffff'
+
+  cursor:
+    text: '#000000'
+    background: '#777777'
+
+  # Normal colors (except green it is from intense colors)
+  normal:
+    black:   '#000000'
+    red:     '#ff8059'
+    green:   '#00fc50'
+    yellow:  '#eecc00'
+    blue:    '#29aeff'
+    magenta: '#feacd0'
+    cyan:    '#00d3d0'
+    white:   '#eeeeee'
+
+  # Bright colors [all the faint colors in the modus theme]
+  bright:
+    black:   '#555555'
+    red:     '#ffa0a0'
+    green:   '#88cf88'
+    yellow:  '#d2b580'
+    blue:    '#92baff'
+    magenta: '#e0b2d6'
+    cyan:    '#a0bfdf'
+    white:   '#ffffff'
+
+  # dim [all the intense colors in modus theme]
+  dim:
+    black:   '#222222'
+    red:     '#fb6859'
+    green:   '#00fc50'
+    yellow:  '#ffdd00'
+    blue:    '#00a2ff'
+    magenta: '#ff8bd4'
+    cyan:    '#30ffc0'
+    white:   '#dddddd'
+
+modus-operandi: &light
+  # Default colors
+  primary:
+    background: '#ffffff'
+    foreground: '#000000'
+
+  cursor:
+    text: '#ffffff'
+    background: '#777777'
+
+  # Normal colors (except green it is from intense colors)
+  normal:
+    black:   '#000000'
+    red:     '#a60000'
+    green:   '#006800'
+    yellow:  '#813e00'
+    blue:    '#0030a6'
+    magenta: '#721045'
+    cyan:    '#00538b'
+    white:   '#eeeeee'
+
+  # Bright colors [all the faint colors in the modus theme]
+  bright:
+    black:   '#555555'
+    red:     '#7f1010'
+    green:   '#104410'
+    yellow:  '#5f4400'
+    blue:    '#002f88'
+    magenta: '#752f50'
+    cyan:    '#12506f'
+    white:   '#ffffff'
+
+  # dim [all the intense colors in modus theme]
+  dim:
+    black:   '#222222'
+    red:     '#b60000'
+    green:   '#006800'
+    yellow:  '#904200'
+    blue:    '#1111ee'
+    magenta: '#7000e0'
+    cyan:    '#205b93'
+    white:   '#dddddd'
+
+colors: *gruvbox
 
 
 # Indexed Colors

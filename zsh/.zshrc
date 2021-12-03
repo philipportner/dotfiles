@@ -32,7 +32,7 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR=/usr/bin/nvim
 export JAVA_HOME='/usr/lib/jvm/java-8-openjdk-amd64/'
 
-alias nv="nvim5"
+alias nv="nvim"
 alias gits="git status"
 alias grh="git reset --hard"
 alias ls='ls --color'
@@ -51,9 +51,3 @@ export NNN_PLUG='f:fzopen;p:mocplay;d:diffs;t:nmount;v:imgview;j:autojump'
 export BAT_THEME="Solarized (dark)"
 # export MANPAGER="/usr/bin/nvim5 -M +MANPAGER -"
 export NVM_DIR="$HOME/.nvm"
-
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-    --color=fg:#4d4d4c,bg:#eeeeee,hl:#b74951
-    --color=fg+:#4d4d4c,bg+:#e8e8e8,hl+:#b74951
-    --color=info:#4271ae,prompt:#8959a8,pointer:#87005f
-    --color=marker:#4271ae,spinner:#4271ae,header:#4271ae'

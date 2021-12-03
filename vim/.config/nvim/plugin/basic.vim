@@ -8,24 +8,6 @@ set foldmethod=syntax
 set nofoldenable
 " Enable mouse support
 set mouse=a
-lua local neogit = require('neogit'); neogit.setup {}
-"" ALE"
-let g:ale_linters = {
-\   'cpp': ['clangtidy'],
-\   'c': ['clangtidy'],
-\}
-let g:ale_fixers={
-\   'cpp': ['clang-format'],
-\}
-
-let g:ale_cpp_clangtidy_checks = []
-let g:ale_cpp_clangtidy_executable = 'clang-tidy'
-let g:ale_c_parse_compile_commands=1
-let g:ale_cpp_clangtidy_extra_options = ''
-let g:ale_cpp_clangtidy_options = ''
-let g:ale_set_balloons=1
-let g:ale_linters_explicit=1
-let g:airline#extensions#ale#enabled=1
 
 let g:vimspector_enable_mappings = 'HUMAN'
 
@@ -34,8 +16,6 @@ set clipboard+=unnamedplus
 "" Fix backspace indent
 set backspace=indent,eol,start
 
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_completion_enabled = 1
 
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
@@ -46,15 +26,12 @@ let g:tex_conceal='abdmg'
 
 set tags=tags;/
 
-
-
 " Vim Sneak
 let g:sneak#label = 1
 let g:sneak#streak = 1
 
 let g:python_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
-
 
 set tabstop=4
 set softtabstop=4
@@ -115,7 +92,7 @@ endif
 
 
 let g:git_messenger_always_into_popup=v:true
-" let g:fzf_preview_window = 'up:50%'
+" let g:fzf_preview_window = 'up:30%'
 function! s:build_quickfix_list(lines)
   call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
   copen
@@ -143,3 +120,4 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+au BufRead,BufNewFile *.nlogo set filetype=nlogo

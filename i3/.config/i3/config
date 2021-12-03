@@ -132,10 +132,10 @@ set $workspace9 "9"   # 
 set $workspace10 "10" # 
 
 # gaps
-gaps inner 3
-gaps outer 3
-for_window [class="^.*"] border pixel 2
-smart_gaps on
+gaps inner 0
+gaps outer 0
+for_window [class="^.*"] border pixel 0
+smart_gaps off
 smart_borders no_gaps
 
 # move focused container to workspace
