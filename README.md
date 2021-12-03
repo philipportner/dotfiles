@@ -3,7 +3,6 @@
 
 ## Installation
 I use `GNU stow` to manage my dotfiles.
-First, install the required software listed above.
 
 ### Linux
 
