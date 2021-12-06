@@ -9,7 +9,6 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:~/.platformio/penv/bin
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
-# ZSH_THEME="common"
 
 COLORTERM="truecolor"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
@@ -21,7 +20,6 @@ plugins=(
   sudo
   zsh-syntax-highlighting
   vi-mode
-  history-substring-search
   zsh-autosuggestions
   docker
   docker-compose
@@ -40,14 +38,10 @@ alias ls='ls --color'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export SYSTEMDS_ROOT=/home/phil/Documents/systemds
 export PATH=$SYSTEMDS_ROOT/bin:$PATH
-export NNN_PLUG='f:fzopen;p:mocplay;d:diffs;t:nmount;v:imgview;j:autojump'
-export BAT_THEME="Solarized (dark)"
-# export MANPAGER="/usr/bin/nvim5 -M +MANPAGER -"
+export NNN_PLUG='f:fzopen;p:mocplay;d:diffs;t:nmount;v:feh;j:autojump'
+export BAT_THEME="gruvbox-dark"
 export NVM_DIR="$HOME/.nvm"

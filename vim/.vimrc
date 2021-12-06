@@ -3,22 +3,19 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 Plug 'rhysd/git-messenger.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
+Plug 'airblade/vim-gitgutter'
 
-Plug 'nvim-lua/plenary.nvim'
-Plug 'TimUntersberger/neogit'
+" Plug 'nvim-lua/plenary.nvim'
+" Plug 'TimUntersberger/neogit'
 
 " VISUAL
 Plug 'troydm/zoomwintab.vim'
-Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
-Plug 'lifepillar/vim-solarized8'
-" Plug 'Yggdroot/indentLine'
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'Mofiqul/vscode.nvim'
+Plug 'morhetz/gruvbox'
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-" Plug 'haringsrob/nvim_context_vt'
-Plug 'yasukotelin/shirotelin'
 
 " EDITING
 Plug 'ericcurtin/CurtineIncSw.vim'

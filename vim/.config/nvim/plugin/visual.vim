@@ -1,5 +1,5 @@
 set termguicolors
-let $BAT_THEME='Solarized (dark)'
+let $BAT_THEME='gruvbox-dark'
 syntax enable
 set nowrap
 set ruler
@@ -21,8 +21,7 @@ let g:indentLine_char = '│'
 let g:indentLine_concealcursor = ''
 
 set background=dark
-let g:vscode_style = "dark"
-colorscheme vscode
+colorscheme gruvbox
 set number relativenumber
 hi Visual gui=none
 " set nonumber norelativenumber
