@@ -7,24 +7,15 @@ set number
 set list
 set showmode
 
-" lua <<EOF
-" require'nvim-treesitter.configs'.setup {
-"   highlight = {
-"     enable = true
-"   }
-" }
-" EOF
-
 let g:coc_disable_transparent_cursor = 1
 set gcr=n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20
 let g:indentLine_char = '│'
 let g:indentLine_concealcursor = ''
 
+let g:vscode_style = "dark"
 set background=dark
-colorscheme gruvbox
+colorscheme vscode
 set number relativenumber
-hi Visual gui=none
-" set nonumber norelativenumber
 
 hi cursorlinenr guibg=none ctermbg=none
 hi cursorline guibg=none ctermbg=none cterm=none

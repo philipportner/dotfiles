@@ -1,12 +1,9 @@
 map <Leader>gb :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 inoremap jj <esc>
 inoremap jk <esc>
-nnoremap <Leader>W :w<CR>
 
 nnoremap n nzzzv
 nnoremap n nzzzv
-
-nnoremap <C-n> :NvimTreeToggle<CR>
 
 " " Copy to clipboard
 vnoremap  <leader>y  "+y
@@ -40,7 +37,7 @@ nmap <leader>gh :diffget //3<CR>
 nmap <leader>gu :diffget //2<CR>
 nmap <leader>gs :G<CR>
 nmap <leader>gc :GCommit<CR>
-nmap <leader>gv :Gvdiff<CR>
+nmap <leader>gv <Plug>(GitGutterPreviewHunk)
 nmap <leader>gn <Plug>(GitGutterNextHunk)
 nmap <leader>gp <Plug>(GitGutterPrevHunk)
 nmap <leader>ga <Plug>(GitGutterStageHunk)
@@ -48,6 +45,8 @@ nmap <leader>gd <Plug>(GitGutterUndoHunk)
 
 map q: :q
 map :W :w
+map :E :e
+map :Q :q
 
 " Allows you to easily replace the current word and all its occurrences.
 nnoremap <leader>cr :%s/\<<C-r><C-w>\>/

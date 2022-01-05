@@ -1,3 +1,4 @@
+set updatetime=50
 "" Encoding
 set encoding=utf-8
 set fileencoding=utf-8
@@ -16,6 +17,11 @@ set clipboard+=unnamedplus
 "" Fix backspace indent
 set backspace=indent,eol,start
 
+set tags=./tags;
+let g:gutentags_ctags_exclude_wildignore = 1
+let g:gutentags_ctags_exclude = [
+  \'node_modules', '_build', 'build', 'CMakeFiles', '.mypy_cache', 'venv',
+  \'*.md', '*.tex', '*.css', '*.html', '*.json', '*.xml', '*.xmls', '*.ui', '__pycache__', '.idea']
 
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
@@ -24,7 +30,7 @@ set conceallevel=1
 let g:tex_conceal='abdmg'
 " let g:polyglot_disabled = ['latex']
 
-set tags=tags;/
+" set tags=tags;/
 
 " Vim Sneak
 let g:sneak#label = 1
