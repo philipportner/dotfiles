@@ -61,3 +61,20 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+let g:coc_global_extensions = [
+            \ 'coc-clangd',
+            \ 'coc-format-json',
+            \ 'coc-highlight',
+            \ 'coc-json',
+            \ 'coc-pyright',
+            \ 'coc-snippets',
+            \ 'coc-texlab',
+            \ 'coc-vimlsp',
+            \ 'coc-lists',
+            \ 'coc-git',
+            \ 'coc-clangd',
+            \ 'coc-rust-analyzer',
+            \ 'coc-java',
+            \ 'coc-java-debug',
+            \ ]

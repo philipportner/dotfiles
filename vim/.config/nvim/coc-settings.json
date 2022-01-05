@@ -1,29 +1,26 @@
 {
     "languageserver": {
-        "ccls": {
-            "command": "ccls",
-            "filetypes": ["c", "cpp", "objc", "objcpp"],
-            "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
-            "initializationOptions": {
-                "cache": {
-                    "directory": "/tmp/ccls"
-                },
-                "clang": {
-                    "extraArgs": [
-                        "-I",
-                        "/home/phil/Documents/tugraz/RTOS/smartos/RTOS_Public_SS21/middleware/include"
-                    ]
-                },
-                "highlight": { "lsRanges" : true }
-            }
-        }
+        // "ccls": {
+        //     "command": "ccls",
+        //     "filetypes": ["c", "cpp", "objc", "objcpp"],
+        //     "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+        //     "initializationOptions": {
+        //         "cache": {
+        //             "directory": "/tmp/ccls"
+        //         },
+        //         "clang": {
+        //             "extraArgs": [
+        //                 "-I",
+        //                 "/home/phil/Documents/tugraz/RTOS/smartos/RTOS_Public_SS21/middleware/include"
+        //             ]
+        //         },
+        //         "highlight": { "lsRanges" : true }
+        //     }
+        // }
     },
-    "diagnostic.virtualText": true,
-    "diagnostic.virtualTextCurrentLineOnly": false,
+    "diagnostic.virtualText": false,
+    "diagnostic.virtualTextCurrentLineOnly": true,
     "suggest.maxCompleteItemCount": 10,
-
-    "clangd.semanticHighlighting": true,
-    "clangd.path": "/home/phil/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd",
 
     "java.home": "/usr/lib/jvm/jdk-11/",
     "java.trace.server": "verbose",
@@ -40,5 +37,7 @@
     "git.changedSign.hlGroup": "GitGutterChange",
     "git.removedSign.hlGroup": "GitGutterDelete",
     "git.topRemovedSign.hlGroup": "GitGutterDelete",
-    "git.enableGutters": false
+    "git.enableGutters": false,
+    "clangd.path": "/home/phil/.config/coc/extensions/coc-clangd-data/install/12.0.0/clangd_12.0.0/bin/clangd",
+    "codeLens.enable": true
 }
