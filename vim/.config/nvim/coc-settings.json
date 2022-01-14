@@ -20,7 +20,7 @@
     },
     "diagnostic.virtualText": false,
     "diagnostic.virtualTextCurrentLineOnly": true,
-    "suggest.maxCompleteItemCount": 10,
+    "suggest.maxCompleteItemCount": 15,
 
     "java.home": "/usr/lib/jvm/jdk-11/",
     "java.trace.server": "verbose",
@@ -39,5 +39,6 @@
     "git.topRemovedSign.hlGroup": "GitGutterDelete",
     "git.enableGutters": false,
     "clangd.path": "/home/phil/.config/coc/extensions/coc-clangd-data/install/12.0.0/clangd_12.0.0/bin/clangd",
-    "codeLens.enable": true
+    "codeLens.enable": true,
+    "suggest.enablePreview": true
 }

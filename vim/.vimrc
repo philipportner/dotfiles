@@ -11,10 +11,10 @@ Plug 'TimUntersberger/neogit'
 " VISUAL
 Plug 'troydm/zoomwintab.vim'
 Plug 'sheerun/vim-polyglot'
-Plug 'Mofiqul/vscode.nvim'
-" Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 
 " EDITING
+Plug 'puremourning/vimspector'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'ericcurtin/CurtineIncSw.vim'
 Plug 'tpope/vim-surround'
@@ -29,5 +29,4 @@ Plug 'vhdirk/vim-cmake'
 Plug 'jiangmiao/auto-pairs'
 Plug 'honza/vim-snippets'
 " https://github.com/searleser97/cpbooster
-
 call plug#end()

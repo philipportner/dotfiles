@@ -22,12 +22,21 @@ map <F1> :call CurtineIncSw()<CR>
 nmap <F2> :TagbarToggle<CR>
 
 " VIMSPECTOR
-nmap <leader>dd :call vimspector#Launch()<CR>
+nnoremap <leader>dd :call vimspector#Launch()<cr>
 nmap <leader>dx :VimspectorReset<CR>
+nnoremap <leader>dc :call vimspector#Continue()<cr>
+nnoremap <leader>ds :call vimspector#Stop()<cr>
+nnoremap <leader>dR :call vimspector#Restart()<cr>
+nnoremap <leader>dp :call vimspector#Pause()<cr>
+nnoremap <leader>db :call vimspector#ToggleBreakpoint()<cr>
+nnoremap <leader>dB :call vimspector#ToggleConditionalBreakpoint()<cr>
+nnoremap <leader>dn :call vimspector#StepOver()<cr>
+nnoremap <leader>di :call vimspector#StepInto()<cr>
+nnoremap <leader>do :call vimspector#StepOut()<cr>
+nnoremap <leader>dr :call vimspector#RunToCursor()<cr>
 nmap <leader>de :VimspectorEval
 nmap <leader>dw :VimspectorWatch
 nmap <leader>do :VimspectorShowOutput
-nmap <leader>d5 <Plug>VimspectorContinue
 
 " zoomwin toggle
 nnoremap <silent> <C-w>w :ZoomWinTabToggle<CR>

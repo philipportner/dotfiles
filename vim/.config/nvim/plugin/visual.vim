@@ -12,9 +12,8 @@ set gcr=n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20
 let g:indentLine_char = '│'
 let g:indentLine_concealcursor = ''
 
-let g:vscode_style = "dark"
 set background=dark
-colorscheme vscode
+colorscheme gruvbox
 set number relativenumber
 
 hi cursorlinenr guibg=none ctermbg=none
