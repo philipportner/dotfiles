@@ -18,8 +18,10 @@ endfunction
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
-xmap <leader>n  <Plug>(coc-format-selected)
-nmap <leader>n  <Plug>(coc-format-selected)
+nmap <Leader>n :ClangFormat<CR>
+xmap <Leader>n :ClangFormat<CR>
+" xmap <leader>n  <Plug>(coc-format-selected)
+" nmap <leader>n  <Plug>(coc-format-selected)
 "
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
@@ -44,9 +46,11 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
-" Using CocList
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>qf  <Plug>(coc-fix-current)
 " Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions
 nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 " Show commands

@@ -86,10 +86,13 @@ nnoremap <silent> <leader>b :Buffers<CR>
 "" Clean search (highlight)
 nnoremap <silent> <leader><space> :noh<cr>
 
-nnoremap <silent> <leader>p :FZF -m<CR>
+nnoremap <silent> <leader>p :Files<CR>
 nnoremap <silent> <leader>t :GFiles<CR>
 nnoremap <silent> <leader>r :Rg<CR>
 nnoremap <silent> <Leader>* :Rg <C-R><C-W><CR>
+nnoremap <silent> <leader>gg :Ggrep<space>
+
+nnoremap <C-n> :NERDTreeToggle<CR>
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv

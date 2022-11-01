@@ -1,5 +1,5 @@
 set termguicolors
-let $BAT_THEME='gruvbox-dark'
+let $BAT_THEME='Solarized (light)'
 syntax enable
 set nowrap
 set ruler
@@ -12,8 +12,9 @@ set gcr=n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20
 let g:indentLine_char = '│'
 let g:indentLine_concealcursor = ''
 
-set background=dark
-colorscheme gruvbox
+let g:gruvbox_contrast_dark="hard"
+set background=light
+colorscheme shirotelin
 set number relativenumber
 
 hi cursorlinenr guibg=none ctermbg=none

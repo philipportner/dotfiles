@@ -17,6 +17,7 @@ set clipboard+=unnamedplus
 "" Fix backspace indent
 set backspace=indent,eol,start
 
+autocmd QuickFixCmdPost *grep* cwindow
 set tags=./tags;
 let g:gutentags_ctags_exclude_wildignore = 1
 let g:gutentags_ctags_exclude = [
@@ -97,8 +98,11 @@ else
 endif
 
 
+let g:git_messenger_floating_win_opts = { 'border': 'single' }
+let g:git_messenger_popup_content_margins = v:false
 let g:git_messenger_always_into_popup=v:true
-" let g:fzf_preview_window = 'up:30%'
+let g:fzf_preview_window = 'right:50%'
+" let g:fzf_layout = { 'down': '20%' }
 function! s:build_quickfix_list(lines)
   call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
   copen

@@ -32,13 +32,14 @@
     "list.insertMappings": {
         "<C-c>": "do:exit"
     },
-    "git.addGBlameToVirtualText": true,
+    "git.addGBlameToVirtualText": false,
     "git.addedSign.hlGroup": "GitGutterAdd",
     "git.changedSign.hlGroup": "GitGutterChange",
     "git.removedSign.hlGroup": "GitGutterDelete",
     "git.topRemovedSign.hlGroup": "GitGutterDelete",
     "git.enableGutters": false,
     "clangd.path": "/home/phil/.config/coc/extensions/coc-clangd-data/install/12.0.0/clangd_12.0.0/bin/clangd",
+    // "clangd.arguments": ["-std=c++17"],
     "codeLens.enable": true,
     "suggest.enablePreview": true
 }
