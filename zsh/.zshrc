@@ -49,10 +49,12 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 export SYSTEMDS_ROOT=/home/phil/Documents/systemds
 export PATH=$SYSTEMDS_ROOT/bin:$PATH
 export NNN_PLUG='f:fzopen;p:mocplay;d:diffs;t:nmount;v:feh;j:autojump'
-export BAT_THEME="Solarized (light)"
+export BAT_THEME="Visual Studio Dark+"
 export NVM_DIR="$HOME/.nvm"
-# export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-#     --color=fg:#4d4d4c,bg:#eeeeee,hl:#b74951
-#     --color=fg+:#4d4d4c,bg+:#e8e8e8,hl+:#b74951
-#     --color=info:#4271ae,prompt:#8959a8,pointer:#87005f
-#     --color=marker:#4271ae,spinner:#4271ae,header:#4271ae'
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+  --color fg:#ebdbb2,bg:#1e1e1e,hl:#fabd2f,fg+:#ebdbb2,bg+:#3c3836,hl+:#fabd2f
+  --color info:#83a598,prompt:#bdae93,spinner:#fabd2f,pointer:#83a598,marker:#fe8019,header:#665c54'
+    # --color=fg:#4d4d4c,bg:#eeeeee,hl:#b74951
+    # --color=fg+:#4d4d4c,bg+:#e8e8e8,hl+:#b74951
+    # --color=info:#4271ae,prompt:#8959a8,pointer:#87005f
+    # --color=marker:#4271ae,spinner:#4271ae,header:#4271ae'

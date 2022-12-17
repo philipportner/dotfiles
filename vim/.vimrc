@@ -16,13 +16,14 @@ Plug 'sheerun/vim-polyglot'
 Plug 'antiagainst/vim-tablegen'
 Plug 'tie/llvm.vim'
 Plug 'vimoxide/vim-cinnabar'
-" Plug 'preservim/nerdtree'
+Plug 'preservim/nerdtree'
 
 " Colorschemes
 Plug 'morhetz/gruvbox'
 Plug 'lifepillar/vim-solarized8'
 Plug 'Mofiqul/vscode.nvim'
 Plug 'yasukotelin/shirotelin'
+Plug 'NLKNguyen/papercolor-theme'
 
 " EDITING
 Plug 'puremourning/vimspector'
@@ -45,6 +46,7 @@ Plug 'rhysd/vim-clang-format'
 " https://github.com/searleser97/cpbooster
 Plug 'nathom/filetype.nvim'
 Plug 'dstein64/vim-startuptime'
+Plug 'jikkujose/vim-visincr'
 call plug#end()
 
 " lua require('leap').add_default_mappings()

@@ -32,7 +32,7 @@
     "list.insertMappings": {
         "<C-c>": "do:exit"
     },
-    "git.addGBlameToVirtualText": false,
+    "git.addGBlameToVirtualText": true,
     "git.addedSign.hlGroup": "GitGutterAdd",
     "git.changedSign.hlGroup": "GitGutterChange",
     "git.removedSign.hlGroup": "GitGutterDelete",
