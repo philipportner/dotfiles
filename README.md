@@ -39,4 +39,5 @@ I use `GNU stow` to manage my dotfiles.
 - bat
 - zathura
 - exa
-
+- xclip
+- flameshot
