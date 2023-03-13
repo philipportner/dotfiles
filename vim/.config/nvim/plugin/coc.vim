@@ -6,12 +6,17 @@ set shortmess+=c
 set guicursor=n:blinkon1
 
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-function! s:check_back_space() abort
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
@@ -23,9 +28,6 @@ xmap <Leader>n :ClangFormat<CR>
 " xmap <leader>n  <Plug>(coc-format-selected)
 " nmap <leader>n  <Plug>(coc-format-selected)
 "
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 imap <C-l> <Plug>(coc-snippets-expand)
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
@@ -75,9 +77,7 @@ let g:coc_global_extensions = [
             \ 'coc-snippets',
             \ 'coc-texlab',
             \ 'coc-vimlsp',
-            \ 'coc-lists',
             \ 'coc-git',
-            \ 'coc-clangd',
             \ 'coc-rust-analyzer',
             \ 'coc-java',
             \ 'coc-java-debug',

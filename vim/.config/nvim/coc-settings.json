@@ -20,7 +20,7 @@
     },
     "diagnostic.virtualText": false,
     "diagnostic.virtualTextCurrentLineOnly": true,
-    "suggest.maxCompleteItemCount": 15,
+    // "suggest.maxCompleteItemCount": 15,
 
     "java.home": "/usr/lib/jvm/jdk-11/",
     "java.trace.server": "verbose",
