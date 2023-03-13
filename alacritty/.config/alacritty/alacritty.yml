@@ -85,14 +85,14 @@ font:
     # Font family
     #
     # Default:
-    #   - (macOS) Menlo
+    #   - (macOS) Iosevka FixedSS07
     #   - (Linux) monospace
-    #   - (Windows) Jetbrains Mono
-    family: Jetbrains Mono
+    #   - (Windows) Iosevka FixedSS07 Nerd Font
+    family: IosevkaFixedSS07
 
     # (r io.Reader)
     # The `style` can be specified to pick a specific face.
-    style: Medium
+    style: Normal
 
   # Bold font face
   bold:
@@ -100,7 +100,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Jetbrains Mono
+    family: IosevkaFixedSS07
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -111,7 +111,7 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Jetbrains Mono
+    family: IosevkaFixedSS07
 
     # }{()} <> ? ! () [] {}
     # () {}
