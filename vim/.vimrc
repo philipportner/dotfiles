@@ -16,7 +16,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'antiagainst/vim-tablegen'
 Plug 'tie/llvm.vim'
 Plug 'preservim/nerdtree'
-Plug 'wellle/context.vim'
 
 " Colorschemes
 Plug 'morhetz/gruvbox'
