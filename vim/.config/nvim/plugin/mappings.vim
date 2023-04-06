@@ -42,8 +42,8 @@ nmap <leader>do :VimspectorShowOutput
 nnoremap <silent> <C-w>w :ZoomWinTabToggle<CR>
 
 " FuGITive
-nmap <leader>gh :diffget //3<CR>
-nmap <leader>gu :diffget //2<CR>
+nmap <leader>gl :diffget LOCAL<CR>
+nmap <leader>gr :diffget REMOTE<CR>
 nmap <leader>gs :G<CR>
 nmap <leader>gc :GCommit<CR>
 nmap <leader>gv <Plug>(GitGutterPreviewHunk)

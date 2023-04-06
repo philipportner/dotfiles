@@ -88,11 +88,13 @@ font:
     #   - (macOS) Iosevka FixedSS07
     #   - (Linux) monospace
     #   - (Windows) Iosevka FixedSS07 Nerd Font
-    family: IosevkaFixedSS07
+    family: pragmatapromonoliga
 
     # (r io.Reader)
     # The `style` can be specified to pick a specific face.
-    style: Normal
+    style: normal
+
+      # -> !=
 
   # Bold font face
   bold:
@@ -100,7 +102,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: IosevkaFixedSS07
+    family: pragmatapromonoliga
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -111,9 +113,9 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: IosevkaFixedSS07
+    family: pragmatapromonoliga
 
-    # }{()} <> ? ! () [] {}
+    # }){()} <> ? ! () [] {}
     # () {}
     # {
     #
@@ -130,8 +132,8 @@ font:
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
   offset:
-    x: -0
-    y: -0
+    x: 0
+    y: 0
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
@@ -159,36 +161,7 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
-# Colors (Modus)
 schemes:
-solarized: &solarized
-  # Default colors
-  primary:
-    background: '0xfdf6e3'
-    foreground: '0x586e75'
-
-  # Normal colors
-  normal:
-    black:   '0x073642'
-    red:     '0xdc322f'
-    green:   '0x859900'
-    yellow:  '0xb58900'
-    blue:    '0x268bd2'
-    magenta: '0xd33682'
-    cyan:    '0x2aa198'
-    white:   '0xeee8d5'
-
-  # Bright colors
-  bright:
-    black:   '0x002b36'
-    red:     '0xcb4b16'
-    green:   '0x586e75'
-    yellow:  '0x657b83'
-    blue:    '0x839496'
-    magenta: '0x6c71c4'
-    cyan:    '0x93a1a1'
-    white:   '0xfdf6e3'
-
 gruvbox: &gruvbox
   primary:
     # default contrast: background = '0x282828'
@@ -232,92 +205,6 @@ gruvbox: &gruvbox
    magenta: '0x80638e'
    cyan:    '0x497e7a'
    white:   '0x9a9a9a'
-  
-modus-vivendi: &dark
-  # Default colors
-  primary:
-    background: '#000000'
-    foreground: '#ffffff'
-
-  cursor:
-    text: '#000000'
-    background: '#777777'
-
-  # Normal colors (except green it is from intense colors)
-  normal:
-    black:   '#000000'
-    red:     '#ff8059'
-    green:   '#00fc50'
-    yellow:  '#eecc00'
-    blue:    '#29aeff'
-    magenta: '#feacd0'
-    cyan:    '#00d3d0'
-    white:   '#eeeeee'
-
-  # Bright colors [all the faint colors in the modus theme]
-  bright:
-    black:   '#555555'
-    red:     '#ffa0a0'
-    green:   '#88cf88'
-    yellow:  '#d2b580'
-    blue:    '#92baff'
-    magenta: '#e0b2d6'
-    cyan:    '#a0bfdf'
-    white:   '#ffffff'
-
-  # dim [all the intense colors in modus theme]
-  dim:
-    black:   '#222222'
-    red:     '#fb6859'
-    green:   '#00fc50'
-    yellow:  '#ffdd00'
-    blue:    '#00a2ff'
-    magenta: '#ff8bd4'
-    cyan:    '#30ffc0'
-    white:   '#dddddd'
-
-modus-operandi: &light
-  # Default colors
-  primary:
-    background: '#ffffff'
-    foreground: '#000000'
-
-  cursor:
-    text: '#ffffff'
-    background: '#777777'
-
-  # Normal colors (except green it is from intense colors)
-  normal:
-    black:   '#000000'
-    red:     '#a60000'
-    green:   '#006800'
-    yellow:  '#813e00'
-    blue:    '#0030a6'
-    magenta: '#721045'
-    cyan:    '#00538b'
-    white:   '#eeeeee'
-
-  # Bright colors [all the faint colors in the modus theme]
-  bright:
-    black:   '#555555'
-    red:     '#7f1010'
-    green:   '#104410'
-    yellow:  '#5f4400'
-    blue:    '#002f88'
-    magenta: '#752f50'
-    cyan:    '#12506f'
-    white:   '#ffffff'
-
-  # dim [all the intense colors in modus theme]
-  dim:
-    black:   '#222222'
-    red:     '#b60000'
-    green:   '#006800'
-    yellow:  '#904200'
-    blue:    '#1111ee'
-    magenta: '#7000e0'
-    cyan:    '#205b93'
-    white:   '#dddddd'
 
 solarized_light: &solarized_light
   # Default colors
@@ -362,7 +249,36 @@ dark_plus: &dark_plus
     magenta: '0xC586C0'
     cyan:    '0x9CDCFE'
     white:   '0xD4D4D4'
-colors: *dark_plus
+
+solarized: &solarized
+  # Default colors
+  primary:
+    background: '0x1E1E1E'
+    foreground: '0xD4D4D4'
+
+  # Normal colors
+  normal:
+    black:   '0x073642'
+    red:     '0xdc322f'
+    green:   '0x859900'
+    yellow:  '0xb58900'
+    blue:    '0x268bd2'
+    magenta: '0xd33682'
+    cyan:    '0x2aa198'
+    white:   '0xeee8d5'
+
+  # Bright colors
+  bright:
+    black:   '0x515151'
+    red:     '0xcb4b16'
+    green:   '0x586e75'
+    yellow:  '0x657b83'
+    blue:    '0x839496'
+    magenta: '0x6c71c4'
+    cyan:    '0x93a1a1'
+    white:   '0xfdf6e3'
+
+colors: *solarized
 
 
 # Indexed Colors
@@ -404,7 +320,7 @@ bell:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 1.0
+background_opacity: 0.85
 
 # Mouse bindings
 #

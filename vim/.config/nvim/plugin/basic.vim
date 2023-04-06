@@ -98,31 +98,17 @@ else
 endif
 
 
-let g:git_messenger_floating_win_opts = { 'border': 'single' }
+let g:git_messenger_floating_win_opts = { 'border': 'rounded' }
 let g:git_messenger_popup_content_margins = v:false
 let g:git_messenger_always_into_popup=v:true
 let g:fzf_preview_window = 'right:50%'
 " let g:fzf_layout = { 'down': '20%' }
-
+let $FZF_PREVIEW_COMMAND="COLORTERM=truecolor bat --style=auto --color=always {}" 
 let g:fzf_action = {
   \ 'ctrl-q': 'fill_quickfix',
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
 
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 au BufRead,BufNewFile *.nlogo set filetype=nlogo

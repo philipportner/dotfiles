@@ -1,5 +1,5 @@
 set termguicolors
-let $BAT_THEME='Visual Studio Dark+'
+let $BAT_THEME='Solarized (dark)'
 syntax enable
 set nowrap
 set ruler
@@ -11,14 +11,24 @@ let g:coc_disable_transparent_cursor = 1
 set gcr=n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20
 let g:indentLine_char = '│'
 let g:indentLine_concealcursor = ''
-" let g:fzf_colors = { 'bg+': ['bg', 'bg'] }
+
+lua << EOF
+  require('neosolarized').setup({
+    comment_italics = true,
+    background_set = false,
+  })
+EOF
 
 let g:gruvbox_contrast_dark="hard"
 set background=dark
-colorscheme vscode
+colorscheme neosolarized
 set number relativenumber
-hi Function guifg=#9cdcfe
-" hi normal guibg=#ffffff
+hi normal guifg=#bbbbbb
+" hi Function guifg=#9cdcfe
+"
+hi DiffAdd guibg=none
+hi DiffDelete guibg=none
+hi NeogitHunkHeaderHighlight guibg=none
 
 hi cursorlinenr guibg=none ctermbg=none
 hi cursorline guibg=none ctermbg=none cterm=none
