@@ -88,9 +88,10 @@ nnoremap <silent> <leader><space> :noh<cr>
 
 nnoremap <silent> <leader>p :Files<CR>
 nnoremap <silent> <leader>t :GFiles<CR>
-nnoremap <silent> <leader>r :Rg<CR>
+nnoremap <silent> <leader>r :GGrep<CR>
+nnoremap <silent> <leader>R :Rg<CR>
 nnoremap <silent> <Leader>* :Rg <C-R><C-W><CR>
-nnoremap <silent> <leader>gg :Ggrep<space>
+nnoremap <silent> <leader>gg :GGrep<space>
 
 nnoremap <C-n> :NERDTreeToggle<CR>
 
