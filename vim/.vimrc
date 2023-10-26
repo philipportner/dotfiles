@@ -6,16 +6,19 @@ Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-gitgutter'
 " Plug 'rhysd/conflict-marker.vim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'TimUntersberger/neogit'
+" Plug 'NeogitOrg/neogit'
 " >= 0.7.0
-" Plug 'sindrets/diffview.nvim'
+Plug 'sindrets/diffview.nvim'
 
 " VISUAL
 Plug 'troydm/zoomwintab.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'antiagainst/vim-tablegen'
 Plug 'tie/llvm.vim'
-Plug 'preservim/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'preservim/nerdtree'
 
 " Colorschemes
 Plug 'morhetz/gruvbox'
@@ -45,6 +48,10 @@ Plug 'rhysd/vim-clang-format'
 Plug 'nathom/filetype.nvim'
 Plug 'dstein64/vim-startuptime'
 Plug 'jikkujose/vim-visincr'
+Plug 'vimwiki/vimwiki'
+Plug 'justinmk/vim-sneak'
+" Plug 'nvim-neorg/neorg'
+
 call plug#end()
 
 " lua require('leap').add_default_mappings()

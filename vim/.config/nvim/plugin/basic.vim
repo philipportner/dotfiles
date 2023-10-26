@@ -14,6 +14,12 @@ let g:vimspector_enable_mappings = 'HUMAN'
 
 set clipboard+=unnamedplus
 
+" lua << EOF
+" local neogit = require('neogit')
+"
+" neogit.setup {}
+" EOF
+
 "" Fix backspace indent
 set backspace=indent,eol,start
 
@@ -29,6 +35,19 @@ let g:vimtex_view_method='zathura'
 " let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
+let g:vimtex_compiler_method = 'latexmk'
+let g:vimtex_compiler_latexmk = {
+            \ 'options' : [
+                \   '-g',
+                \   '-pdf',
+                \   '-shell-escape',
+                \   '-verbose',
+                \   '-file-line-error',
+                \   '-synctex=1',
+                \   '-interaction=nonstopmode',
+                \ ],
+                \}
+let g:vimtex_syntax_packages = {'minted': {'load': 2}}
 " let g:polyglot_disabled = ['latex']
 
 " set tags=tags;/
@@ -116,3 +135,5 @@ command! -bang -nargs=* GGrep
   \   'git grep --line-number -- '.shellescape(<q-args>), 0,
   \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 au BufRead,BufNewFile *.nlogo set filetype=nlogo
+
+let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]

@@ -12,20 +12,24 @@ set gcr=n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20
 let g:indentLine_char = '│'
 let g:indentLine_concealcursor = ''
 
-lua << EOF
-  require('neosolarized').setup({
-    comment_italics = true,
-    background_set = false,
-  })
-EOF
+"lua << EOF
+" require'nvim-treesitter.configs'.setup {
+"     highlight = {
+"         enable = false,
+"         additional_vim_regex_highlighting = false,
+"     },
+" }
+"EOF
 
-let g:gruvbox_contrast_dark="hard"
+
+let g:gruvbox_contrast_dark="normal"
 set background=dark
 colorscheme neosolarized
 set number relativenumber
-hi normal guifg=#bbbbbb
+" hi normal guifg=#bbbbbb
 " hi Function guifg=#9cdcfe
-"
+
+
 hi DiffAdd guibg=none
 hi DiffDelete guibg=none
 hi NeogitHunkHeaderHighlight guibg=none
@@ -43,3 +47,10 @@ hi GitGutterDelete guifg=#fb4934 guibg=none ctermfg=1
 set fillchars=fold:\
 set fillchars=vert:\|
 set laststatus=2
+
+lua << EOF
+  require('neosolarized').setup({
+    comment_italics = true,
+    background_set = false,
+  })
+EOF

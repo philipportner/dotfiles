@@ -34,10 +34,12 @@ I use `GNU stow` to manage my dotfiles.
 - pylint
 - ranger
 - Jetbrains products
-- SF Mono
+- PragmataPro
 - tree
 - bat
 - zathura
 - exa
 - xclip
 - flameshot
+- autojump
+- TODO: could lnav be useful?
