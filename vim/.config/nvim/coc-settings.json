@@ -1,25 +1,6 @@
 {
-    "languageserver": {
-        // "ccls": {
-        //     "command": "ccls",
-        //     "filetypes": ["c", "cpp", "objc", "objcpp"],
-        //     "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
-        //     "initializationOptions": {
-        //         "cache": {
-        //             "directory": "/tmp/ccls"
-        //         },
-        //         "clang": {
-        //             "extraArgs": [
-        //                 "-I",
-        //                 "/home/phil/Documents/tugraz/RTOS/smartos/RTOS_Public_SS21/middleware/include"
-        //             ]
-        //         },
-        //         "highlight": { "lsRanges" : true }
-        //     }
-        // }
-    },
-    "diagnostic.virtualText": false,
-    "diagnostic.virtualTextCurrentLineOnly": true,
+    // "diagnostic.virtualText": true,
+    // "diagnostic.virtualTextCurrentLineOnly": true,
     // "suggest.maxCompleteItemCount": 15,
 
     "java.home": "/usr/lib/jvm/jdk-11/",
@@ -38,8 +19,8 @@
     "git.removedSign.hlGroup": "GitGutterDelete",
     "git.topRemovedSign.hlGroup": "GitGutterDelete",
     "git.enableGutters": false,
-    "clangd.path": "/home/phil/.config/coc/extensions/coc-clangd-data/install/12.0.0/clangd_12.0.0/bin/clangd",
+    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/16.0.2/clangd_16.0.2/bin/clangd",
     // "clangd.arguments": ["-std=c++17"],
     "codeLens.enable": true,
-    "suggest.enablePreview": true
+    "inlayHint.enable": false
 }

@@ -5,7 +5,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-gitgutter'
 " Plug 'rhysd/conflict-marker.vim'
-Plug 'nvim-lua/plenary.nvim'
+" Plug 'nvim-lua/plenary.nvim'
 " Plug 'NeogitOrg/neogit'
 " >= 0.7.0
 Plug 'sindrets/diffview.nvim'
@@ -15,42 +15,34 @@ Plug 'troydm/zoomwintab.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'antiagainst/vim-tablegen'
 Plug 'tie/llvm.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" Plug 'preservim/nerdtree'
+Plug 'preservim/nerdtree'
+" Plug 'itchyny/lightline.vim'
 
 " Colorschemes
 Plug 'morhetz/gruvbox'
 Plug 'Mofiqul/vscode.nvim'
-Plug 'tjdevries/colorbuddy.nvim'
-Plug 'git@github.com:philipportner/neosolarized.nvim.git'
 
 " EDITING
 " Plug 'puremourning/vimspector'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'skywind3000/gutentags_plus'
 Plug 'ericcurtin/CurtineIncSw.vim'
 Plug 'tpope/vim-surround'
 Plug 'lervag/vimtex'
-" Plug 'ggandor/leap.nvim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/tagbar'
 Plug 'scrooloose/nerdcommenter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'vhdirk/vim-cmake'
-Plug 'jiangmiao/auto-pairs'
-Plug 'honza/vim-snippets'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'rhysd/vim-clang-format'
 " https://github.com/searleser97/cpbooster
-Plug 'nathom/filetype.nvim'
 Plug 'dstein64/vim-startuptime'
 Plug 'jikkujose/vim-visincr'
 Plug 'vimwiki/vimwiki'
 Plug 'justinmk/vim-sneak'
-" Plug 'nvim-neorg/neorg'
+Plug 'kevinhwang91/nvim-bqf'
 
 call plug#end()
 

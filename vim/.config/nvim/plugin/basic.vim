@@ -14,15 +14,10 @@ let g:vimspector_enable_mappings = 'HUMAN'
 
 set clipboard+=unnamedplus
 
-" lua << EOF
-" local neogit = require('neogit')
-"
-" neogit.setup {}
-" EOF
 
 "" Fix backspace indent
 set backspace=indent,eol,start
-
+au BufRead,BufNewFile *.mlir setfiletype mlir
 autocmd QuickFixCmdPost *grep* cwindow
 set tags=./tags;
 let g:gutentags_ctags_exclude_wildignore = 1
@@ -33,7 +28,7 @@ let g:gutentags_ctags_exclude = [
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 " let g:vimtex_quickfix_mode=0
-set conceallevel=1
+set conceallevel=3
 let g:tex_conceal='abdmg'
 let g:vimtex_compiler_method = 'latexmk'
 let g:vimtex_compiler_latexmk = {
@@ -123,8 +118,15 @@ let g:git_messenger_always_into_popup=v:true
 let g:fzf_preview_window = 'right:50%'
 " let g:fzf_layout = { 'down': '20%' }
 let $FZF_PREVIEW_COMMAND="COLORTERM=truecolor bat --style=auto --color=always {}" 
+let $FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/**"'
+
+function! s:build_quickfix_list(lines)
+  call setqflist(map(copy(a:lines), '{ "filename": v:val, "lnum": 1 }'))
+  copen
+  cc
+endfunction
 let g:fzf_action = {
-  \ 'ctrl-q': 'fill_quickfix',
+  \ 'ctrl-q': function('s:build_quickfix_list'),
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
@@ -136,4 +138,9 @@ command! -bang -nargs=* GGrep
   \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 au BufRead,BufNewFile *.nlogo set filetype=nlogo
 
-let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
+" lua << EOF
+" local neogit = require('neogit')
+"
+" neogit.setup {}
+" EOF
+" let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]

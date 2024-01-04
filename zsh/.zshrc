@@ -8,6 +8,7 @@ export PATH=$PATH:~/.local/bin
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:~/go/bin
 export PATH=$PATH:~/.platformio/penv/bin
+export PYTHONPATH="$PYTHONPATH:$PWD/src/:/usr/lib/llvm-15/build/utils/lit/"
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
@@ -29,11 +30,12 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 export EDITOR=/usr/bin/nvim
-export JAVA_HOME='/usr/lib/jvm/java-8-openjdk-amd64/'
+# export JAVA_HOME='/usr/lib/jvm/java-8-openjdk-amd64/'
 
 alias nv="nvim"
 alias grh="git reset --hard"
-alias gstnosub="git status --ignore-submodules"
+alias gg="git grep"
+alias gstns="git status --ignore-submodules"
 alias gl="git lg"
 alias ls='exa'
 alias tm="tmux"
@@ -42,21 +44,14 @@ alias t2='exa -T -L 2 -a'
 alias t3='exa -T -L 3 -a'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+# export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/**"'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export SYSTEMDS_ROOT=/home/phil/Documents/systemds
 export PATH=$SYSTEMDS_ROOT/bin:$PATH
 export NNN_PLUG='f:fzopen;p:mocplay;d:diffs;t:nmount;v:feh;j:autojump'
-export BAT_THEME="Solarized (dark)"
+export BAT_THEME="gruvbox-dark"
 export NVM_DIR="$HOME/.nvm"
-export FZF_DEFAULT_OPTS='
-  --color=bg+:-1,gutter:-1,bg:-1,spinner:#719e07
-  --color=fg:#839496,header:#586e75,info:#cb4b16,pointer:#719e07
-  --color=marker:#719e07,fg+:#839496,prompt:#719e07,hl+:#719e07
-  '
-    # --color=fg:#4d4d4c,bg:#eeeeee,hl:#b74951
-    # --color=fg+:#4d4d4c,bg+:#e8e8e8,hl+:#b74951
-    # --color=info:#4271ae,prompt:#8959a8,pointer:#87005f
-    # --color=marker:#4271ae,spinner:#4271ae,header:#4271ae'
+export FZF_DEFAULT_OPTS='--color=bg+:#3c3836,bg:#282828,spinner:#fb4934,hl:#928374,fg:#ebdbb2,header:#928374,info:#8ec07c,pointer:#fb4934,marker:#fb4934,fg+:#ebdbb2,prompt:#fb4934,hl+:#fb4934'
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
