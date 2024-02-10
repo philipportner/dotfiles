@@ -67,4 +67,5 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export PATH="/Users/philipportner/Library/Python/3.9/bin:$PATH"
 export PATH="/opt/homebrew/opt/llvm/bin/:$PATH"
+export PATH="/opt/homebrew/opt/ccache/libexec:$PATH"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/homebrew/Cellar/libevent/2.1.12_1/lib/"
