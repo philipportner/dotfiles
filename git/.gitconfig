@@ -1,6 +1,7 @@
 [user]
 	email = ortner@tu-berlin.de
 	name = philipportner
+	signingKey = /Users/philipportner/.ssh/github.pub
 [merge]
     tool = nvimdiff4
     prompt = false
@@ -11,6 +12,7 @@
     lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
     lg3 = log --color --graph --date=format:'%Y-%m-%d %H:%M:%S' --pretty=format:'%h -%d %s (%ad) <%an>'
     lg = !"git lg1"
+	fpush = push
 [commit]
 	template = /Users/philipportner/.commit_template
 
@@ -38,3 +40,15 @@
 	lineNumber = true
 ; [url "https://github.com/"]
 ;     insteadOf = git://github.com/
+[maintenance]
+	repo = /Users/philipportner/dotfiles
+	repo = /Users/philipportner/Documents/projects/daphne
+[rerere]
+	enable = true
+	autoUpdate = true
+[branch]
+	sort = -committerdate
+[column]
+	ui = auto
+[gpg]
+	format = ssh
