@@ -2,6 +2,9 @@ map <Leader>gb :let &background = ( &background == "dark"? "light" : "dark" )<CR
 inoremap jj <esc>
 inoremap jk <esc>
 
+nmap <Leader>n :ClangFormat<CR>
+xmap <Leader>n :ClangFormat<CR>
+
 nnoremap n nzzzv
 nnoremap n nzzzv
 
@@ -58,8 +61,8 @@ map :E :e
 map :Q :q
 
 " Allows you to easily replace the current word and all its occurrences.
-nnoremap <leader>cr :%s/\<<C-r><C-w>\>/
-vnoremap <leader>cr y:%s/<C-r>"/
+" nnoremap <leader>cr :%s/\<<C-r><C-w>\>/
+" vnoremap <leader>cr y:%s/<C-r>"/
 
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
@@ -86,7 +89,7 @@ nnoremap <silent> <leader>b :Buffers<CR>
 "" Clean search (highlight)
 nnoremap <silent> <leader><space> :noh<cr>
 
-nnoremap <silent> <leader>p :Files<CR>
+nnoremap <silent> <leader>f :Files<CR>
 nnoremap <silent> <leader>t :GFiles<CR>
 nnoremap <silent> <leader>r :GGrep<CR>
 nnoremap <silent> <leader>R :Rg<CR>

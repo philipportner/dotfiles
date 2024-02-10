@@ -23,8 +23,6 @@ endfunction
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
-nmap <Leader>n :ClangFormat<CR>
-xmap <Leader>n :ClangFormat<CR>
 " xmap <leader>n  <Plug>(coc-format-selected)
 " nmap <leader>n  <Plug>(coc-format-selected)
 "
@@ -66,7 +64,7 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent> <space>P  :<C-u>CocListResume<CR>
 
 let g:coc_global_extensions = [
             \ 'coc-clangd',

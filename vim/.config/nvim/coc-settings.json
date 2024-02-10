@@ -3,7 +3,7 @@
     // "diagnostic.virtualTextCurrentLineOnly": true,
     // "suggest.maxCompleteItemCount": 15,
 
-    "java.home": "/usr/lib/jvm/jdk-11/",
+    // "java.home": "/usr/lib/jvm/jdk-11/",
     "java.trace.server": "verbose",
     "java.signatureHelp.enabled": true,
 
@@ -18,8 +18,10 @@
     "git.changedSign.hlGroup": "GitGutterChange",
     "git.removedSign.hlGroup": "GitGutterDelete",
     "git.topRemovedSign.hlGroup": "GitGutterDelete",
-    "git.enableGutters": false,
-    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/16.0.2/clangd_16.0.2/bin/clangd",
+    "git.enableGutters": true,
+    "clangd.compilationDatabasePath": "build/compile_commands.json",
+    // "clangd.arguments": [""],
+    "clangd.path": "/opt/homebrew/opt/llvm/bin//clangd",
     // "clangd.arguments": ["-std=c++17"],
     "codeLens.enable": true,
     "inlayHint.enable": false

@@ -12,11 +12,10 @@
     lg3 = log --color --graph --date=format:'%Y-%m-%d %H:%M:%S' --pretty=format:'%h -%d %s (%ad) <%an>'
     lg = !"git lg1"
 [commit]
-	template = /home/phil/.commit_template
+	template = /Users/philipportner/.commit_template
 
 [core]
     editor = nvim
-    pager = delta
 [interactive]
     diffFilter = delta --color-only --features=interactive
 
@@ -37,3 +36,5 @@
     hunk-header-style = file line-number syntax
 [grep]
 	lineNumber = true
+; [url "https://github.com/"]
+;     insteadOf = git://github.com/

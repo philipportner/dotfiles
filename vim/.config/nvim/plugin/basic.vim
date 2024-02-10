@@ -66,6 +66,7 @@ set listchars=tab:\ \ ,trail:·
 
 filetype plugin on
 filetype indent on
+set omnifunc=syntaxcomplete#Complete
 
 "" Map leader to space
 let mapleader=' '
