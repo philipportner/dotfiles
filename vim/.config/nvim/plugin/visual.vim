@@ -42,8 +42,9 @@ set nonumber
 " hi repeat guifg=#992c5c
 " hi Normal guibg=#ffffff
 hi NormalNC guibg=#ffffff
-" hi DiffAdd guibg=none
-" hi DiffDelete guibg=none
+hi DiffAdd guibg=none
+hi DiffDelete guibg=none
+hi DiffChange guibg=none
 " hi NeogitHunkHeaderHighlight guibg=none
 hi cursorlinenr guibg=none ctermbg=none
 hi cursorline guibg=none ctermbg=none cterm=none
