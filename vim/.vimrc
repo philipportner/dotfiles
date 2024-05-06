@@ -17,7 +17,7 @@ Plug 'preservim/nerdtree'
 " Colorschemes
 Plug 'morhetz/gruvbox'
 Plug 'miikanissi/modus-themes.nvim'
-Plug 'lunacookies/vim-colors-xcode'
+Plug 'yasukotelin/shirotelin'
 
 " EDITING
 " Plug 'puremourning/vimspector'
@@ -47,3 +47,4 @@ lua require('bqf').setup { preview = { winblend = 0, } }
 " lua require("cscope_maps").setup()
 " lua require('distant'):setup()
 " lua require('leap').add_default_mappings()
+" lua vim.cmd.colorscheme("dragon")

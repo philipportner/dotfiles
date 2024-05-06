@@ -5,6 +5,7 @@
 [merge]
     tool = nvimdiff4
     prompt = false
+	conflictstyle = zdiff3
 [mergetool "nvimdiff4"]
     cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 [alias]
@@ -14,6 +15,7 @@
     lg = !"git lg1"
 	fpush = push
 [commit]
+    verbose = true
 	template = /Users/philipportner/.commit_template
 
 [core]
@@ -52,3 +54,7 @@
 	ui = auto
 [gpg]
 	format = ssh
+[rebase]
+    autosquash = true
+[diff]
+    algorithm = histogram

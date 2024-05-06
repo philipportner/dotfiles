@@ -44,6 +44,12 @@ alias t2='exa -T -L 2 -a'
 alias t3='exa -T -L 3 -a'
 alias 001='ssh so001'
 alias 005='ssh so005'
+alias cpu='cpufetch --color 166,0,0:0,0,0:0,0,0:0,94,139:0,0,0'
+
+obj () {
+    objdump -rw -C -d $@ | nvim -
+}
+# perf stat -e cycles,branches,branch-misses,L1-icache-loads,L1-icache-loads-misses,iTLB-loads,iTLB-loads-misses -r 3 ./a.out
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/**"'
@@ -69,3 +75,5 @@ export PATH="/Users/philipportner/Library/Python/3.9/bin:$PATH"
 export PATH="/opt/homebrew/opt/llvm/bin/:$PATH"
 export PATH="/opt/homebrew/opt/ccache/libexec:$PATH"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/homebrew/Cellar/libevent/2.1.12_1/lib/"
+export MODULAR_HOME="/Users/philipportner/.modular"
+export PATH="/Users/philipportner/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
