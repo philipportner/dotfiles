@@ -1,9 +1,4 @@
 {
-    // "diagnostic.virtualText": true,
-    // "diagnostic.virtualTextCurrentLineOnly": true,
-    // "suggest.maxCompleteItemCount": 15,
-
-    "java.home": "/usr/lib/jvm/jdk-11/",
     "java.trace.server": "verbose",
     "java.signatureHelp.enabled": true,
 
@@ -19,7 +14,8 @@
     "git.removedSign.hlGroup": "GitGutterDelete",
     "git.topRemovedSign.hlGroup": "GitGutterDelete",
     "git.enableGutters": false,
-    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/16.0.2/clangd_16.0.2/bin/clangd",
+    "clangd.path": "/usr/bin/clangd-12",
+    //"clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/18.1.3/clangd_18.1.3/bin/clangd",
     // "clangd.arguments": ["-std=c++17"],
     "codeLens.enable": true,
     "inlayHint.enable": false

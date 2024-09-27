@@ -22,10 +22,11 @@ Plug 'preservim/nerdtree'
 " Colorschemes
 Plug 'morhetz/gruvbox'
 Plug 'Mofiqul/vscode.nvim'
+Plug 'miikanissi/modus-themes.nvim'
 
 " EDITING
 " Plug 'puremourning/vimspector'
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
 Plug 'ericcurtin/CurtineIncSw.vim'
 Plug 'tpope/vim-surround'
 Plug 'lervag/vimtex'
@@ -43,6 +44,8 @@ Plug 'jikkujose/vim-visincr'
 Plug 'vimwiki/vimwiki'
 Plug 'justinmk/vim-sneak'
 Plug 'kevinhwang91/nvim-bqf'
+Plug 'jiangmiao/auto-pairs'
+Plug 'Konfekt/FastFold'
 
 call plug#end()
 

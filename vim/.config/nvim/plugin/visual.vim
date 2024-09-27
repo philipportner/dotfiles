@@ -1,5 +1,5 @@
 set termguicolors
-let $BAT_THEME='gruvbox-dark'
+let $BAT_THEME='GitHub'
 syntax enable
 set nowrap
 set ruler
@@ -22,34 +22,40 @@ let g:vimwiki_listsyms = '✗○◐●✓'
 " }
 " EOF
 let g:gruvbox_contrast_dark="normal"
-set background=dark
+set background=light
 " let g:sonokai_diagnostic_text_highlight=1
 " let g:sonokai_better_performance = 1
-colorscheme gruvbox
+colorscheme modus
 au BufNewFile,BufRead *.daphne set filetype=llvm
 " Syntax highlight for CUDA
 au BufNewFile,BufRead *.cu set filetype=cuda
 au BufNewFile,BufRead *.cuh set filetype=cuda
-set number relativenumber
+" set number relativenumber
+set nonumber
 " hi Function guifg=#9cdcfe
 " hi Function guifg=#76cce0
-hi Function guifg=#83a598
+" hi Function guifg=#83a598
 " hi MatchParen guibg=#fc5d7c
-
+" hi function gui=none guifg=#0550ae
+" hi type guifg=#992c5c
+" hi cppModule guifg=#992c5c
+" hi repeat guifg=#992c5c
+" hi Normal guibg=#ffffff
+hi NormalNC guibg=#ffffff
 " hi DiffAdd guibg=none
 " hi DiffDelete guibg=none
 " hi NeogitHunkHeaderHighlight guibg=none
-
 hi cursorlinenr guibg=none ctermbg=none
 hi cursorline guibg=none ctermbg=none cterm=none
 hi signcolumn guibg=none ctermbg=none
 hi linenr guibg=none ctermbg=none
 hi VertSplit gui=none guibg=none guifg=b74951 ctermbg=none
 
-hi GitGutterAdd    guifg=#8ec07c guibg=none ctermfg=2
-hi GitGutterChange guifg=#83a598 guibg=none ctermfg=3
-hi GitGutterDelete guifg=#fb4934 guibg=none ctermfg=1
+hi GitGutterAdd    guifg=#8ec07c guibg=none
+hi GitGutterChange guifg=#83a598 guibg=none
+hi GitGutterDelete guifg=#fb4934 guibg=none
 
 set fillchars=fold:\
 set fillchars=vert:\|
 set laststatus=2
+

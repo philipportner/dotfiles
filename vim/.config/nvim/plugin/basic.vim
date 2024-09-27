@@ -115,8 +115,8 @@ endif
 let g:git_messenger_floating_win_opts = { 'border': 'rounded' }
 let g:git_messenger_popup_content_margins = v:false
 let g:git_messenger_always_into_popup=v:true
-let g:fzf_preview_window = 'right:50%'
-" let g:fzf_layout = { 'down': '20%' }
+let g:fzf_preview_window = ['right:hidden', 'ctrl-/']
+let g:fzf_layout = { 'down': '30%' }
 let $FZF_PREVIEW_COMMAND="COLORTERM=truecolor bat --style=auto --color=always {}" 
 let $FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/**"'
 
