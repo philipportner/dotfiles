@@ -1,6 +1,8 @@
 [user]
 	email = ortner@tu-berlin.de
 	name = philipportner
+	signingKey = /home/philipportner/.ssh/github.pub
+
 [merge]
     tool = nvimdiff4
     prompt = false
@@ -11,29 +13,23 @@
     lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
     lg3 = log --color --graph --date=format:'%Y-%m-%d %H:%M:%S' --pretty=format:'%h -%d %s (%ad) <%an>'
     lg = !"git lg1"
-[commit]
-	template = /home/phil/.commit_template
-
 [core]
     editor = nvim
-    pager = delta
-[interactive]
-    diffFilter = delta --color-only --features=interactive
-
-[delta]
-    features = decorations
-    navigate = true
-
-[delta "interactive"]
-    keep-plus-minus-markers = false
-
-[delta "decorations"]
-    commit-decoration-style = blue ol
-    commit-style = raw
-    file-style = omit
-    hunk-header-decoration-style = blue box
-    hunk-header-file-style = red
-    hunk-header-line-number-style = "#067a00"
-    hunk-header-style = file line-number syntax
 [grep]
 	lineNumber = true
+[maintenance]
+    repo = /home/philipportner/dotfiles
+    repo = /home/philipportner/daphne
+[rerere]
+	enable = true
+	autoUpdate = true
+[branch]
+	sort = -committerdate
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
+[checkout]
+	defaultRemote = origin
+[init]
+	defaultBranch = main
