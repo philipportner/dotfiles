@@ -1,5 +1,5 @@
 set termguicolors
-let $BAT_THEME='GitHub'
+let $BAT_THEME='modus'
 syntax enable
 set nowrap
 set ruler
@@ -26,6 +26,7 @@ set background=light
 " let g:sonokai_diagnostic_text_highlight=1
 " let g:sonokai_better_performance = 1
 colorscheme modus
+lua local neogit = require('neogit').setup {}
 au BufNewFile,BufRead *.daphne set filetype=llvm
 " Syntax highlight for CUDA
 au BufNewFile,BufRead *.cu set filetype=cuda

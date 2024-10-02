@@ -5,8 +5,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-gitgutter'
 " Plug 'rhysd/conflict-marker.vim'
-" Plug 'nvim-lua/plenary.nvim'
-" Plug 'NeogitOrg/neogit'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'NeogitOrg/neogit'
 " >= 0.7.0
 Plug 'sindrets/diffview.nvim'
 
