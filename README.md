@@ -28,12 +28,10 @@ I use `GNU stow` to manage my dotfiles.
 - alacritty
 - tmux
 - GNU stow
-- emacs
 - ctags
 - clang-format
 - pylint
 - ranger
-- Jetbrains products
 - PragmataPro
 - tree
 - bat
@@ -42,4 +40,4 @@ I use `GNU stow` to manage my dotfiles.
 - xclip
 - flameshot
 - autojump
-- TODO: could lnav be useful?
+- onefetch
