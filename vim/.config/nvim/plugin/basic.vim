@@ -17,6 +17,8 @@ set clipboard+=unnamedplus
 
 "" Fix backspace indent
 set backspace=indent,eol,start
+au BufReadPost *.daph set syntax=python
+au BufReadPost *.daphne set syntax=python
 au BufRead,BufNewFile *.mlir setfiletype mlir
 autocmd QuickFixCmdPost *grep* cwindow
 set tags=./tags;
