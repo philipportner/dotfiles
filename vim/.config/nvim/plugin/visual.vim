@@ -56,6 +56,9 @@ hi GitGutterAdd    guifg=#8ec07c guibg=none
 hi GitGutterChange guifg=#83a598 guibg=none
 hi GitGutterDelete guifg=#fb4934 guibg=none
 
+hi DiffviewStatusAdded guibg=none
+hi DiffviewStatusDeleted guibg=none
+
 set fillchars=fold:\
 set fillchars=vert:\|
 set laststatus=2
