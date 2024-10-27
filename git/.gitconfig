@@ -33,3 +33,5 @@
 	defaultRemote = origin
 [init]
 	defaultBranch = main
+[rebase]
+    updateRefs = true
