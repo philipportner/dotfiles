@@ -5,6 +5,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'sindrets/diffview.nvim'
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+Plug 'nvim-lua/plenary.nvim'
+Plug 'NeogitOrg/neogit'
 
 " VISUAL
 Plug 'troydm/zoomwintab.vim'
@@ -15,9 +18,13 @@ Plug 'tie/llvm.vim'
 Plug 'preservim/nerdtree'
 
 " Colorschemes
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
+Plug 'ellisonleao/gruvbox.nvim'
 Plug 'miikanissi/modus-themes.nvim'
 Plug 'yasukotelin/shirotelin'
+" Plug 'tjdevries/colorbuddy.nvim'
+" Plug 'svrana/neosolarized.nvim'
+" Plug 'git@github.com:philipportner/neosolarized.nvim.git'
 
 " EDITING
 " Plug 'puremourning/vimspector'
@@ -41,8 +48,12 @@ Plug 'vimwiki/vimwiki'
 Plug 'justinmk/vim-sneak'
 Plug 'kevinhwang91/nvim-bqf'
 Plug 'jiangmiao/auto-pairs'
+" Plug 'github/copilot.vim'
+
 call plug#end()
 lua require('bqf').setup { preview = { winblend = 0, } }
+
+" lua require('neosolarized').setup({ comment_italics = true, background_set = false, })
 " lua require("cscope_maps").setup({ disable_maps = false, skip_input_prompt = false,  prefix = "<C-c>"})
 " lua require("cscope_maps").setup()
 " lua require('distant'):setup()

@@ -25,24 +25,25 @@ let g:gutentags_ctags_exclude = [
   \'node_modules', '_build', 'build', 'CMakeFiles', '.mypy_cache', 'venv',
   \'*.md', '*.tex', '*.css', '*.html', '*.json', '*.xml', '*.xmls', '*.ui', '__pycache__', '.idea']
 
+let g:vimtex_view_method = 'skim'
 let g:tex_flavor='latex'
-let g:vimtex_view_method='zathura'
+" let g:vimtex_view_method='zathura'
 " let g:vimtex_quickfix_mode=0
-set conceallevel=3
+set conceallevel=0
 let g:tex_conceal='abdmg'
-let g:vimtex_compiler_method = 'latexmk'
-let g:vimtex_compiler_latexmk = {
-            \ 'options' : [
-                \   '-g',
-                \   '-pdf',
-                \   '-shell-escape',
-                \   '-verbose',
-                \   '-file-line-error',
-                \   '-synctex=1',
-                \   '-interaction=nonstopmode',
-                \ ],
-                \}
-let g:vimtex_syntax_packages = {'minted': {'load': 2}}
+" let g:vimtex_compiler_method = 'latexmk'
+" let g:vimtex_compiler_latexmk = {
+"             \ 'options' : [
+"                 \   '-g',
+"                 \   '-pdf',
+"                 \   '-shell-escape',
+"                 \   '-verbose',
+"                 \   '-file-line-error',
+"                 \   '-synctex=1',
+"                 \   '-interaction=nonstopmode',
+"                 \ ],
+"                 \}
+" let g:vimtex_syntax_packages = {'minted': {'load': 2}}
 " let g:polyglot_disabled = ['latex']
 
 " set tags=tags;/

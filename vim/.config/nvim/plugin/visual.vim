@@ -22,10 +22,12 @@ let g:vimwiki_listsyms = '✗○◐●✓'
 " EOF
 
 let g:gruvbox_contrast_dark="normal"
-set background=light
+set background=dark
 " let g:sonokai_diagnostic_text_highlight=1
 " let g:sonokai_better_performance = 1
-colorscheme modus_operandi
+colorscheme gruvbox
+
+lua require('neogit').setup {}
 au BufNewFile,BufRead *.daphne set filetype=llvm
 " Syntax highlight for CUDA
 au BufNewFile,BufRead *.cu set filetype=cuda
@@ -41,7 +43,7 @@ set nonumber
 " hi cppModule guifg=#992c5c
 " hi repeat guifg=#992c5c
 " hi Normal guibg=#ffffff
-hi NormalNC guibg=#ffffff
+" hi NormalNC guibg=#ffffff
 hi DiffAdd guibg=none
 hi DiffDelete guibg=none
 hi DiffChange guibg=none

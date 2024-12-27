@@ -16,7 +16,6 @@
 	fpush = push
 [commit]
     verbose = true
-	template = /Users/philipportner/.commit_template
 
 [core]
     editor = nvim
@@ -58,3 +57,5 @@
     autosquash = true
 [diff]
     algorithm = histogram
+	colorWords = true
+	wordRegex = \\w+|.

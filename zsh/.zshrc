@@ -37,13 +37,16 @@ alias grh="git reset --hard"
 alias gg="git grep -iG"
 alias gstns="git status --ignore-submodules"
 alias gl="git lg"
-alias ls='exa'
+alias gc="git add . && git commit -m '.' && git push"
+alias ls='eza'
 alias tm="tmux"
-alias t1='exa -T -L 1 -a'
-alias t2='exa -T -L 2 -a'
-alias t3='exa -T -L 3 -a'
+alias t1='eza -T -L 1 -a'
+alias t2='eza -T -L 2 -a'
+alias t3='eza -T -L 3 -a'
 alias 001='ssh so001'
 alias 005='ssh so005'
+alias 008='ssh so008'
+alias 012='ssh so012'
 alias cpu='cpufetch --color 166,0,0:0,0,0:0,0,0:0,94,139:0,0,0'
 
 obj () {

@@ -3,6 +3,7 @@
     // "diagnostic.virtualTextCurrentLineOnly": true,
     // "suggest.maxCompleteItemCount": 15,
 
+    "suggest.autoTrigger": "none",
     // "java.home": "/usr/lib/jvm/jdk-11/",
     "java.trace.server": "verbose",
     "java.signatureHelp.enabled": true,
@@ -19,7 +20,6 @@
     "git.removedSign.hlGroup": "GitGutterDelete",
     "git.topRemovedSign.hlGroup": "GitGutterDelete",
     "git.enableGutters": true,
-    "clangd.compilationDatabasePath": "build/compile_commands.json",
     // "clangd.arguments": [""],
     "clangd.path": "/opt/homebrew/opt/llvm/bin//clangd",
     // "clangd.arguments": ["-std=c++17"],
