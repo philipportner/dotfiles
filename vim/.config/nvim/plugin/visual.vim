@@ -22,10 +22,10 @@ let g:vimwiki_listsyms = '✗○◐●✓'
 " EOF
 
 let g:gruvbox_contrast_dark="normal"
-set background=dark
+set background=light
 " let g:sonokai_diagnostic_text_highlight=1
 " let g:sonokai_better_performance = 1
-colorscheme gruvbox
+colorscheme modus_operandi
 
 lua require('neogit').setup {}
 au BufNewFile,BufRead *.daphne set filetype=llvm
