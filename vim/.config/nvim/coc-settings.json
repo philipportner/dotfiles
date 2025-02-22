@@ -3,7 +3,6 @@
     // "diagnostic.virtualTextCurrentLineOnly": true,
     // "suggest.maxCompleteItemCount": 15,
 
-    "suggest.autoTrigger": "none",
     // "java.home": "/usr/lib/jvm/jdk-11/",
     "java.trace.server": "verbose",
     "java.signatureHelp.enabled": true,

@@ -89,7 +89,7 @@ nnoremap <silent> <leader>b :Buffers<CR>
 "" Clean search (highlight)
 nnoremap <silent> <leader><space> :noh<cr>
 
-nnoremap <silent> <leader>f :Files<CR>
+nnoremap <silent> <leader>p :Files<CR>
 nnoremap <silent> <leader>t :GFiles<CR>
 nnoremap <silent> <leader>r :GGrep<CR>
 nnoremap <silent> <leader>R :Rg<CR>

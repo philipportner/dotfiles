@@ -6,7 +6,6 @@ set ruler
 set number
 set list
 set showmode
-set wildoptions-=pum
 let g:coc_disable_transparent_cursor = 1
 set gcr=n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20
 let g:indentLine_char = '│'

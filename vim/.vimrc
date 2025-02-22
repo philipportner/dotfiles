@@ -46,12 +46,10 @@ Plug 'dstein64/vim-startuptime'
 Plug 'jikkujose/vim-visincr'
 Plug 'vimwiki/vimwiki'
 Plug 'justinmk/vim-sneak'
-Plug 'kevinhwang91/nvim-bqf'
 Plug 'jiangmiao/auto-pairs'
 " Plug 'github/copilot.vim'
 
 call plug#end()
-lua require('bqf').setup { preview = { winblend = 0, } }
 
 " lua require('neosolarized').setup({ comment_italics = true, background_set = false, })
 " lua require("cscope_maps").setup({ disable_maps = false, skip_input_prompt = false,  prefix = "<C-c>"})
