@@ -62,7 +62,7 @@ obj () {
 #export SYSTEMDS_ROOT=/home/phil/Documents/systemds
 #export PATH=$SYSTEMDS_ROOT/bin:$PATH
 #export NNN_PLUG='f:fzopen;p:mocplay;d:diffs;t:nmount;v:feh;j:autojump'
-#export BAT_THEME="gruvbox-dark"
+export BAT_THEME="modus_operandi"
 #export NVM_DIR="$HOME/.nvm"
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
     --color=fg:#4d4d4c,bg:#ffffff,hl:#d7005f

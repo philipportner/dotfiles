@@ -1,5 +1,5 @@
 set termguicolors
-let $BAT_THEME='GitHub'
+let $BAT_THEME='modus_operandi'
 syntax enable
 set nowrap
 set ruler
