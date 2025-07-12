@@ -28,7 +28,8 @@ let g:gutentags_ctags_exclude = [
 let g:vimtex_view_method = 'skim'
 let g:tex_flavor='latex'
 " let g:vimtex_view_method='zathura'
-" let g:vimtex_quickfix_mode=0
+let g:vimtex_quickfix_mode=0
+
 set conceallevel=0
 let g:tex_conceal='abdmg'
 " let g:vimtex_compiler_method = 'latexmk'
@@ -146,3 +147,5 @@ au BufRead,BufNewFile *.nlogo set filetype=nlogo
 " neogit.setup {}
 " EOF
 " let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
+
+let g:vimwiki_key_mappings = { 'table_mappings': 0 }

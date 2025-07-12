@@ -61,8 +61,8 @@ map :E :e
 map :Q :q
 
 " Allows you to easily replace the current word and all its occurrences.
-" nnoremap <leader>cr :%s/\<<C-r><C-w>\>/
-" vnoremap <leader>cr y:%s/<C-r>"/
+nnoremap <leader>cr :%s/\<<C-r><C-w>\>/
+vnoremap <leader>cr y:%s/<C-r>"/
 
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
@@ -91,8 +91,8 @@ nnoremap <silent> <leader><space> :noh<cr>
 
 nnoremap <silent> <leader>p :Files<CR>
 nnoremap <silent> <leader>t :GFiles<CR>
-nnoremap <silent> <leader>r :GGrep<CR>
-nnoremap <silent> <leader>R :Rg<CR>
+nnoremap <silent> <leader>R :GGrep<CR>
+nnoremap <silent> <leader>r :Rg<CR>
 nnoremap <silent> <Leader>* :Rg <C-R><C-W><CR>
 nnoremap <silent> <leader>gg :GGrep<space>
 

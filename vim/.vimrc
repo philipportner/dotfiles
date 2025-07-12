@@ -5,7 +5,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'sindrets/diffview.nvim'
-Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'nvim-lua/plenary.nvim'
 Plug 'NeogitOrg/neogit'
 
@@ -16,6 +15,7 @@ Plug 'antiagainst/vim-tablegen'
 Plug 'tie/llvm.vim'
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'preservim/nerdtree'
+" Plug 'lukas-reineke/indent-blankline.nvim'
 
 " Colorschemes
 " Plug 'morhetz/gruvbox'
@@ -29,8 +29,6 @@ Plug 'yasukotelin/shirotelin'
 " EDITING
 " Plug 'puremourning/vimspector'
 " Plug 'dhananjaylatkar/cscope_maps.nvim'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'ericcurtin/CurtineIncSw.vim'
 Plug 'tpope/vim-surround'
 Plug 'lervag/vimtex'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -43,11 +41,10 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'rhysd/vim-clang-format'
 " https://github.com/searleser97/cpbooster
 Plug 'dstein64/vim-startuptime'
-Plug 'jikkujose/vim-visincr'
 Plug 'vimwiki/vimwiki'
 Plug 'justinmk/vim-sneak'
 Plug 'jiangmiao/auto-pairs'
-" Plug 'github/copilot.vim'
+Plug 'augmentcode/augment.vim'
 
 call plug#end()
 

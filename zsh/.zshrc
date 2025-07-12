@@ -3,6 +3,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+export MANPAGER='nvim +Man!'
 export ZSH="$HOME/.oh-my-zsh"
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:/Users/philipportner/.local/bin
@@ -36,7 +37,7 @@ alias nv="nvim"
 alias grh="git reset --hard"
 alias gg="git grep -iG"
 alias gstns="git status --ignore-submodules"
-alias gl="git lg"
+alias gl="git log --oneline"
 alias gc="git add . && git commit -m '.' && git push"
 alias ls='eza'
 alias tm="tmux"
