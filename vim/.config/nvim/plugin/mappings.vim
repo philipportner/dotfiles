@@ -2,9 +2,6 @@ map <Leader>gb :let &background = ( &background == "dark"? "light" : "dark" )<CR
 inoremap jj <esc>
 inoremap jk <esc>
 
-nmap <Leader>n :ClangFormat<CR>
-xmap <Leader>n :ClangFormat<CR>
-
 nnoremap n nzzzv
 nnoremap n nzzzv
 

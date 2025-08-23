@@ -14,8 +14,8 @@ endfunction
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
-" xmap <leader>n  <Plug>(coc-format-selected)
-" nmap <leader>n  <Plug>(coc-format-selected)
+xmap <leader>n  <Plug>(coc-format-selected)
+nmap <leader>n  <Plug>(coc-format-selected)
 "
 imap <C-l> <Plug>(coc-snippets-expand)
 " Remap keys for gotos
@@ -62,12 +62,10 @@ let g:coc_global_extensions = [
             \ 'coc-format-json',
             \ 'coc-highlight',
             \ 'coc-json',
-            \ 'coc-pyright',
             \ 'coc-snippets',
             \ 'coc-texlab',
             \ 'coc-vimlsp',
             \ 'coc-git',
             \ 'coc-rust-analyzer',
-            \ 'coc-java',
-            \ 'coc-java-debug',
             \ ]
+            " \ 'coc-basedpyright',

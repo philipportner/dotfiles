@@ -38,7 +38,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'vhdirk/vim-cmake'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'rhysd/vim-clang-format'
 " https://github.com/searleser97/cpbooster
 Plug 'dstein64/vim-startuptime'
 Plug 'vimwiki/vimwiki'
