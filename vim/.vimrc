@@ -6,7 +6,9 @@ Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-gitgutter'
 " Plug 'rhysd/conflict-marker.vim'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'echasnovski/mini.icons'
 Plug 'NeogitOrg/neogit'
+Plug 'nvim-tree/nvim-web-devicons'
 " >= 0.7.0
 Plug 'sindrets/diffview.nvim'
 
@@ -43,10 +45,10 @@ Plug 'dstein64/vim-startuptime'
 Plug 'jikkujose/vim-visincr'
 Plug 'vimwiki/vimwiki'
 Plug 'justinmk/vim-sneak'
-Plug 'kevinhwang91/nvim-bqf'
 Plug 'jiangmiao/auto-pairs'
 Plug 'Konfekt/FastFold'
+Plug 'stevearc/oil.nvim'
 
 call plug#end()
-
+lua require("oil").setup()
 " lua require('leap').add_default_mappings()

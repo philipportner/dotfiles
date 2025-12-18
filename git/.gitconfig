@@ -23,15 +23,19 @@
 [rerere]
 	enable = true
 	autoUpdate = true
+	enabled = true
 [branch]
 	sort = -committerdate
 [gpg]
 	format = ssh
 [commit]
 	gpgsign = true
+	verbose = true
 [checkout]
 	defaultRemote = origin
 [init]
 	defaultBranch = main
-[rebase]
-    updateRefs = true
+[gpg "ssh"]
+	allowedSignersFile = /home/philipportner/.ssh/allowed_signers
+[clangFormat]
+	binary = /home/philipportner/.local/bin/clang-format

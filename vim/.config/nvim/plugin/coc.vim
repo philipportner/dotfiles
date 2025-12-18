@@ -5,16 +5,10 @@ set shortmess+=c
 " fix cursor becomming a | after viewing CoCList
 set guicursor=n:blinkon1
 
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <silent><expr> <C-Space> coc#refresh()
+" inoremap <expr> <CR> pumvisible() ? coc#pum#confirm() : "\r"
 
-" Make <CR> to accept selected completion item or notify coc.nvim to format
-" <C-g>u breaks current undo, please make your own choice
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 
 function! CheckBackspace() abort
   let col = col('.') - 1
@@ -25,8 +19,19 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 nmap <Leader>n :ClangFormat<CR>
 xmap <Leader>n :ClangFormat<CR>
-" xmap <leader>n  <Plug>(coc-format-selected)
-" nmap <leader>n  <Plug>(coc-format-selected)
+xmap <leader>m  <Plug>(coc-format-selected)
+nmap <leader>m  <Plug>(coc-format-selected)
+
+inoremap <expr> <Tab>   coc#pum#visible() ? coc#pum#next(1)
+    \ : CheckBackspace() ? "\<Tab>" : coc#refresh()
+inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <expr> <CR>    coc#pum#visible() ? coc#pum#confirm()
+    \ : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
+let col = col('.') - 1
+return !col || getline('.')[col - 1] =~# '\s'
+endfunction
 "
 imap <C-l> <Plug>(coc-snippets-expand)
 " Remap keys for gotos
@@ -58,7 +63,9 @@ nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 " Show commands
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+nnoremap <leader>o :CocOutline<CR>
+let g:coc_outline_auto_preview = 1
 " Search workspace symbols
 nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.

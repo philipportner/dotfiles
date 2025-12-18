@@ -33,6 +33,8 @@ au BufNewFile,BufRead *.cu set filetype=cuda
 au BufNewFile,BufRead *.cuh set filetype=cuda
 " set number relativenumber
 set nonumber
+hi StatusLine guibg=#000087 guifg=#ffffff
+
 " hi Function guifg=#9cdcfe
 " hi Function guifg=#76cce0
 " hi Function guifg=#83a598

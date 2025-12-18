@@ -10,6 +10,15 @@ set nofoldenable
 " Enable mouse support
 set mouse=a
 
+set makeprg=cmake\ --build\ /home/philipportner/llvm_upgrade/build\ --target
+
+autocmd BufRead,BufNewFile *.jjdescription setlocal textwidth=72 formatoptions+=t
+
+" Default to daphne, but allow overrides
+command! -nargs=? CBuild execute 'make ' . (empty(<q-args>) ? 'daphne' : <q-args>)
+" Optional: reuse the name :make when you type it with no args
+cabbrev <expr> make (getcmdtype() == ':' && getcmdline() =~? '^make\\s*$' ? 'CBuild' : 'make')
+
 let g:vimspector_enable_mappings = 'HUMAN'
 
 set clipboard+=unnamedplus

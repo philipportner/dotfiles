@@ -13,6 +13,14 @@ export PATH=$PATH:~/.platformio/penv/bin
 export PYTHONPATH="$PYTHONPATH:$PWD/src/:/usr/lib/llvm-10/build/utils/lit/"
 export PATH=$PATH:/home/philipportner/.fzf/bin/
 export PATH=$PATH:/home/philipportner/daphne/thirdparty/build/llvm-project/bin/
+export CC=/usr/bin/gcc
+export CXX=/usr/bin/g++
+export CUDAHOSTCXX=/usr/bin/g++
+# export PATH=/usr/local/gcc-13.2/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:$LD_LIBRARY_PATH
+
+export LIBRARY_PATH="/usr/lib/gcc/x86_64-linux-gnu/13:$LIBRARY_PATH"
+export LD_LIBRARY_PATH="/usr/lib/gcc/x86_64-linux-gnu/13:$LD_LIBRARY_PATH"
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
@@ -34,7 +42,9 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 export EDITOR=/usr/bin/nvim
-# export JAVA_HOME='/usr/lib/jvm/java-8-openjdk-amd64/'
+export JAVA_HOME='/usr/lib/jvm/java-1.17.0-openjdk-amd64/'
+alias java=/usr/lib/jvm/java-17-openjdk-amd64/bin/java
+alias javac=/usr/lib/jvm/java-17-openjdk-amd64/bin/javac
 
 alias nv="nvim"
 alias grh="git reset --hard"
@@ -48,8 +58,16 @@ alias gcf="git-clang-format"
 # alias t2='exa -T -L 2 -a'
 # alias t3='exa -T -L 3 -a'
 
+alias jjst='jj st --no-pager'
+alias jjd='jj diff'
+alias jjf='jj fix'
+alias jjl='jj --no-pager'
+
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/**"'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*" --glob "!.cache/*"'
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -69,3 +87,19 @@ source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# bun completions
+[ -s "/home/philipportner/.bun/_bun" ] && source "/home/philipportner/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+alias claude="/home/philipportner/.claude/local/claude"
+
+source <(jj util completion zsh)
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="$HOME/.claude/local/:$PATH"
