@@ -1,2 +1,3 @@
 tags
 vim/.config/nvim/plugged/
+vim/.config/nvim/lazy-lock.json
