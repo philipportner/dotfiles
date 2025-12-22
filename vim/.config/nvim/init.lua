@@ -1,49 +1,76 @@
-local Plug = vim.fn['plug#']
-vim.call('plug#begin', vim.fn.expand('~/.config/nvim/plugged'))
-
-Plug('rhysd/git-messenger.vim')
-Plug('tpope/vim-fugitive')
-Plug('junegunn/gv.vim')
-Plug('airblade/vim-gitgutter')
-Plug('nvim-lua/plenary.nvim')
-Plug('echasnovski/mini.icons')
-Plug('NeogitOrg/neogit')
-Plug('nvim-tree/nvim-web-devicons')
-Plug('sindrets/diffview.nvim')
-
-Plug('troydm/zoomwintab.vim')
-Plug('sheerun/vim-polyglot')
-Plug('antiagainst/vim-tablegen')
-Plug('tie/llvm.vim')
-Plug('preservim/nerdtree')
-
-Plug('morhetz/gruvbox')
-Plug('Mofiqul/vscode.nvim')
-Plug('miikanissi/modus-themes.nvim')
-
-Plug('ericcurtin/CurtineIncSw.vim')
-Plug('tpope/vim-surround')
-Plug('lervag/vimtex')
-Plug('junegunn/fzf', { dir = '~/.fzf', ['do'] = './install --all' })
-Plug('junegunn/fzf.vim')
-Plug('preservim/tagbar')
-Plug('scrooloose/nerdcommenter')
-Plug('neoclide/coc.nvim', { branch = 'release' })
-Plug('christoomey/vim-tmux-navigator')
-Plug('rhysd/vim-clang-format')
-Plug('dstein64/vim-startuptime')
-Plug('jikkujose/vim-visincr')
-Plug('vimwiki/vimwiki')
-Plug('justinmk/vim-sneak')
-Plug('jiangmiao/auto-pairs')
-Plug('Konfekt/FastFold')
-Plug('stevearc/oil.nvim')
-
-vim.call('plug#end')
-
-require('oil').setup()
-
 vim.g.mapleader = ' '
+
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable',
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+local fzf_dir = vim.fn.expand('~/.fzf')
+local fzf_spec = { 'junegunn/fzf', name = 'fzf', build = './install --all' }
+if vim.fn.isdirectory(fzf_dir) == 1 then
+  fzf_spec = { dir = fzf_dir, name = 'fzf', build = './install --all' }
+end
+
+local plugins = {
+  'rhysd/git-messenger.vim',
+  'tpope/vim-fugitive',
+  'junegunn/gv.vim',
+  'airblade/vim-gitgutter',
+  'nvim-lua/plenary.nvim',
+  'echasnovski/mini.icons',
+  'nvim-tree/nvim-web-devicons',
+  {
+    'NeogitOrg/neogit',
+    dependencies = { 'nvim-lua/plenary.nvim', 'sindrets/diffview.nvim', 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('neogit').setup({})
+    end,
+  },
+  { 'sindrets/diffview.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
+
+  'troydm/zoomwintab.vim',
+  'sheerun/vim-polyglot',
+  'antiagainst/vim-tablegen',
+  'tie/llvm.vim',
+  'preservim/nerdtree',
+
+  { 'morhetz/gruvbox', lazy = false },
+  { 'Mofiqul/vscode.nvim', lazy = false },
+  { 'miikanissi/modus-themes.nvim', lazy = false, priority = 1000 },
+
+  'ericcurtin/CurtineIncSw.vim',
+  'tpope/vim-surround',
+  'lervag/vimtex',
+  fzf_spec,
+  { 'junegunn/fzf.vim', dependencies = { 'fzf' } },
+  'preservim/tagbar',
+  'scrooloose/nerdcommenter',
+  { 'neoclide/coc.nvim', branch = 'release' },
+  'christoomey/vim-tmux-navigator',
+  'rhysd/vim-clang-format',
+  'dstein64/vim-startuptime',
+  'jikkujose/vim-visincr',
+  'vimwiki/vimwiki',
+  'justinmk/vim-sneak',
+  'jiangmiao/auto-pairs',
+  'Konfekt/FastFold',
+  {
+    'stevearc/oil.nvim',
+    config = function()
+      require('oil').setup()
+    end,
+  },
+}
+
+require('lazy').setup(plugins)
 
 vim.opt.updatetime = 50
 vim.opt.encoding = 'utf-8'
@@ -421,7 +448,6 @@ vim.g.vimwiki_listsyms = '✗○◐●✓'
 vim.g.gruvbox_contrast_dark = 'normal'
 vim.opt.background = 'light'
 vim.cmd('colorscheme modus')
-require('neogit').setup({})
 
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   group = augroup,
