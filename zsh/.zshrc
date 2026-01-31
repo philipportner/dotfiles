@@ -95,7 +95,6 @@ export NVM_DIR="$HOME/.nvm"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-alias claude="/home/philipportner/.claude/local/claude"
 
 source <(jj util completion zsh)
 

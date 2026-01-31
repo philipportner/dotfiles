@@ -42,10 +42,7 @@ local plugins = {
   'tie/llvm.vim',
   'preservim/nerdtree',
 
-  { 'morhetz/gruvbox', lazy = false },
-  { 'Mofiqul/vscode.nvim', lazy = false },
   { 'miikanissi/modus-themes.nvim', lazy = false, priority = 1000 },
-
   'ericcurtin/CurtineIncSw.vim',
   'tpope/vim-surround',
   'lervag/vimtex',
@@ -59,7 +56,17 @@ local plugins = {
   'dstein64/vim-startuptime',
   'jikkujose/vim-visincr',
   'vimwiki/vimwiki',
-  'justinmk/vim-sneak',
+  {
+  "folke/flash.nvim",
+  event = "VeryLazy",
+  ---@type Flash.Config
+  opts = {},
+  keys = {
+    { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+    { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+    { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+  },
+    },
   'jiangmiao/auto-pairs',
   'Konfekt/FastFold',
   {
@@ -151,9 +158,6 @@ vim.g.vimtex_compiler_latexmk = {
 }
 vim.g.vimtex_syntax_packages = { minted = { load = 2 } }
 
-vim.g['sneak#label'] = 1
-vim.g['sneak#streak'] = 1
-
 vim.g.python_host_prog = '/usr/bin/python'
 vim.g.python3_host_prog = '/usr/bin/python3'
 
@@ -211,6 +215,11 @@ vim.api.nvim_create_user_command('GGrep', function(opts)
 end, { bang = true, nargs = '*' })
 
 local augroup = vim.api.nvim_create_augroup('init_lua_settings', { clear = true })
+
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = "*.txt",
+  command = "set filetype=markdown"
+})
 
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   group = augroup,
