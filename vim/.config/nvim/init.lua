@@ -31,10 +31,17 @@ local plugins = {
   {
     'NeogitOrg/neogit',
     dependencies = { 'nvim-lua/plenary.nvim', 'sindrets/diffview.nvim', 'nvim-tree/nvim-web-devicons' },
-    config = function()
-      require('neogit').setup({})
-    end,
+    config = true,
+    keys = {
+      { '<leader>gG', '<cmd>Neogit cwd=%:p:h<cr>', desc = 'Neogit (cwd)' },
+      { '<leader>gg', '<cmd>Neogit<cr>', desc = 'Neogit (project)' },
+      { '<leader>gl', '<cmd>Neogit log<cr>', desc = 'Neogit Log (project)' },
+    },
   },
+  -- {
+  -- "esmuellert/codediff.nvim",
+  -- cmd = "CodeDiff",
+  -- },
   {
       "lionyxml/gitlineage.nvim",
       dependencies = {
@@ -49,20 +56,14 @@ local plugins = {
   'antiagainst/vim-tablegen',
   'tie/llvm.vim',
   'preservim/nerdtree',
-
   { 'miikanissi/modus-themes.nvim', lazy = false, priority = 1000 },
-  'ericcurtin/CurtineIncSw.vim',
   'tpope/vim-surround',
   'lervag/vimtex',
   fzf_spec,
   { 'junegunn/fzf.vim', dependencies = { 'fzf' } },
-  'preservim/tagbar',
   'scrooloose/nerdcommenter',
   { 'neoclide/coc.nvim', branch = 'release' },
-  'christoomey/vim-tmux-navigator',
   'rhysd/vim-clang-format',
-  'dstein64/vim-startuptime',
-  'jikkujose/vim-visincr',
   'vimwiki/vimwiki',
   {
   "folke/flash.nvim",
@@ -76,114 +77,83 @@ local plugins = {
   },
     },
   'jiangmiao/auto-pairs',
-  'Konfekt/FastFold',
   {
     'stevearc/oil.nvim',
     config = function()
       require('oil').setup()
     end,
   },
+  {
+    'MagicDuck/grug-far.nvim',
+    -- Note (lazy loading): grug-far.lua defers all it's requires so it's lazy by default
+    -- additional lazy config to defer loading is not really needed...
+    config = function()
+      -- optional setup call to override plugin options
+      -- alternatively you can set options with vim.g.grug_far = { ... }
+      require('grug-far').setup({
+        -- options, see Configuration section below
+        -- there are no required options atm
+      });
+end
+}
+, {
+  "mfussenegger/nvim-dap",
+  dependencies = {
+    "rcarriga/nvim-dap-ui",
+    "nvim-neotest/nvim-nio", -- required by dap-ui
+  },
+  config = function()
+    local dap = require("dap")
+    local dapui = require("dapui")
+
+    dap.adapters["lldb-dap"] = {
+      type = "executable",
+      command = "/opt/homebrew/opt/llvm/bin/lldb-dap", -- adjust path
+    }
+
+    dap.configurations.cpp = {
+      {
+        name = "Launch",
+        type = "lldb-dap",
+        request = "launch",
+        program = function()
+          return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+        end,
+        args = function()
+          local input = vim.fn.input("Args: ")
+          return vim.split(input, " ", { trimempty = true })
+        end,
+        cwd = "${workspaceFolder}",
+      },
+    }
+    -- reuse for C
+    dap.configurations.c = dap.configurations.cpp
+
+    dapui.setup()
+    dap.listeners.after.event_initialized["dapui"] = function() dapui.open() end
+    dap.listeners.before.event_terminated["dapui"] = function() dapui.close() end
+    dap.listeners.before.event_exited["dapui"] = function() dapui.close() end
+  end,
+}
+, {"theHamsta/nvim-dap-virtual-text", opts = {}},
 }
 
 require('lazy').setup(plugins)
 
-vim.opt.updatetime = 50
-vim.opt.encoding = 'utf-8'
-vim.opt.fileencoding = 'utf-8'
-vim.opt.fileencodings = 'utf-8'
-vim.opt.autoread = true
-vim.opt.inccommand = 'nosplit'
-vim.opt.foldmethod = 'syntax'
-vim.opt.foldenable = false
 vim.opt.mouse = 'a'
-vim.opt.makeprg = 'cmake --build /home/philipportner/llvm_upgrade/build --target'
-vim.opt.backspace = { 'indent', 'eol', 'start' }
 vim.opt.clipboard:append('unnamedplus')
 vim.opt.tags = { './tags;' }
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-vim.opt.autoindent = true
+-- vim.opt.tabstop = 4
+-- vim.opt.softtabstop = 4
+-- vim.opt.shiftwidth = 4
+-- vim.opt.expandtab = true
+-- vim.opt.autoindent = true
 
-vim.opt.list = true
-vim.opt.listchars = { tab = '  ', trail = '·' }
-
-vim.cmd('filetype plugin on')
-vim.cmd('filetype indent on')
-
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-
-vim.opt.hlsearch = true
-vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
-vim.opt.backup = false
-vim.opt.writebackup = false
-vim.opt.swapfile = false
-vim.opt.fileformats = { 'unix', 'dos', 'mac' }
-
-vim.g.vimspector_enable_mappings = 'HUMAN'
-
-vim.g.gutentags_ctags_exclude_wildignore = 1
-vim.g.gutentags_ctags_exclude = {
-  'node_modules',
-  '_build',
-  'build',
-  'CMakeFiles',
-  '.mypy_cache',
-  'venv',
-  '*.md',
-  '*.tex',
-  '*.css',
-  '*.html',
-  '*.json',
-  '*.xml',
-  '*.xmls',
-  '*.ui',
-  '__pycache__',
-  '.idea',
-}
-
-vim.g.tex_flavor = 'latex'
-vim.g.vimtex_view_method = 'zathura'
-vim.opt.conceallevel = 3
-vim.g.tex_conceal = 'abdmg'
-vim.g.vimtex_compiler_method = 'latexmk'
-vim.g.vimtex_compiler_latexmk = {
-  options = {
-    '-g',
-    '-pdf',
-    '-shell-escape',
-    '-verbose',
-    '-file-line-error',
-    '-synctex=1',
-    '-interaction=nonstopmode',
-  },
-}
-vim.g.vimtex_syntax_packages = { minted = { load = 2 } }
-
-vim.g.python_host_prog = '/usr/bin/python'
-vim.g.python3_host_prog = '/usr/bin/python3'
-
 vim.g.NERDSpaceDelims = 1
-vim.g.NERDCompactSexyComs = 1
-vim.g.NERDDefaultAlign = 'left'
-vim.g.NERDAltDelims_java = 1
-vim.g.NERDCustomDelimiters = { c = { left = '//' }, java = { left = '//' } }
-vim.g.NERDCommentEmptyLines = 1
-vim.g.NERDTrimTrailingWhitespace = 1
-vim.g.NERDToggleCheckAllLines = 1
-
-local shell = vim.env.SHELL
-if shell and shell ~= '' then
-  vim.opt.shell = shell
-else
-  vim.opt.shell = '/bin/sh'
-end
 
 vim.g.git_messenger_floating_win_opts = { border = 'rounded' }
 vim.g.git_messenger_popup_content_margins = false
@@ -194,26 +164,13 @@ vim.env.FZF_PREVIEW_COMMAND = 'COLORTERM=truecolor bat --style=auto --color=alwa
 vim.env.FZF_DEFAULT_COMMAND = 'rg --files --no-ignore --hidden --follow --glob "!.git/**"'
 
 vim.cmd([[
-function! FzfBuildQuickfixList(lines)
-  call setqflist(map(copy(a:lines), '{ "filename": v:val, "lnum": 1 }'))
-  copen
-  cc
-endfunction
 let g:fzf_action = {
-      \ 'ctrl-q': function('FzfBuildQuickfixList'),
       \ 'ctrl-t': 'tab split',
       \ 'ctrl-x': 'split',
       \ 'ctrl-v': 'vsplit' }
 ]])
 
 vim.g.fzf_history_dir = '~/.local/share/fzf-history'
-
-vim.api.nvim_create_user_command('CBuild', function(opts)
-  local target = opts.args ~= '' and opts.args or 'daphne'
-  vim.cmd('make ' .. target)
-end, { nargs = '?' })
-
-vim.cmd([[cabbrev <expr> make (getcmdtype() == ':' && getcmdline() =~? '^make\s*$' ? 'CBuild' : 'make')]])
 
 vim.api.nvim_create_user_command('GGrep', function(opts)
   local cmd = 'git grep --line-number -- ' .. vim.fn.shellescape(opts.args)
@@ -222,15 +179,12 @@ vim.api.nvim_create_user_command('GGrep', function(opts)
   vim.fn['fzf#vim#grep'](cmd, 0, preview, opts.bang and 1 or 0)
 end, { bang = true, nargs = '*' })
 
-local augroup = vim.api.nvim_create_augroup('init_lua_settings', { clear = true })
-
 vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
   pattern = "*.txt",
   command = "set filetype=markdown"
 })
 
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
-  group = augroup,
   pattern = '*.jjdescription',
   callback = function()
     vim.opt_local.textwidth = 72
@@ -238,53 +192,14 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   end,
 })
 
-vim.api.nvim_create_autocmd('BufReadPost', {
-  group = augroup,
-  pattern = { '*.daph', '*.daphne' },
-  callback = function()
-    vim.bo.syntax = 'python'
-  end,
-})
-
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
-  group = augroup,
   pattern = '*.mlir',
   callback = function()
     vim.bo.filetype = 'mlir'
   end,
 })
 
-vim.api.nvim_create_autocmd('QuickFixCmdPost', {
-  group = augroup,
-  pattern = '*grep*',
-  command = 'cwindow',
-})
 
-vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
-  group = augroup,
-  pattern = '*.py',
-  callback = function()
-    vim.bo.tabstop = 4
-    vim.bo.softtabstop = 4
-    vim.bo.shiftwidth = 4
-    vim.bo.textwidth = 79
-    vim.bo.expandtab = true
-    vim.bo.autoindent = true
-    vim.bo.fileformat = 'unix'
-  end,
-})
-
-vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
-  group = augroup,
-  pattern = '*.nlogo',
-  callback = function()
-    vim.bo.filetype = 'nlogo'
-  end,
-})
-
-vim.opt.hidden = true
-vim.opt.updatetime = 100
-vim.opt.shortmess:append('c')
 vim.opt.guicursor = 'n:blinkon1'
 
 vim.cmd([[
@@ -377,26 +292,6 @@ vim.keymap.set('v', '<leader>P', '"+P')
 
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 
-vim.keymap.set({ 'n', 'v', 'o', 's' }, '<F1>', ':call CurtineIncSw()<CR>', { remap = true })
-vim.keymap.set('n', '<F2>', ':TagbarToggle<CR>', { remap = true })
-
-vim.keymap.set('n', '<leader>dd', ':call vimspector#Launch()<cr>')
-vim.keymap.set('n', '<leader>dx', ':VimspectorReset<CR>', { remap = true })
-vim.keymap.set('n', '<leader>dc', ':call vimspector#Continue()<cr>')
-vim.keymap.set('n', '<leader>ds', ':call vimspector#Stop()<cr>')
-vim.keymap.set('n', '<leader>dR', ':call vimspector#Restart()<cr>')
-vim.keymap.set('n', '<leader>dp', ':call vimspector#Pause()<cr>')
-vim.keymap.set('n', '<leader>db', ':call vimspector#ToggleBreakpoint()<cr>')
-vim.keymap.set('n', '<leader>dB', ':call vimspector#ToggleConditionalBreakpoint()<cr>')
-vim.keymap.set('n', '<leader>dn', ':call vimspector#StepOver()<cr>')
-vim.keymap.set('n', '<leader>di', ':call vimspector#StepInto()<cr>')
-vim.keymap.set('n', '<leader>do', ':call vimspector#StepOut()<cr>')
-vim.keymap.set('n', '<leader>dr', ':call vimspector#RunToCursor()<cr>')
-vim.keymap.set('n', '<leader>de', ':VimspectorEval', { remap = true })
-vim.keymap.set('n', '<leader>dw', ':VimspectorWatch', { remap = true })
-vim.keymap.set('n', '<leader>do', ':VimspectorShowOutput', { remap = true })
-
-vim.keymap.set('n', '<C-w>w', ':ZoomWinTabToggle<CR>', { silent = true })
 
 vim.keymap.set('n', '<leader>gl', ':diffget LOCAL<CR>', { remap = true })
 vim.keymap.set('n', '<leader>gr', ':diffget REMOTE<CR>', { remap = true })
@@ -415,9 +310,6 @@ vim.keymap.set({ 'n', 'v', 'o', 's' }, ':Q', ':q', { remap = true })
 
 vim.keymap.set('n', '<leader>cr', ':%s/\\<<C-r><C-w>\\>/')
 vim.keymap.set('v', '<leader>cr', 'y:%s/<C-r>"/')
-
-vim.keymap.set('v', 'v', '<Plug>(expand_region_expand)', { remap = true })
-vim.keymap.set('v', '<C-v>', '<Plug>(expand_region_shrink)', { remap = true })
 
 vim.keymap.set({ 'n', 'v', 'o', 's' }, '<left>', ':5winc ><CR>', { remap = true })
 vim.keymap.set({ 'n', 'v', 'o', 's' }, '<right>', ':5winc <<CR>', { remap = true })
@@ -450,19 +342,12 @@ vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 
 vim.opt.termguicolors = true
 vim.env.BAT_THEME = 'modus'
-vim.cmd('syntax enable')
 vim.opt.wrap = false
 vim.opt.ruler = true
-vim.opt.number = true
-vim.opt.showmode = true
 
 vim.g.coc_disable_transparent_cursor = 1
 vim.opt.guicursor = 'n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20'
-vim.g.indentLine_char = '│'
-vim.g.indentLine_concealcursor = ''
-vim.g.vimwiki_listsyms = '✗○◐●✓'
 
-vim.g.gruvbox_contrast_dark = 'normal'
 vim.opt.background = 'light'
 vim.cmd('colorscheme modus')
 
@@ -482,8 +367,6 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   end,
 })
 
-vim.opt.number = false
-
 vim.cmd('hi StatusLine guibg=#000087 guifg=#ffffff')
 vim.cmd('hi NormalNC guibg=#ffffff')
 vim.cmd('hi cursorlinenr guibg=none ctermbg=none')
@@ -500,3 +383,13 @@ vim.cmd('hi DiffviewStatusDeleted guibg=none')
 vim.opt.fillchars = { fold = '\\' }
 vim.opt.fillchars = { vert = '|' }
 vim.opt.laststatus = 2
+
+-- nvim-dap
+vim.keymap.set("n", "<leader>db", function() require("dap").toggle_breakpoint() end)
+vim.keymap.set("n", "<leader>dc", function() require("dap").continue() end)
+vim.keymap.set("n", "<leader>do", function() require("dap").step_over() end)
+vim.keymap.set("n", "<leader>di", function() require("dap").step_into() end)
+vim.keymap.set("n", "<leader>dr", function() require("dap").repl.open() end)
+vim.keymap.set("n", "<leader>dk", function() require("dapui").eval() end) -- hover eval
+vim.keymap.set("n", "<leader>du", function() require("dap").up() end)    -- up one frame
+vim.keymap.set("n", "<leader>dd", function() require("dap").down() end)  -- down one frame

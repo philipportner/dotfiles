@@ -2,11 +2,9 @@
     // "diagnostic.virtualText": true,
     // "diagnostic.virtualTextCurrentLineOnly": true,
     // "suggest.maxCompleteItemCount": 15,
-
     // "java.home": "/usr/lib/jvm/jdk-11/",
     "java.trace.server": "verbose",
     "java.signatureHelp.enabled": true,
-
     "list.normalMappings": {
         "<C-c>": "do:exit"
     },
@@ -21,7 +19,9 @@
     "git.enableGutters": true,
     // "clangd.arguments": [""],
     "clangd.path": "/opt/homebrew/opt/llvm/bin//clangd",
-    // "clangd.arguments": ["-std=c++17"],
+    // "clangd.arguments": ["-std=c++20"],
     "codeLens.enable": true,
-    "inlayHint.enable": false
+    "inlayHint.enable": false,
+    "snippets.ultisnips.pythonPrompt": false,
+    "coc.preferences.formatOnSave": false,
 }
