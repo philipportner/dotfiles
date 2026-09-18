@@ -11,6 +11,8 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:~/go/bin
 alias ctags='/usr/local/bin/ctags'
 
+alias y='yazi'
+
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 COLORTERM="truecolor"
@@ -48,7 +50,12 @@ alias 001='ssh so001'
 alias 005='ssh so005'
 alias 008='ssh so008'
 alias 012='ssh so012'
+alias su2='ssh su2'
 alias cpu='cpufetch --color 166,0,0:0,0,0:0,0,0:0,94,139:0,0,0'
+alias jjst='jj st --no-pager'
+alias jjd='jj diff'
+alias jjf='jj fix'
+alias jjl='jj --no-pager'
 
 obj () {
     objdump -rw -C -d $@ | nvim -
@@ -75,9 +82,64 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-export PATH="/Users/philipportner/Library/Python/3.9/bin:$PATH"
-export PATH="/opt/homebrew/opt/llvm/bin/:$PATH"
-export PATH="/opt/homebrew/opt/ccache/libexec:$PATH"
+#export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+#export CC="/opt/homebrew/opt/llvm/bin/clang"
+#export CXX="$CC++"
+#export LDFLAGS="$LDFLAGS -L/opt/homebrew/opt/llvm/lib"
+#export CPPFLAGS="$CPPFLAGS -I/opt/homebrew/opt/llvm/include"
+
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/homebrew/Cellar/libevent/2.1.12_1/lib/"
 export MODULAR_HOME="/Users/philipportner/.modular"
 export PATH="/Users/philipportner/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
+
+# bun completions
+[ -s "/Users/philipportner/.bun/_bun" ] && source "/Users/philipportner/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+llvm21() {
+  local p="$(brew --prefix llvm@21)/bin"
+  export PATH="$p:$PATH"
+  export CC="$p/clang"
+  export CXX="$p/clang++"
+}
+
+tmux-dev() {
+  local base="${1:-dev}"
+  local s_nvim="${base}-nvim" s_term="${base}-term"
+
+  if [[ -n "$TMUX" ]]; then
+    print -u2 "dev: don't run this from inside tmux"
+    return 1
+  fi
+
+  if ! tmux has-session -t "=${base}" 2>/dev/null; then
+    tmux new-session -d -s "${base}" -n nvim
+    tmux new-window -d -t "${base}:" -n terminal
+  fi
+
+  tmux has-session -t "=${s_nvim}" 2>/dev/null || tmux new-session -d -t "${base}" -s "${s_nvim}"
+  tmux has-session -t "=${s_term}" 2>/dev/null || tmux new-session -d -t "${base}" -s "${s_term}"
+
+  tmux select-window -t "${s_nvim}:nvim"
+  tmux select-window -t "${s_term}:terminal"
+
+  osascript - "$s_nvim" "$s_term" <<'APPLESCRIPT'
+on run argv
+  set nvimSession to item 1 of argv
+  set termSession to item 2 of argv
+  set nvimCmd to "/bin/zsh -lc 'tmux attach -t " & nvimSession & "; tmux kill-session -t " & nvimSession & " 2>/dev/null'"
+  set termCmd to "/bin/zsh -lc 'tmux attach -t " & termSession & "; tmux kill-session -t " & termSession & " 2>/dev/null'"
+  tell application "iTerm"
+    create window with default profile command nvimCmd
+    create window with default profile command termCmd
+    activate
+  end tell
+end run
+APPLESCRIPT
+}
+
+# opencode
+export PATH=/Users/philipportner/.opencode/bin:$PATH

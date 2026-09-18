@@ -21,7 +21,7 @@
     "clangd.path": "/opt/homebrew/opt/llvm/bin//clangd",
     // "clangd.arguments": ["-std=c++20"],
     "codeLens.enable": true,
-    "inlayHint.enable": false,
+    "inlayHint.enable": true,
     "snippets.ultisnips.pythonPrompt": false,
     "coc.preferences.formatOnSave": false,
 }

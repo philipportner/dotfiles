@@ -20,6 +20,15 @@ if vim.fn.isdirectory(fzf_dir) == 1 then
 end
 
 local plugins = {
+  -- {
+    -- "craftzdog/solarized-osaka.nvim",
+    -- lazy = false,
+    -- priority = 1000,
+    -- opts = {},
+    -- config = function()
+      -- vim.cmd([[colorscheme solarized-osaka]])
+    -- end,
+  -- },
   'rhysd/git-messenger.vim',
   'tpope/vim-fugitive',
   'junegunn/gv.vim',
@@ -33,9 +42,7 @@ local plugins = {
     dependencies = { 'nvim-lua/plenary.nvim', 'sindrets/diffview.nvim', 'nvim-tree/nvim-web-devicons' },
     config = true,
     keys = {
-      { '<leader>gG', '<cmd>Neogit cwd=%:p:h<cr>', desc = 'Neogit (cwd)' },
-      { '<leader>gg', '<cmd>Neogit<cr>', desc = 'Neogit (project)' },
-      { '<leader>gl', '<cmd>Neogit log<cr>', desc = 'Neogit Log (project)' },
+      { "<leader>gg", "<cmd>Neogit<cr>", desc = "Show Neogit UI" }
     },
   },
   -- {
@@ -95,60 +102,52 @@ local plugins = {
         -- there are no required options atm
       });
 end
-}
-, {
-  "mfussenegger/nvim-dap",
-  dependencies = {
-    "rcarriga/nvim-dap-ui",
-    "nvim-neotest/nvim-nio", -- required by dap-ui
-  },
-  config = function()
-    local dap = require("dap")
-    local dapui = require("dapui")
-
-    dap.adapters["lldb-dap"] = {
-      type = "executable",
-      command = "/opt/homebrew/opt/llvm/bin/lldb-dap", -- adjust path
-    }
-
-    dap.configurations.cpp = {
-      {
-        name = "Launch",
-        type = "lldb-dap",
-        request = "launch",
-        program = function()
-          return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-        end,
-        args = function()
-          local input = vim.fn.input("Args: ")
-          return vim.split(input, " ", { trimempty = true })
-        end,
-        cwd = "${workspaceFolder}",
+},
+{
+  "folke/snacks.nvim",
+  priority = 1000,
+  lazy = false,
+  ---@type snacks.Config
+  opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+    bigfile = { enabled = true },
+    indent = { enabled = true },
+    input = { enabled = true },
+    quickfile = { enabled = true },
+    scope = { enabled = true },
+    scroll = {
+      enabled = true,
+      animate = {
+        duration = { step = 10, total = 100 }, -- default is total = 200 (lower = faster)
+        easing = "linear",
       },
-    }
-    -- reuse for C
-    dap.configurations.c = dap.configurations.cpp
-
-    dapui.setup()
-    dap.listeners.after.event_initialized["dapui"] = function() dapui.open() end
-    dap.listeners.before.event_terminated["dapui"] = function() dapui.close() end
-    dap.listeners.before.event_exited["dapui"] = function() dapui.close() end
-  end,
-}
-, {"theHamsta/nvim-dap-virtual-text", opts = {}},
+      -- Controls scrolling speed when repeating motions (e.g., holding <C-d>)
+      animate_repeat = {
+        delay = 100,
+        duration = { step = 5, total = 40 }, -- default is total = 50
+        easing = "linear",
+      },
+    },
+    words = { enabled = true },
+  },
+},
 }
 
 require('lazy').setup(plugins)
-
+vim.cmd("packadd nvim.undotree")
 vim.opt.mouse = 'a'
 vim.opt.clipboard:append('unnamedplus')
 vim.opt.tags = { './tags;' }
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 
--- vim.opt.tabstop = 4
--- vim.opt.softtabstop = 4
--- vim.opt.shiftwidth = 4
--- vim.opt.expandtab = true
--- vim.opt.autoindent = true
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 2
+vim.opt.smartindent = true
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -162,12 +161,13 @@ vim.g.fzf_preview_window = { 'right:hidden', 'ctrl-/' }
 vim.g.fzf_layout = { down = '30%' }
 vim.env.FZF_PREVIEW_COMMAND = 'COLORTERM=truecolor bat --style=auto --color=always {}'
 vim.env.FZF_DEFAULT_COMMAND = 'rg --files --no-ignore --hidden --follow --glob "!.git/**"'
+vim.g.fzf_rg_options = { '--nth', '4..' }
 
 vim.cmd([[
 let g:fzf_action = {
       \ 'ctrl-t': 'tab split',
-      \ 'ctrl-x': 'split',
-      \ 'ctrl-v': 'vsplit' }
+      \ 'ctrl-x': 'belowright split',
+      \ 'ctrl-v': 'belowright vsplit' }
 ]])
 
 vim.g.fzf_history_dir = '~/.local/share/fzf-history'
@@ -251,13 +251,13 @@ vim.keymap.set('n', 'gk', show_documentation, { silent = true })
 vim.keymap.set('x', '<leader>a', '<Plug>(coc-codeaction-selected)', { remap = true })
 vim.keymap.set('n', '<leader>a', '<Plug>(coc-codeaction-selected)', { remap = true })
 vim.keymap.set('n', '<leader>qf', '<Plug>(coc-fix-current)', { remap = true })
-vim.keymap.set('n', '<space>e', ':<C-u>CocList extensions<cr>', { silent = true })
-vim.keymap.set('n', '<space>c', ':<C-u>CocList commands<cr>', { silent = true })
+vim.keymap.set('n', '<leader>cc', ':<C-u>CocList commands<cr>', { silent = true })
 vim.keymap.set('n', '<leader>o', ':CocOutline<CR>')
-vim.keymap.set('n', '<space>s', ':<C-u>CocList -I symbols<cr>', { silent = true })
-vim.keymap.set('n', '<space>j', ':<C-u>CocNext<CR>', { silent = true })
-vim.keymap.set('n', '<space>k', ':<C-u>CocPrev<CR>', { silent = true })
-vim.keymap.set('n', '<space>p', ':<C-u>CocListResume<CR>', { silent = true })
+vim.keymap.set('n', '<leader>s', ':<C-u>CocList -I symbols<cr>', { silent = true })
+vim.keymap.set('n', '<leader>j', ':<C-u>CocNext<CR>', { silent = true })
+vim.keymap.set('n', '<leader>k', ':<C-u>CocPrev<CR>', { silent = true })
+vim.keymap.set('n', '<leader>p', ':<C-u>CocListResume<CR>', { silent = true })
+vim.keymap.set("n", "<leader>cl", "<Plug>(coc-codelens-action)", { silent = true, remap = true })
 
 vim.g.coc_outline_auto_preview = 1
 vim.g.coc_global_extensions = {
@@ -265,14 +265,12 @@ vim.g.coc_global_extensions = {
   'coc-format-json',
   'coc-highlight',
   'coc-json',
-  'coc-pyright',
+  -- 'coc-pyright',
   'coc-snippets',
   'coc-texlab',
   'coc-vimlsp',
   'coc-git',
   'coc-rust-analyzer',
-  'coc-java',
-  'coc-java-debug',
 }
 
 vim.keymap.set({ 'n', 'v', 'o', 's' }, '<Leader>gb', function()
@@ -293,7 +291,6 @@ vim.keymap.set('v', '<leader>P', '"+P')
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 
 
-vim.keymap.set('n', '<leader>gl', ':diffget LOCAL<CR>', { remap = true })
 vim.keymap.set('n', '<leader>gr', ':diffget REMOTE<CR>', { remap = true })
 vim.keymap.set('n', '<leader>gs', ':G<CR>', { remap = true })
 vim.keymap.set('n', '<leader>gc', ':GCommit<CR>', { remap = true })
@@ -331,10 +328,9 @@ vim.keymap.set('n', '<leader>b', ':Buffers<CR>', { silent = true })
 vim.keymap.set('n', '<leader><space>', ':noh<cr>', { silent = true })
 vim.keymap.set('n', '<leader>p', ':Files<CR>', { silent = true })
 vim.keymap.set('n', '<leader>t', ':GFiles<CR>', { silent = true })
-vim.keymap.set('n', '<leader>r', ':GGrep<CR>', { silent = true })
-vim.keymap.set('n', '<leader>R', ':Rg<CR>', { silent = true })
+vim.keymap.set('n', '<leader>r', '<cmd>Rg<CR>', { silent = true })
+vim.keymap.set('n', '<leader>R', '<cmd>RG<CR>', { silent = true })
 vim.keymap.set('n', '<Leader>*', ':Rg <C-R><C-W><CR>', { silent = true })
-vim.keymap.set('n', '<leader>gg', ':GGrep<space>', { silent = true })
 vim.keymap.set('n', '<C-n>', ':NERDTreeToggle<CR>')
 
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
@@ -383,13 +379,3 @@ vim.cmd('hi DiffviewStatusDeleted guibg=none')
 vim.opt.fillchars = { fold = '\\' }
 vim.opt.fillchars = { vert = '|' }
 vim.opt.laststatus = 2
-
--- nvim-dap
-vim.keymap.set("n", "<leader>db", function() require("dap").toggle_breakpoint() end)
-vim.keymap.set("n", "<leader>dc", function() require("dap").continue() end)
-vim.keymap.set("n", "<leader>do", function() require("dap").step_over() end)
-vim.keymap.set("n", "<leader>di", function() require("dap").step_into() end)
-vim.keymap.set("n", "<leader>dr", function() require("dap").repl.open() end)
-vim.keymap.set("n", "<leader>dk", function() require("dapui").eval() end) -- hover eval
-vim.keymap.set("n", "<leader>du", function() require("dap").up() end)    -- up one frame
-vim.keymap.set("n", "<leader>dd", function() require("dap").down() end)  -- down one frame
