@@ -21,7 +21,6 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(
   autojump
   git
-  github
   sudo
   zsh-syntax-highlighting
   vi-mode

@@ -118,7 +118,7 @@ end
     quickfile = { enabled = true },
     scope = { enabled = true },
     scroll = {
-      enabled = true,
+      enabled = false,
       animate = {
         duration = { step = 10, total = 100 }, -- default is total = 200 (lower = faster)
         easing = "linear",
@@ -253,19 +253,18 @@ vim.keymap.set('n', '<leader>a', '<Plug>(coc-codeaction-selected)', { remap = tr
 vim.keymap.set('n', '<leader>qf', '<Plug>(coc-fix-current)', { remap = true })
 vim.keymap.set('n', '<leader>cc', ':<C-u>CocList commands<cr>', { silent = true })
 vim.keymap.set('n', '<leader>o', ':CocOutline<CR>')
+vim.keymap.set('n', '<leader>O', ':<C-u>CocList --normal outline<cr>', { silent = true, desc = 'Coc outline list' })
 vim.keymap.set('n', '<leader>s', ':<C-u>CocList -I symbols<cr>', { silent = true })
 vim.keymap.set('n', '<leader>j', ':<C-u>CocNext<CR>', { silent = true })
 vim.keymap.set('n', '<leader>k', ':<C-u>CocPrev<CR>', { silent = true })
-vim.keymap.set('n', '<leader>p', ':<C-u>CocListResume<CR>', { silent = true })
 vim.keymap.set("n", "<leader>cl", "<Plug>(coc-codelens-action)", { silent = true, remap = true })
 
-vim.g.coc_outline_auto_preview = 1
 vim.g.coc_global_extensions = {
   'coc-clangd',
   'coc-format-json',
   'coc-highlight',
   'coc-json',
-  -- 'coc-pyright',
+  '@yaegassy/coc-pyrefly',
   'coc-snippets',
   'coc-texlab',
   'coc-vimlsp',

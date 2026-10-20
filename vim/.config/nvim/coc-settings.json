@@ -21,7 +21,11 @@
     "clangd.path": "/opt/homebrew/opt/llvm/bin//clangd",
     // "clangd.arguments": ["-std=c++20"],
     "codeLens.enable": true,
-    "inlayHint.enable": true,
+    "inlayHint.enable": false,
     "snippets.ultisnips.pythonPrompt": false,
     "coc.preferences.formatOnSave": false,
+    "outline.autoPreview": true,
+    "outline.keepWindow": true,
+    // show pyrefly diagnostics even in projects without a pyrefly.toml
+    "python.pyrefly.displayTypeErrors": "force-on"
 }
